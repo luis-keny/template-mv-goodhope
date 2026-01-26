@@ -17,7 +17,7 @@ const props = defineProps<{
       props.class,
     )"
   >
-    <Separator class="absolute inset-0 top-1/2" />
+    <Separator class="absolute top-0 right-0 bottom-0 left-0 top-1/2" />
     <span
       v-if="$slots.default"
       class="bg-background text-muted-foreground relative mx-auto block w-fit px-2"

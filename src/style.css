@@ -2,6 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  outline: none;
+}
+/* Scrollbar (antiguo/deprecado) - WebKit (Chrome/Edge/Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background: transparent; /* fondo del scroll transparente */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* pista transparente */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9e9e9e;     /* scroll gris */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7f7f7f;     /* gris más oscuro al hover */
+}
+
+/* Firefox (moderno) - opcional, ignóralo si solo quieres lo antiguo */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #9e9e9e transparent;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

@@ -219,7 +219,7 @@ onMounted(() => {
             >
               <div
                 class="border-ghost aspect-square size-4 rounded-sm after:rounded-sm"
-                :style="{ 'background': color.oklch }"
+                :style="{ 'background': color.hex }"
               />
               {{ color.className }}
               <span class="text-muted-foreground ml-auto font-mono text-xs font-normal tabular-nums">

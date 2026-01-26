@@ -21,7 +21,6 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarTrigger,
-  SidebarRail,
 } from '@/components/ui/sidebar'
 import { siteConfig } from './utils/config';
 import { getColors } from './utils/colors';
@@ -152,7 +151,6 @@ const components = [
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
-          <SidebarRail/>
         </SidebarContent>
       </Sidebar>
     <main class="flex-1">
