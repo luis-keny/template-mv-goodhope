@@ -47,7 +47,7 @@ interface Props {
   navItems?: { href: string, label: string }[]
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   blocks: undefined,
   navItems: undefined,
 })
