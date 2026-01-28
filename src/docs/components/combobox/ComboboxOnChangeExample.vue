@@ -1,0 +1,40 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import Combobox from '@/components/common/Combobox.vue'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { toast } from 'vue-sonner'
+
+const frameworks = [
+  { value: 'next.js', label: 'Next.js' },
+  { value: 'sveltekit', label: 'SvelteKit' },
+  { value: 'nuxt.js', label: 'Nuxt.js' },
+  { value: 'remix', label: 'Remix' },
+  { value: 'astro', label: 'Astro' },
+]
+
+const selected = ref('')
+const onChange = (val: string | null) => {
+  toast('Selection changed', {
+    description: val ? `Selected: ${val}` : 'Cleared selection',
+    action: {
+      label: 'Undo',
+      onClick: () => {
+        selected.value = ''
+      },
+    },
+  })
+}
+</script>
+
+<template>
+  <Card>
+    <CardHeader>
+      <CardTitle>OnChange + Toast</CardTitle>
+      <CardDescription>Shows a toast when selection changes</CardDescription>
+    </CardHeader>
+    <CardContent class="space-y-4">
+      <Combobox v-model="selected" :items="frameworks" placeholder="Select framework..." @change="onChange" />
+      <div class="text-sm text-muted-foreground">Selected: {{ selected || 'none' }}</div>
+    </CardContent>
+  </Card>
+</template>

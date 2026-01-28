@@ -2,11 +2,13 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import ButtonDocs from '@/docs/components/button/ButtonDocs.vue'
+import ComboboxDocs from '@/docs/components/combobox/ComboboxDocs.vue'
 
 const route = useRoute()
 const nameParam = computed(() => (route.params.name as string) || '')
 const docsRegistry: Record<string, any> = {
   button: ButtonDocs,
+  combobox: ComboboxDocs,
 }
 const currentDoc = computed(() => docsRegistry[nameParam.value] || null)
 const title = computed(() => nameParam.value.replace(/-/g, ' '))
