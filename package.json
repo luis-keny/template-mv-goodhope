@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@internationalized/date": "^3.10.1",
     "@tanstack/vue-table": "8.21.3",
     "@unovis/ts": "1.6.2",
     "@unovis/vue": "1.6.2",
