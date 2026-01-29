@@ -5,6 +5,8 @@ import ButtonDocs from '@/docs/components/button/ButtonDocs.vue'
 import ComboboxDocs from '@/docs/components/combobox/ComboboxDocs.vue'
 import CalendarDocs from '@/docs/components/calendar/CalendarDocs.vue'
 import DatePickerDocs from '@/docs/components/date-picker/DatePickerDocs.vue'
+import InputDocs from '@/docs/components/input/InputDocs.vue'
+import SonnerDocs from '@/docs/components/sonner/SonnerDocs.vue'
 import { Button } from '@/components/ui/button'
 
 const route = useRoute()
@@ -14,6 +16,8 @@ const docsRegistry: Record<string, any> = {
   combobox: ComboboxDocs,
   calendar: CalendarDocs,
   'date-picker': DatePickerDocs,
+  input: InputDocs,
+  sonner: SonnerDocs,
 }
 const currentDoc = computed(() => docsRegistry[nameParam.value] || null)
 const title = computed(() => nameParam.value.replace(/-/g, ' '))
