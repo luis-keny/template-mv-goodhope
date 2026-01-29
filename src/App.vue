@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import 'vue-sonner/style.css'
-import { Toaster } from '@/components/ui/sonner'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -50,7 +49,6 @@ const breadcrumbItems = computed(() => {
 </script>
 
 <template>
-  <Toaster />
   <div class="flex min-h-screen">
     <SidebarProvider>
       <Sidebar>
