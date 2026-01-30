@@ -41,7 +41,7 @@
     --popover-foreground: 222.2 84% 4.9%;
     --primary: 216 47% 48%; /* Pantone 7684C - #4672b1 */
     --primary-foreground: 0 0% 100%;
-    --secondary: 199 93% 49%; /* Pantone Process Blue C - #0ca4eb */
+    --secondary: 180 68% 54%; /* Turquesa - #1ab5c0 */
     --secondary-foreground: 0 0% 100%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -76,7 +76,7 @@
     --popover-foreground: 210 40% 98%;
     --primary: 216 47% 48%; /* Pantone 7684C - #4672b1 */
     --primary-foreground: 0 0% 100%;
-    --secondary: 199 93% 49%; /* Pantone Process Blue C - #0ca4eb */
+    --secondary: 180 68% 54%; /* Turquesa - #1ab5c0 */
     --secondary-foreground: 0 0% 100%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
