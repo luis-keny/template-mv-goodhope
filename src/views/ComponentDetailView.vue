@@ -7,6 +7,10 @@ import CalendarDocs from '@/docs/components/calendar/CalendarDocs.vue'
 import DatePickerDocs from '@/docs/components/date-picker/DatePickerDocs.vue'
 import InputDocs from '@/docs/components/input/InputDocs.vue'
 import SonnerDocs from '@/docs/components/sonner/SonnerDocs.vue'
+import PopoverDocs from '@/docs/components/popover/PopoverDocs.vue'
+import CardDocs from '@/docs/components/card/CardDocs.vue'
+import SelectDocs from '@/docs/components/select/SelectDocs.vue'
+import PaginationDocs from '@/docs/components/pagination/PaginationDocs.vue'
 import { Button } from '@/components/ui/button'
 
 const route = useRoute()
@@ -18,6 +22,10 @@ const docsRegistry: Record<string, any> = {
   'date-picker': DatePickerDocs,
   input: InputDocs,
   sonner: SonnerDocs,
+  popover: PopoverDocs,
+  card: CardDocs,
+  select: SelectDocs,
+  pagination: PaginationDocs,
 }
 const currentDoc = computed(() => docsRegistry[nameParam.value] || null)
 const title = computed(() => nameParam.value.replace(/-/g, ' '))
