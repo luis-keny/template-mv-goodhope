@@ -39,21 +39,6 @@ export default {
     				foreground: '#ffffff'
     			},
     			secondary: {
-    				'50': '#f0f9ff',
-    				'100': '#e0f2fe',
-    				'200': '#b9e5fe',
-    				'300': '#7cd2fd',
-    				'400': '#36bcfa',
-    				'500': '#0ca4eb',
-    				'600': '#0082c8',
-    				'700': '#0167a3',
-    				'800': '#065886',
-    				'900': '#0b496f',
-    				'950': '#072e4a',
-    				DEFAULT: '#0ca4eb',
-    				foreground: '#ffffff'
-    			},
-    			tertiary: {
     				'50': '#eefdfd',
     				'100': '#d3f9fa',
     				'200': '#adf2f4',
@@ -66,6 +51,21 @@ export default {
     				'900': '#1d505c',
     				'950': '#0e353e',
     				DEFAULT: '#1ab5c0',
+    				foreground: '#ffffff'
+    			},
+    			tertiary: {
+    				'50': '#f0f9ff',
+    				'100': '#e0f2fe',
+    				'200': '#b9e5fe',
+    				'300': '#7cd2fd',
+    				'400': '#36bcfa',
+    				'500': '#0ca4eb',
+    				'600': '#0082c8',
+    				'700': '#0167a3',
+    				'800': '#065886',
+    				'900': '#0b496f',
+    				'950': '#072e4a',
+    				DEFAULT: '#0ca4eb',
     				foreground: '#ffffff'
     			},
     			muted: {
