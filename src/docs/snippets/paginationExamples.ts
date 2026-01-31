@@ -1,33 +1,20 @@
 export const paginationExamplesCode = `<script setup lang="ts">
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationNext,
-  PaginationPrevious,
-} from '@/components/ui/pagination'
+import Paginator from '@/components/common/Paginator.vue'
 </script>
 
 <template>
-  <Pagination v-slot="{ page }" :items-per-page="10" :total="100" :default-page="2">
-    <PaginationContent v-slot="{ items }">
-      <PaginationPrevious />
+  <div class="space-y-2">
+    <p class="text-sm font-medium">Basic Usage (Default)</p>
+    <Paginator :total="100" :items-per-page="10" :default-page="2" />
+  </div>
+  
+  <div class="space-y-2">
+    <p class="text-sm font-medium">With Edges (First/Last buttons)</p>
+    <Paginator :total="100" :items-per-page="10" :default-page="5" show-edges />
+  </div>
 
-      <template v-for="(item, index) in items" :key="index">
-        <PaginationItem
-          v-if="item.type === 'page'"
-          :value="item.value"
-          :is-active="item.value === page"
-          variant="default"
-        >
-          {{ item.value }}
-        </PaginationItem>
-        <PaginationEllipsis v-else :index="index" />
-      </template>
-
-      <PaginationNext />
-    </PaginationContent>
-  </Pagination>
-</template>
-`
+  <div class="space-y-2">
+    <p class="text-sm font-medium">Custom Sibling Count (2)</p>
+    <Paginator :total="100" :items-per-page="10" :default-page="5" :sibling-count="2" />
+  </div>
+</template>`

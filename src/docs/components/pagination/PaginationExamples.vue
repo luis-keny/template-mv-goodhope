@@ -1,89 +1,28 @@
 <script setup lang="ts">
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationNext,
-  PaginationPrevious,
-} from '@/components/ui/pagination'
+import Paginator from '@/components/common/Paginator.vue'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 </script>
 
 <template>
   <Card>
     <CardHeader>
-      <CardTitle>Pagination Examples</CardTitle>
-      <CardDescription>Variantes con los colores de Soul MV</CardDescription>
+      <CardTitle>Paginator Examples</CardTitle>
+      <CardDescription>Componente Paginator simplificado con soporte para v-model y props de configuración.</CardDescription>
     </CardHeader>
     <CardContent class="space-y-6">
       <div class="space-y-2">
-        <p class="text-sm font-medium">Primary (Azul)</p>
-        <Pagination v-slot="{ page }" :items-per-page="10" :total="100" :default-page="2">
-          <PaginationContent v-slot="{ items }">
-            <PaginationPrevious />
-
-            <template v-for="(item, index) in items" :key="index">
-              <PaginationItem
-                v-if="item.type === 'page'"
-                :value="item.value"
-                :is-active="item.value === page"
-                variant="default"
-              >
-                {{ item.value }}
-              </PaginationItem>
-              <PaginationEllipsis v-else :index="index" />
-            </template>
-
-            <PaginationNext />
-          </PaginationContent>
-        </Pagination>
+        <p class="text-sm font-medium">Basic Usage (Default)</p>
+        <Paginator :total="100" :items-per-page="10" :default-page="2" />
       </div>
       
       <div class="space-y-2">
-        <p class="text-sm font-medium">Secondary (Turquesa)</p>
-        <Pagination v-slot="{ page }" :items-per-page="10" :total="100" :default-page="2">
-          <PaginationContent v-slot="{ items }">
-            <PaginationPrevious />
-
-            <template v-for="(item, index) in items" :key="index">
-              <PaginationItem
-                v-if="item.type === 'page'"
-                :value="item.value"
-                :is-active="item.value === page"
-                variant="secondary"
-              >
-                {{ item.value }}
-              </PaginationItem>
-              <PaginationEllipsis v-else :index="index" />
-            </template>
-
-            <PaginationNext />
-          </PaginationContent>
-        </Pagination>
+        <p class="text-sm font-medium">With Edges (First/Last buttons)</p>
+        <Paginator :total="100" :items-per-page="10" :default-page="5" show-edges />
       </div>
-      
+
       <div class="space-y-2">
-        <p class="text-sm font-medium">Tertiary (Celeste)</p>
-        <Pagination v-slot="{ page }" :items-per-page="10" :total="100" :default-page="2">
-          <PaginationContent v-slot="{ items }">
-            <PaginationPrevious />
-
-            <template v-for="(item, index) in items" :key="index">
-              <PaginationItem
-                v-if="item.type === 'page'"
-                :value="item.value"
-                :is-active="item.value === page"
-                variant="tertiary"
-              >
-                {{ item.value }}
-              </PaginationItem>
-              <PaginationEllipsis v-else :index="index" />
-            </template>
-
-            <PaginationNext />
-          </PaginationContent>
-        </Pagination>
+        <p class="text-sm font-medium">Custom Sibling Count (2)</p>
+        <Paginator :total="100" :items-per-page="10" :default-page="5" :sibling-count="2" />
       </div>
     </CardContent>
   </Card>

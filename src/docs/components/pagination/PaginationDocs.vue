@@ -36,11 +36,11 @@ const copy = async () => {
     <Card>
       <CardHeader>
         <CardTitle>API</CardTitle>
-        <CardDescription>Props del componente Pagination</CardDescription>
+        <CardDescription>Props del componente Paginator</CardDescription>
       </CardHeader>
       <CardContent class="space-y-6">
         <div>
-          <p class="text-sm font-medium mb-2">PaginationItem Props</p>
+          <p class="text-sm font-medium mb-2">Paginator Props</p>
           <Table>
             <TableHeader>
               <TableRow>
@@ -52,59 +52,59 @@ const copy = async () => {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell class="font-mono text-xs">variant</TableCell>
-                <TableCell>"default" | "secondary" | "tertiary"</TableCell>
-                <TableCell>"default"</TableCell>
-                <TableCell>Color variant del item activo</TableCell>
+                <TableCell class="font-mono text-xs">total</TableCell>
+                <TableCell>number</TableCell>
+                <TableCell>-</TableCell>
+                <TableCell>Número total de items (Requerido)</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell class="font-mono text-xs">isActive</TableCell>
+                <TableCell class="font-mono text-xs">itemsPerPage</TableCell>
+                <TableCell>number</TableCell>
+                <TableCell>10</TableCell>
+                <TableCell>Número de items a mostrar por página</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell class="font-mono text-xs">siblingCount</TableCell>
+                <TableCell>number</TableCell>
+                <TableCell>1</TableCell>
+                <TableCell>Número de botones de página visibles a cada lado de la página actual</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell class="font-mono text-xs">showEdges</TableCell>
                 <TableCell>boolean</TableCell>
                 <TableCell>false</TableCell>
-                <TableCell>Indica si la página está activa</TableCell>
+                <TableCell>Si es true, muestra botones para ir a la primera y última página</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell class="font-mono text-xs">size</TableCell>
-                <TableCell>"icon" | "sm" | "default" | "lg"</TableCell>
-                <TableCell>"icon"</TableCell>
-                <TableCell>Tamaño del item</TableCell>
+                <TableCell class="font-mono text-xs">defaultPage</TableCell>
+                <TableCell>number</TableCell>
+                <TableCell>1</TableCell>
+                <TableCell>Página seleccionada por defecto (si no se usa v-model)</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell class="font-mono text-xs">modelValue</TableCell>
+                <TableCell>number</TableCell>
+                <TableCell>-</TableCell>
+                <TableCell>Valor de la página actual (v-model)</TableCell>
               </TableRow>
             </TableBody>
           </Table>
         </div>
         <div>
-          <p class="text-sm font-medium mb-2">Componentes</p>
+          <p class="text-sm font-medium mb-2">Eventos</p>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Component</TableHead>
+                <TableHead>Evento</TableHead>
+                <TableHead>Payload</TableHead>
                 <TableHead>Description</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell class="font-mono text-xs">Pagination</TableCell>
-                <TableCell>Contenedor principal</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell class="font-mono text-xs">PaginationContent</TableCell>
-                <TableCell>Lista de elementos de paginación</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell class="font-mono text-xs">PaginationItem</TableCell>
-                <TableCell>Item individual de página</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell class="font-mono text-xs">PaginationPrevious</TableCell>
-                <TableCell>Botón de página anterior</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell class="font-mono text-xs">PaginationNext</TableCell>
-                <TableCell>Botón de página siguiente</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell class="font-mono text-xs">PaginationEllipsis</TableCell>
-                <TableCell>Indicador de páginas omitidas</TableCell>
+                <TableCell class="font-mono text-xs">update:modelValue</TableCell>
+                <TableCell>number</TableCell>
+                <TableCell>Se emite cuando cambia la página seleccionada</TableCell>
               </TableRow>
             </TableBody>
           </Table>
