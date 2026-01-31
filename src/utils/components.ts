@@ -30,7 +30,7 @@ export const components = [
   { title: "Dropdown Menu", url: "/docs/components/dropdown-menu" },
   { title: "Empty", url: "/docs/components/empty" },
   { title: "Field", url: "/docs/components/field" },
-  { title: "Form", url: "/docs/components/form" },
+  // { title: "Form", url: "/docs/components/form" },
   { title: "Hover Card", url: "/docs/components/hover-card" },
   { title: "Input", url: "/docs/components/input" },
   { title: "Input Group", url: "/docs/components/input-group" },
