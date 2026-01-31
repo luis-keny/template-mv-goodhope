@@ -11,6 +11,7 @@ import PopoverDocs from '@/docs/components/popover/PopoverDocs.vue'
 import CardDocs from '@/docs/components/card/CardDocs.vue'
 import SelectDocs from '@/docs/components/select/SelectDocs.vue'
 import PaginationDocs from '@/docs/components/pagination/PaginationDocs.vue'
+import FieldDocs from '@/docs/components/field/FieldDocs.vue'
 import { Button } from '@/components/ui/button'
 
 const route = useRoute()
@@ -26,6 +27,7 @@ const docsRegistry: Record<string, any> = {
   card: CardDocs,
   select: SelectDocs,
   pagination: PaginationDocs,
+  field: FieldDocs,
 }
 const currentDoc = computed(() => docsRegistry[nameParam.value] || null)
 const title = computed(() => nameParam.value.replace(/-/g, ' '))
