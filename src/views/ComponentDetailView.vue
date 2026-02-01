@@ -39,7 +39,7 @@ const externalDocUrl = computed(() => `https://shadcn-vue.com/docs/components/${
     <div class="flex items-start justify-between gap-3">
       <div>
         <h1 class="text-3xl font-bold capitalize">{{ title }}</h1>
-        <p class="mt-2 text-gray-600">Documentation for {{ title }} component.</p>
+        <p class="mt-2 text-gray-600">Documentación del componente {{ title }}.</p>
       </div>
       <Button as="a" :href="externalDocUrl" target="_blank" rel="noopener noreferrer" variant="outline" size="sm">
         Ver documentación original

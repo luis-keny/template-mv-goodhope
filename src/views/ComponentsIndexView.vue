@@ -5,8 +5,8 @@ import { components } from '@/utils/components'
 <template>
   <div class="p-6 space-y-6">
     <div>
-      <h1 class="text-3xl font-bold">Components</h1>
-      <p class="mt-2 text-gray-600">Here you can find all available components.</p>
+      <h1 class="text-3xl font-bold">Componentes</h1>
+      <p class="mt-2 text-gray-600">Aquí puedes encontrar todos los componentes disponibles.</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

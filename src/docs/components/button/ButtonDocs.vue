@@ -21,12 +21,12 @@ const copy = async () => {
     <Card>
       <CardHeader class="flex flex-row items-center justify-between">
         <div>
-          <CardTitle>Source</CardTitle>
-          <CardDescription>Copy and paste into your project</CardDescription>
+          <CardTitle>Código Fuente</CardTitle>
+          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
         </div>
         <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copy</span>
-          <span v-else>Copied</span>
+          <span v-if="!copied">Copiar</span>
+          <span v-else>Copiado</span>
         </Button>
       </CardHeader>
       <CardContent>
@@ -36,7 +36,7 @@ const copy = async () => {
     <Card>
       <CardHeader>
         <CardTitle>API</CardTitle>
-        <CardDescription>Props of the Button component</CardDescription>
+        <CardDescription>Props del componente Button</CardDescription>
       </CardHeader>
       <CardContent class="space-y-6">
         <div>
@@ -45,9 +45,9 @@ const copy = async () => {
             <TableHeader>
               <TableRow>
                 <TableHead>Prop</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Default</TableHead>
-                <TableHead>Description</TableHead>
+                <TableHead>Tipo</TableHead>
+                <TableHead>Por defecto</TableHead>
+                <TableHead>Descripción</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -55,38 +55,38 @@ const copy = async () => {
                 <TableCell>variant</TableCell>
                 <TableCell>"default" | "secondary" | "tertiary" | "outline" | "ghost" | "link" | "destructive"</TableCell>
                 <TableCell>"default"</TableCell>
-                <TableCell>Visual style variant</TableCell>
+                <TableCell>Variante de estilo visual</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>size</TableCell>
                 <TableCell>"xs" | "sm" | "default" | "lg" | "icon" | "icon-sm" | "icon-lg"</TableCell>
                 <TableCell>"default"</TableCell>
-                <TableCell>Control size and spacing</TableCell>
+                <TableCell>Controla el tamaño y espaciado</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>class</TableCell>
                 <TableCell>string</TableCell>
                 <TableCell>-</TableCell>
-                <TableCell>Extra classes appended to the button</TableCell>
+                <TableCell>Clases adicionales añadidas al botón</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>as</TableCell>
                 <TableCell>string</TableCell>
                 <TableCell>"button"</TableCell>
-                <TableCell>Rendered tag via Primitive (e.g., "a")</TableCell>
+                <TableCell>Etiqueta renderizada vía Primitive (ej. "a")</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>asChild</TableCell>
                 <TableCell>boolean</TableCell>
                 <TableCell>false</TableCell>
-                <TableCell>Render as child (useful to wrap custom components)</TableCell>
+                <TableCell>Renderizar como hijo (útil para envolver componentes personalizados)</TableCell>
               </TableRow>
             </TableBody>
           </Table>
         </div>
         <div>
           <p class="text-sm text-muted-foreground">
-            Events are forwarded from the underlying element (e.g., click, focus). No custom events are emitted.
+            Los eventos se reenvían desde el elemento subyacente (ej. click, focus). No se emiten eventos personalizados.
           </p>
         </div>
       </CardContent>

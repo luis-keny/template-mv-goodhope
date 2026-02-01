@@ -18,11 +18,11 @@ const selected = ref('')
   <Card>
     <CardHeader>
       <CardTitle>Combobox</CardTitle>
-      <CardDescription>Searchable selection with popover</CardDescription>
+      <CardDescription>Selección con búsqueda y popover</CardDescription>
     </CardHeader>
     <CardContent class="space-y-4">
-      <Combobox v-model="selected" :items="frameworks" placeholder="Select framework..." />
-      <div class="text-sm text-muted-foreground">Selected: {{ selected || 'none' }}</div>
+      <Combobox v-model="selected" :items="frameworks" placeholder="Seleccionar framework..." />
+      <div class="text-sm text-muted-foreground">Seleccionado: {{ selected || 'ninguno' }}</div>
     </CardContent>
   </Card>
 </template>

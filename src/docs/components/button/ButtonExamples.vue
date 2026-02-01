@@ -7,39 +7,39 @@ import { Plus, Search, Check, Trash2 } from 'lucide-vue-next'
 <template>
   <Card>
     <CardHeader>
-      <CardTitle>Button Examples</CardTitle>
-      <CardDescription>Variants and sizes available</CardDescription>
+      <CardTitle>Ejemplos de Botones</CardTitle>
+      <CardDescription>Variantes y tamaños disponibles</CardDescription>
     </CardHeader>
     <CardContent class="space-y-6">
       <div class="space-y-2">
-        <p class="text-sm font-medium">Variants</p>
+        <p class="text-sm font-medium">Variantes</p>
         <div class="flex flex-wrap gap-2">
-          <Button variant="default">Default</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="tertiary">Tertiary</Button>
-          <Button variant="outline">Outline</Button>
-          <Button variant="ghost">Ghost</Button>
-          <Button variant="link">Link</Button>
-          <Button variant="destructive">Destructive</Button>
+          <Button variant="default">Por defecto</Button>
+          <Button variant="secondary">Secundario</Button>
+          <Button variant="tertiary">Terciario</Button>
+          <Button variant="outline">Contorno</Button>
+          <Button variant="ghost">Fantasma</Button>
+          <Button variant="link">Enlace</Button>
+          <Button variant="destructive">Destructivo</Button>
         </div>
       </div>
       <div class="space-y-2">
-        <p class="text-sm font-medium">Sizes</p>
+        <p class="text-sm font-medium">Tamaños</p>
         <div class="flex flex-wrap items-center gap-2">
           <Button size="xs">XS</Button>
           <Button size="sm">SM</Button>
-          <Button size="default">Default</Button>
+          <Button size="default">Por defecto</Button>
           <Button size="lg">LG</Button>
         </div>
       </div>
       <div class="space-y-2">
-        <p class="text-sm font-medium">Icons</p>
+        <p class="text-sm font-medium">Iconos</p>
         <div class="flex flex-wrap items-center gap-2">
-          <Button size="icon" aria-label="Add"><Plus /></Button>
-          <Button size="icon-sm" variant="secondary" aria-label="Search"><Search /></Button>
-          <Button size="icon-lg" variant="outline" aria-label="Confirm"><Check /></Button>
-          <Button variant="destructive"><Trash2 /><span>Delete</span></Button>
-          <Button variant="default"><Plus /><span>Add</span></Button>
+          <Button size="icon" aria-label="Agregar"><Plus /></Button>
+          <Button size="icon-sm" variant="secondary" aria-label="Buscar"><Search /></Button>
+          <Button size="icon-lg" variant="outline" aria-label="Confirmar"><Check /></Button>
+          <Button variant="destructive"><Trash2 /><span>Eliminar</span></Button>
+          <Button variant="default"><Plus /><span>Agregar</span></Button>
         </div>
       </div>
     </CardContent>

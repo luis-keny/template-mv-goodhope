@@ -21,12 +21,12 @@ const copy = async () => {
     <Card>
       <CardHeader class="flex flex-row items-center justify-between">
         <div>
-          <CardTitle>Source</CardTitle>
-          <CardDescription>Copy and paste into your project</CardDescription>
+          <CardTitle>Código Fuente</CardTitle>
+          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
         </div>
         <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copy</span>
-          <span v-else>Copied</span>
+          <span v-if="!copied">Copiar</span>
+          <span v-else>Copiado</span>
         </Button>
       </CardHeader>
       <CardContent>
@@ -37,7 +37,7 @@ const copy = async () => {
     <Card>
       <CardHeader>
         <CardTitle>API</CardTitle>
-        <CardDescription>Props of the Calendar component</CardDescription>
+        <CardDescription>Props del componente Calendar</CardDescription>
       </CardHeader>
       <CardContent class="space-y-6">
         <div>
@@ -46,9 +46,9 @@ const copy = async () => {
             <TableHeader>
               <TableRow>
                 <TableHead>Prop</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Default</TableHead>
-                <TableHead>Description</TableHead>
+                <TableHead>Tipo</TableHead>
+                <TableHead>Por defecto</TableHead>
+                <TableHead>Descripción</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -56,134 +56,134 @@ const copy = async () => {
                 <TableCell>modelValue</TableCell>
                 <TableCell>DateValue | DateValue[] | undefined</TableCell>
                 <TableCell>undefined</TableCell>
-                <TableCell>Selected date(s) (v-model)</TableCell>
+                <TableCell>Fecha(s) seleccionada(s) (v-model)</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>defaultValue</TableCell>
                 <TableCell>DateValue</TableCell>
                 <TableCell>undefined</TableCell>
-                <TableCell>Default selected date</TableCell>
+                <TableCell>Fecha seleccionada por defecto</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>placeholder</TableCell>
                 <TableCell>DateValue</TableCell>
                 <TableCell>auto</TableCell>
-                <TableCell>Month to display when none selected</TableCell>
+                <TableCell>Mes a mostrar cuando no hay selección</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>numberOfMonths</TableCell>
                 <TableCell>number</TableCell>
                 <TableCell>1</TableCell>
-                <TableCell>Months rendered side by side</TableCell>
+                <TableCell>Meses renderizados uno al lado del otro</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>weekStartsOn</TableCell>
                 <TableCell>0 | 1 | 2 | 3 | 4 | 5 | 6</TableCell>
                 <TableCell>0</TableCell>
-                <TableCell>Start day of week</TableCell>
+                <TableCell>Día de inicio de la semana</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>weekdayFormat</TableCell>
                 <TableCell>'narrow' | 'short' | 'long'</TableCell>
                 <TableCell>'narrow'</TableCell>
-                <TableCell>Format for weekday headings</TableCell>
+                <TableCell>Formato para encabezados de días de la semana</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>fixedWeeks</TableCell>
                 <TableCell>boolean</TableCell>
                 <TableCell>false</TableCell>
-                <TableCell>Always show 6 weeks</TableCell>
+                <TableCell>Mostrar siempre 6 semanas</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>minValue</TableCell>
                 <TableCell>DateValue</TableCell>
                 <TableCell>-</TableCell>
-                <TableCell>Minimum selectable date</TableCell>
+                <TableCell>Fecha mínima seleccionable</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>maxValue</TableCell>
                 <TableCell>DateValue</TableCell>
                 <TableCell>-</TableCell>
-                <TableCell>Maximum selectable date</TableCell>
+                <TableCell>Fecha máxima seleccionable</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>disabled</TableCell>
                 <TableCell>boolean</TableCell>
                 <TableCell>false</TableCell>
-                <TableCell>Disable interactions</TableCell>
+                <TableCell>Deshabilitar interacciones</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>readonly</TableCell>
                 <TableCell>boolean</TableCell>
                 <TableCell>false</TableCell>
-                <TableCell>Readonly mode</TableCell>
+                <TableCell>Modo solo lectura</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>initialFocus</TableCell>
                 <TableCell>boolean</TableCell>
                 <TableCell>false</TableCell>
-                <TableCell>Focus a day on mount</TableCell>
+                <TableCell>Enfocar un día al montar</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>pagedNavigation</TableCell>
                 <TableCell>boolean</TableCell>
                 <TableCell>false</TableCell>
-                <TableCell>Navigate by numberOfMonths</TableCell>
+                <TableCell>Navegar por numberOfMonths</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>multiple</TableCell>
                 <TableCell>boolean</TableCell>
                 <TableCell>false</TableCell>
-                <TableCell>Allow selecting multiple dates</TableCell>
+                <TableCell>Permitir seleccionar múltiples fechas</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>isDateDisabled</TableCell>
                 <TableCell>(date: DateValue) => boolean</TableCell>
                 <TableCell>-</TableCell>
-                <TableCell>Custom disabled matcher</TableCell>
+                <TableCell>Coincidencia personalizada de deshabilitado</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>isDateUnavailable</TableCell>
                 <TableCell>(date: DateValue) => boolean</TableCell>
                 <TableCell>-</TableCell>
-                <TableCell>Custom unavailable matcher</TableCell>
+                <TableCell>Coincidencia personalizada de no disponible</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>nextPage</TableCell>
                 <TableCell>(placeholder: DateValue) => DateValue</TableCell>
                 <TableCell>-</TableCell>
-                <TableCell>Override next page calculation</TableCell>
+                <TableCell>Sobrescribir cálculo de página siguiente</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>prevPage</TableCell>
                 <TableCell>(placeholder: DateValue) => DateValue</TableCell>
                 <TableCell>-</TableCell>
-                <TableCell>Override previous page calculation</TableCell>
+                <TableCell>Sobrescribir cálculo de página anterior</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>dir</TableCell>
                 <TableCell>'ltr' | 'rtl'</TableCell>
                 <TableCell>global</TableCell>
-                <TableCell>Direction reading mode</TableCell>
+                <TableCell>Modo de dirección de lectura</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>locale</TableCell>
                 <TableCell>string</TableCell>
                 <TableCell>global</TableCell>
-                <TableCell>Locale used for formatting</TableCell>
+                <TableCell>Localización usada para formateo</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>disableDaysOutsideCurrentView</TableCell>
                 <TableCell>boolean</TableCell>
                 <TableCell>false</TableCell>
-                <TableCell>Disable selection of outside days</TableCell>
+                <TableCell>Deshabilitar selección de días fuera de la vista actual</TableCell>
               </TableRow>
             </TableBody>
           </Table>
         </div>
         <div>
           <p class="text-sm text-muted-foreground">
-            For range selection, use the RangeCalendar component exported under <code>@/components/ui/range-calendar</code>.
+            Para selección de rangos, usa el componente RangeCalendar exportado bajo <code>@/components/ui/range-calendar</code>.
           </p>
         </div>
       </CardContent>

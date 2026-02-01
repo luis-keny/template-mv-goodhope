@@ -9,12 +9,12 @@ const selected = ref()
 <template>
   <Card>
     <CardHeader>
-      <CardTitle>Calendar</CardTitle>
-      <CardDescription>Select a date</CardDescription>
+      <CardTitle>Calendario</CardTitle>
+      <CardDescription>Selecciona una fecha</CardDescription>
     </CardHeader>
     <CardContent class="space-y-4">
       <Calendar v-model="selected" :number-of-months="1" class="w-fit" />
-      <div class="text-sm text-muted-foreground">Selected: {{ selected ? selected.toString() : 'none' }}</div>
+      <div class="text-sm text-muted-foreground">Seleccionado: {{ selected ? selected.toString() : 'ninguna' }}</div>
     </CardContent>
   </Card>
 </template>

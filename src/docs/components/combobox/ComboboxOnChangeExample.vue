@@ -29,12 +29,17 @@ const onChange = (val: string | null) => {
 <template>
   <Card>
     <CardHeader>
-      <CardTitle>OnChange + Toast</CardTitle>
-      <CardDescription>Shows a toast when selection changes</CardDescription>
+      <CardTitle>Combobox con Evento Change</CardTitle>
+      <CardDescription>Muestra un toast al seleccionar</CardDescription>
     </CardHeader>
     <CardContent class="space-y-4">
-      <Combobox v-model="selected" :items="frameworks" placeholder="Select framework..." @change="onChange" />
-      <div class="text-sm text-muted-foreground">Selected: {{ selected || 'none' }}</div>
+      <Combobox
+        v-model="selected"
+        :items="frameworks"
+        placeholder="Seleccionar framework..."
+        @change="onChange"
+      />
+      <div class="text-sm text-muted-foreground">Seleccionado: {{ selected || 'ninguno' }}</div>
     </CardContent>
   </Card>
 </template>

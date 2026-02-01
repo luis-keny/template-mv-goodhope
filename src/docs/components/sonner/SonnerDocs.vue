@@ -21,12 +21,12 @@ const copy = async () => {
     <Card>
       <CardHeader class="flex flex-row items-center justify-between">
         <div>
-          <CardTitle>Source</CardTitle>
+          <CardTitle>Código Fuente</CardTitle>
           <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
         </div>
         <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copy</span>
-          <span v-else>Copied</span>
+          <span v-if="!copied">Copiar</span>
+          <span v-else>Copiado</span>
         </Button>
       </CardHeader>
       <CardContent>

@@ -21,12 +21,12 @@ const copy = async () => {
     <Card>
       <CardHeader class="flex flex-row items-center justify-between">
         <div>
-          <CardTitle>Source</CardTitle>
-          <CardDescription>Copy and paste into your project</CardDescription>
+          <CardTitle>Código Fuente</CardTitle>
+          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
         </div>
         <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copy</span>
-          <span v-else>Copied</span>
+          <span v-if="!copied">Copiar</span>
+          <span v-else>Copiado</span>
         </Button>
       </CardHeader>
       <CardContent>
@@ -36,18 +36,18 @@ const copy = async () => {
     <Card>
       <CardHeader>
         <CardTitle>API</CardTitle>
-        <CardDescription>Common props for Popover components</CardDescription>
+        <CardDescription>Props comunes para componentes Popover</CardDescription>
       </CardHeader>
       <CardContent class="space-y-6">
         <div>
-          <p class="text-sm font-medium mb-2">PopoverContent Props</p>
+          <p class="text-sm font-medium mb-2">Props de PopoverContent</p>
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>Prop</TableHead>
-                <TableHead>Type</TableHead>
+                <TableHead>Tipo</TableHead>
                 <TableHead>Default</TableHead>
-                <TableHead>Description</TableHead>
+                <TableHead>Descripción</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -55,32 +55,32 @@ const copy = async () => {
                 <TableCell>align</TableCell>
                 <TableCell>"start" | "center" | "end"</TableCell>
                 <TableCell>"center"</TableCell>
-                <TableCell>Alignment relative to trigger</TableCell>
+                <TableCell>Alineación relativa al disparador</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>side</TableCell>
                 <TableCell>"top" | "right" | "bottom" | "left"</TableCell>
                 <TableCell>"bottom"</TableCell>
-                <TableCell>Side where the popover appears</TableCell>
+                <TableCell>Lado donde aparece el popover</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>sideOffset</TableCell>
                 <TableCell>number</TableCell>
                 <TableCell>4</TableCell>
-                <TableCell>Offset distance from trigger</TableCell>
+                <TableCell>Distancia de desplazamiento desde el disparador</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>class</TableCell>
                 <TableCell>string</TableCell>
                 <TableCell>-</TableCell>
-                <TableCell>Additional classes</TableCell>
+                <TableCell>Clases adicionales</TableCell>
               </TableRow>
             </TableBody>
           </Table>
         </div>
         <div>
           <p class="text-sm text-muted-foreground">
-            For full API details see the Reka UI documentation.
+            Para detalles completos de la API ver la documentación de Reka UI.
           </p>
         </div>
       </CardContent>

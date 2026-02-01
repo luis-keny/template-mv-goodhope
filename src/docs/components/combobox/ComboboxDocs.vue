@@ -24,12 +24,12 @@ const copy = async () => {
     <Card>
       <CardHeader class="flex flex-row items-center justify-between">
         <div>
-          <CardTitle>Source</CardTitle>
-          <CardDescription>Copy and paste into your project</CardDescription>
+          <CardTitle>Código Fuente</CardTitle>
+          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
         </div>
         <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copy</span>
-          <span v-else>Copied</span>
+          <span v-if="!copied">Copiar</span>
+          <span v-else>Copiado</span>
         </Button>
       </CardHeader>
       <CardContent>
@@ -40,12 +40,12 @@ const copy = async () => {
     <Card>
       <CardHeader class="flex flex-row items-center justify-between">
         <div>
-          <CardTitle>Source (OnChange + Toast)</CardTitle>
-          <CardDescription>Copy and paste into your project</CardDescription>
+          <CardTitle>Código Fuente (OnChange + Toast)</CardTitle>
+          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
         </div>
         <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copy</span>
-          <span v-else>Copied</span>
+          <span v-if="!copied">Copiar</span>
+          <span v-else>Copiado</span>
         </Button>
       </CardHeader>
       <CardContent>
@@ -56,7 +56,7 @@ const copy = async () => {
     <Card>
       <CardHeader>
         <CardTitle>API</CardTitle>
-        <CardDescription>Props and events of the Combobox component</CardDescription>
+        <CardDescription>Props y eventos del componente Combobox</CardDescription>
       </CardHeader>
       <CardContent class="space-y-6">
         <div>
@@ -65,9 +65,9 @@ const copy = async () => {
             <TableHeader>
               <TableRow>
                 <TableHead>Prop</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Default</TableHead>
-                <TableHead>Description</TableHead>
+                <TableHead>Tipo</TableHead>
+                <TableHead>Por defecto</TableHead>
+                <TableHead>Descripción</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -75,55 +75,55 @@ const copy = async () => {
                 <TableCell>modelValue</TableCell>
                 <TableCell>string</TableCell>
                 <TableCell>''</TableCell>
-                <TableCell>Selected value (v-model)</TableCell>
+                <TableCell>Valor seleccionado (v-model)</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>items</TableCell>
                 <TableCell>{ value: string; label: string }[]</TableCell>
                 <TableCell>-</TableCell>
-                <TableCell>Data source for options</TableCell>
+                <TableCell>Fuente de datos para opciones</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>placeholder</TableCell>
                 <TableCell>string</TableCell>
                 <TableCell>'Select...'</TableCell>
-                <TableCell>Text shown when no selection</TableCell>
+                <TableCell>Texto mostrado cuando no hay selección</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>buttonClass</TableCell>
                 <TableCell>string</TableCell>
                 <TableCell>-</TableCell>
-                <TableCell>Extra classes applied to trigger button</TableCell>
+                <TableCell>Clases extra aplicadas al botón disparador</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>pageSize</TableCell>
                 <TableCell>number</TableCell>
                 <TableCell>100</TableCell>
-                <TableCell>Items loaded per batch for infinite scroll</TableCell>
+                <TableCell>Items cargados por lote para scroll infinito</TableCell>
               </TableRow>
             </TableBody>
           </Table>
         </div>
         <div>
-          <p class="text-sm font-medium mb-2">Events</p>
+          <p class="text-sm font-medium mb-2">Eventos</p>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Event</TableHead>
+                <TableHead>Evento</TableHead>
                 <TableHead>Payload</TableHead>
-                <TableHead>Description</TableHead>
+                <TableHead>Descripción</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               <TableRow>
                 <TableCell>update:modelValue</TableCell>
                 <TableCell>string</TableCell>
-                <TableCell>Emitted on selection change for v-model</TableCell>
+                <TableCell>Emitido al cambiar la selección para v-model</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>change</TableCell>
                 <TableCell>string | null</TableCell>
-                <TableCell>Emitted with selected value or null when cleared</TableCell>
+                <TableCell>Emitido con valor seleccionado o null al limpiar</TableCell>
               </TableRow>
             </TableBody>
           </Table>

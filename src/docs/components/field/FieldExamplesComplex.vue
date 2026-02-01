@@ -15,12 +15,12 @@ const formSchema = toTypedSchema(
   z.object({
     title: z
       .string()
-      .min(5, 'Bug title must be at least 5 characters.')
-      .max(32, 'Bug title must be at most 32 characters.'),
+      .min(5, 'El título del error debe tener al menos 5 caracteres.')
+      .max(32, 'El título del error debe tener como máximo 32 caracteres.'),
     description: z
       .string()
-      .min(20, 'Description must be at least 20 characters.')
-      .max(100, 'Description must be at most 100 characters.'),
+      .min(20, 'La descripción debe tener al menos 20 caracteres.')
+      .max(100, 'La descripción debe tener como máximo 100 caracteres.'),
   }),
 )
 
@@ -33,7 +33,7 @@ const { handleSubmit, resetForm } = useForm({
 })
 
 const onSubmit = handleSubmit((data) => {
-  toast('You submitted the following values:', {
+  toast('Has enviado los siguientes valores:', {
     description: h('pre', { class: 'bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4' }, h('code', JSON.stringify(data, null, 2))),
     position: 'bottom-right',
     class: 'flex flex-col gap-2',
@@ -47,9 +47,9 @@ const onSubmit = handleSubmit((data) => {
 <template>
   <Card class="w-full sm:max-w-md">
     <CardHeader>
-      <CardTitle>Bug Report</CardTitle>
+      <CardTitle>Reportar Error</CardTitle>
       <CardDescription>
-        Help us improve by reporting bugs you encounter.
+        Ayúdanos a mejorar reportando los errores que encuentres.
       </CardDescription>
     </CardHeader>
     <CardContent>
@@ -58,12 +58,12 @@ const onSubmit = handleSubmit((data) => {
           <VeeField v-slot="{ field, errors }" name="title">
             <Field :data-invalid="!!errors.length">
               <FieldLabel for="form-vee-demo-title">
-                Bug Title
+                Título del Error
               </FieldLabel>
               <Input
                 id="form-vee-demo-title"
                 v-bind="field"
-                placeholder="Login button not working on mobile"
+                placeholder="El botón de login no funciona en móvil"
                 autocomplete="off"
                 :aria-invalid="!!errors.length"
               />
@@ -74,26 +74,25 @@ const onSubmit = handleSubmit((data) => {
           <VeeField v-slot="{ field, errors }" name="description">
             <Field :data-invalid="!!errors.length">
               <FieldLabel for="form-vee-demo-description">
-                Description
+                Descripción
               </FieldLabel>
               <InputGroup>
                 <InputGroupTextarea
                   id="form-vee-demo-description"
                   v-bind="field"
-                  placeholder="I'm having an issue with the login button on mobile."
+                  placeholder="Estoy teniendo un problema con el botón de login en móvil."
                   :rows="6"
                   class="min-h-24 resize-none"
                   :aria-invalid="!!errors.length"
                 />
                 <InputGroupAddon align="block-end">
                   <InputGroupText class="tabular-nums">
-                    {{ field.value?.length || 0 }}/100 characters
+                    {{ field.value?.length || 0 }}/100 caracteres
                   </InputGroupText>
                 </InputGroupAddon>
               </InputGroup>
               <FieldDescription>
-                Include steps to reproduce, expected behavior, and what actually
-                happened.
+                Incluye pasos para reproducir, comportamiento esperado y lo que realmente sucedió.
               </FieldDescription>
               <FieldError v-if="errors.length" :errors="errors.map(e => ({ message: e }))" />
             </Field>
@@ -101,10 +100,10 @@ const onSubmit = handleSubmit((data) => {
         </FieldGroup>
         <Field orientation="horizontal" class="mt-4">
           <Button type="button" variant="outline" @click="resetForm">
-            Reset
+            Reiniciar
           </Button>
           <Button type="submit">
-            Submit
+            Enviar
           </Button>
         </Field>
       </form>

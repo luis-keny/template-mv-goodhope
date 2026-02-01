@@ -7,8 +7,8 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 <template>
   <Card>
     <CardHeader>
-      <CardTitle>Popover Examples</CardTitle>
-      <CardDescription>Soul MV color palette with primary, secondary and tertiary variants</CardDescription>
+      <CardTitle>Ejemplos de Popover</CardTitle>
+      <CardDescription>Paleta de colores Soul MV con variantes primaria, secundaria y terciaria</CardDescription>
     </CardHeader>
     <CardContent class="space-y-6">
       <div class="space-y-2">

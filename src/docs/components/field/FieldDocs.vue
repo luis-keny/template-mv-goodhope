@@ -29,12 +29,12 @@ const copySimple = async () => {
     <Card>
       <CardHeader class="flex flex-row items-center justify-between">
         <div>
-          <CardTitle>Source (Complejo)</CardTitle>
+          <CardTitle>Código Fuente (Complejo)</CardTitle>
           <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
         </div>
         <Button variant="outline" size="sm" @click="copyComplex">
-          <span v-if="!copiedComplex">Copy</span>
-          <span v-else>Copied</span>
+          <span v-if="!copiedComplex">Copiar</span>
+          <span v-else>Copiado</span>
         </Button>
       </CardHeader>
       <CardContent>
@@ -46,12 +46,12 @@ const copySimple = async () => {
     <Card>
       <CardHeader class="flex flex-row items-center justify-between">
         <div>
-          <CardTitle>Source (Edición simple)</CardTitle>
+          <CardTitle>Código Fuente (Edición simple)</CardTitle>
           <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
         </div>
         <Button variant="outline" size="sm" @click="copySimple">
-          <span v-if="!copiedSimple">Copy</span>
-          <span v-else>Copied</span>
+          <span v-if="!copiedSimple">Copiar</span>
+          <span v-else>Copiado</span>
         </Button>
       </CardHeader>
       <CardContent>
