@@ -36,7 +36,69 @@ const copy = async () => {
     <Card>
       <CardHeader>
         <CardTitle>API</CardTitle>
-        <CardDescription>Componentes disponibles</CardDescription>
+        <CardDescription>Props del componente DataSelect</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Prop</TableHead>
+              <TableHead>Type</TableHead>
+              <TableHead>Default</TableHead>
+              <TableHead>Description</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell class="font-mono text-xs">modelValue</TableCell>
+              <TableCell>string</TableCell>
+              <TableCell>-</TableCell>
+              <TableCell>Valor seleccionado (v-model)</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell class="font-mono text-xs">items</TableCell>
+              <TableCell>any[]</TableCell>
+              <TableCell>[]</TableCell>
+              <TableCell>Array de opciones</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell class="font-mono text-xs">placeholder</TableCell>
+              <TableCell>string</TableCell>
+              <TableCell>'Select an option'</TableCell>
+              <TableCell>Texto placeholder</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell class="font-mono text-xs">itemText</TableCell>
+              <TableCell>string | (item) => string</TableCell>
+              <TableCell>'label'</TableCell>
+              <TableCell>Propiedad o función para obtener el texto</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell class="font-mono text-xs">itemValue</TableCell>
+              <TableCell>string | (item) => string</TableCell>
+              <TableCell>'value'</TableCell>
+              <TableCell>Propiedad o función para obtener el valor</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell class="font-mono text-xs">itemDisabled</TableCell>
+              <TableCell>string | (item) => boolean</TableCell>
+              <TableCell>'disabled'</TableCell>
+              <TableCell>Propiedad o función para deshabilitar items</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell class="font-mono text-xs">disabled</TableCell>
+              <TableCell>boolean</TableCell>
+              <TableCell>false</TableCell>
+              <TableCell>Deshabilita todo el select</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </CardContent>
+    </Card>
+    <Card>
+      <CardHeader>
+        <CardTitle>Native API</CardTitle>
+        <CardDescription>Componentes disponibles para uso manual</CardDescription>
       </CardHeader>
       <CardContent>
         <Table>
