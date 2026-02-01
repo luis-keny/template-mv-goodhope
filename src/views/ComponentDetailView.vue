@@ -12,6 +12,7 @@ import CardDocs from '@/docs/components/card/CardDocs.vue'
 import SelectDocs from '@/docs/components/select/SelectDocs.vue'
 import PaginationDocs from '@/docs/components/pagination/PaginationDocs.vue'
 import FieldDocs from '@/docs/components/field/FieldDocs.vue'
+import DataTableDocs from '@/docs/components/data-table/DataTableDocs.vue'
 import { Button } from '@/components/ui/button'
 
 const route = useRoute()
@@ -28,6 +29,7 @@ const docsRegistry: Record<string, any> = {
   select: SelectDocs,
   pagination: PaginationDocs,
   field: FieldDocs,
+  'data-table': DataTableDocs,
 }
 const currentDoc = computed(() => docsRegistry[nameParam.value] || null)
 const title = computed(() => nameParam.value.replace(/-/g, ' '))
