@@ -7,6 +7,7 @@ import type {
   RowSelectionState,
   Row,
 } from '@tanstack/vue-table'
+import { cn } from '@/lib/utils'
 import {
   FlexRender,
   getCoreRowModel,
@@ -65,7 +66,6 @@ const props = withDefaults(
       defaultPage?: number;
     }
     showColumnVisibility?: boolean
-    enableRowSelection?: boolean
     loading?: boolean
     funcFilter?: (row: Row<TData>, filterValue: string) => boolean
   }>(),
@@ -73,7 +73,6 @@ const props = withDefaults(
     search: false,
     pagination: false,
     showColumnVisibility: false,
-    enableRowSelection: false,
     loading: false,
     funcFilter: undefined,
   }
@@ -122,33 +121,9 @@ const paginationConfig = computed(() => {
   }
 })
 
-const tableColumns = computed(() => {
-  if (!props.enableRowSelection) return props.columns
-
-  const selectionColumn: ColumnDef<TData, TValue> = {
-    id: 'select',
-    header: ({ table }) =>
-      h(Checkbox, {
-        checked: table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && 'indeterminate'),
-        'onUpdate:checked': (value: boolean) => table.toggleAllPageRowsSelected(!!value),
-        ariaLabel: 'Select all',
-      }),
-    cell: ({ row }) =>
-      h(Checkbox, {
-        checked: row.getIsSelected(),
-        'onUpdate:checked': (value: boolean) => row.toggleSelected(!!value),
-        ariaLabel: 'Select row',
-      }),
-    enableSorting: false,
-    enableHiding: false,
-  } as ColumnDef<TData, TValue>
-
-  return [selectionColumn, ...props.columns]
-})
-
 const table = useVueTable({
   get data() { return props.data },
-  get columns() { return tableColumns.value },
+  get columns() { return props.columns },
   getCoreRowModel: getCoreRowModel(),
   getPaginationRowModel: getPaginationRowModel(),
   getSortedRowModel: getSortedRowModel(),
@@ -247,7 +222,14 @@ const currentPage = computed({
       <Table>
         <TableHeader>
           <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
-            <TableHead v-for="header in headerGroup.headers" :key="header.id" class="border-none">
+            <TableHead 
+              v-for="header in headerGroup.headers" 
+              :key="header.id" 
+              :class="cn(
+                'border-none',
+                (header.column.columnDef.meta as any)?.thClass
+              )"
+            >
               <FlexRender v-if="!header.isPlaceholder" :render="header.column.columnDef.header" :props="header.getContext()" />
             </TableHead>
           </TableRow>
@@ -255,25 +237,30 @@ const currentPage = computed({
         <TableBody>
           <template v-if="loading">
             <TableRow v-for="i in 5" :key="i">
-              <TableCell v-for="cell in (
-                enableRowSelection ? 
-                [...table.getAllColumns().filter((column) => column.getCanHide()), { id: 'selection' }] : 
-                table.getAllColumns().filter((column) => column.getCanHide())
-              )" :key="cell.id">
+              <TableCell v-for="cell in table.getAllColumns().filter((column) => column.getCanHide())" :key="cell.id">
                 <Skeleton class="h-4 w-full" />
               </TableCell>
             </TableRow>
           </template>
           <template v-else-if="table.getRowModel().rows?.length">
-            <TableRow v-for="row in table.getRowModel().rows" :key="row.id" :data-state="row.getIsSelected() && 'selected'">
-              <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
+            <TableRow 
+              v-for="row in table.getRowModel().rows" 
+              :key="row.id" 
+              :data-state="row.getIsSelected() && 'selected'"
+              :class="(row.original as any)?.trClass"
+            >
+              <TableCell 
+                v-for="cell in row.getVisibleCells()" 
+                :key="cell.id"
+                :class="(cell.column.columnDef.meta as any)?.tdClass"
+              >
                 <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
               </TableCell>
             </TableRow>
           </template>
 
           <TableRow v-else>
-            <TableCell :colspan="table.getAllColumns().filter((column) => column.getCanHide()).length + (enableRowSelection ? 1 : 0)" class="h-24 text-center">
+            <TableCell :colspan="table.getAllColumns().filter((column) => column.getCanHide()).length" class="h-24 text-center">
               No results.
             </TableCell>
           </TableRow>

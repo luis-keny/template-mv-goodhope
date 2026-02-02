@@ -99,14 +99,45 @@ const copy = async () => {
                 <TableCell>Muestra botón para ocultar/mostrar columnas</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>enableRowSelection</TableCell>
+                <TableCell>loading</TableCell>
                 <TableCell>boolean</TableCell>
                 <TableCell>false</TableCell>
-                <TableCell>Agrega checkboxes para selección de filas</TableCell>
+                <TableCell>Muestra un esqueleto de carga en la tabla</TableCell>
               </TableRow>
             </TableBody>
           </Table>
         </div>
+        
+        <div>
+          <p class="text-sm font-medium mb-2">Personalización de Estilos (Column Meta)</p>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Propiedad</TableHead>
+                <TableHead>Ubicación</TableHead>
+                <TableHead>Descripción</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell><code>meta.thClass</code></TableCell>
+                <TableCell>ColumnDef</TableCell>
+                <TableCell>Clases CSS para el encabezado (th) de la columna</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code>meta.tdClass</code></TableCell>
+                <TableCell>ColumnDef</TableCell>
+                <TableCell>Clases CSS para la celda (td) de la columna</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><code>trClass</code></TableCell>
+                <TableCell>Data Row (Objeto)</TableCell>
+                <TableCell>Clases CSS para la fila (tr) completa (se define en los datos)</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+
         <div>
           <p class="text-sm font-medium mb-2">Eventos</p>
           <Table>

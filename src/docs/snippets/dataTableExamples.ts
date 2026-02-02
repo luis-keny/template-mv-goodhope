@@ -2,6 +2,8 @@ export const dataTableExamplesCode = `<script setup lang="ts">
 import { h, ref } from 'vue'
 import { DataTable } from '@/components/common/DataTable.vue'
 import { Button } from '@/components/ui/button'
+import { Switch } from '@/components/ui/switch'
+import { Label } from '@/components/ui/label'
 import { ArrowUpDown, MoreHorizontal } from 'lucide-vue-next'
 import {
   DropdownMenu,
@@ -38,6 +40,10 @@ const columns = [
       }).format(amount)
       return h('div', { class: 'text-right font-medium' }, formatted)
     },
+    meta: {
+      thClass: 'text-right bg-muted/50', // Clase para el encabezado
+      tdClass: 'bg-muted/10', // Clase para la celda
+    }
   },
   {
     id: 'actions',
@@ -66,6 +72,8 @@ const data = [
   { id: '5', amount: 721, status: 'failed', email: 'carmella@hotmail.com' },
 ]
 
+const loading = ref(false)
+
 const handleSelection = (rows: any[]) => {
   console.log('Filas seleccionadas:', rows)
 }
@@ -73,13 +81,21 @@ const handleSelection = (rows: any[]) => {
 
 <template>
   <div class="space-y-4">
+    <!-- Ejemplo 1: Básico -->
     <h3 class="text-lg font-medium">Básico</h3>
     <DataTable :columns="columns" :data="data" />
 
+    <!-- Ejemplo 2: Completo (Búsqueda Avanzada, Paginación, Selección, Carga) -->
     <h3 class="text-lg font-medium mt-8">Completo</h3>
+    <div class="flex items-center space-x-2 mb-4">
+      <Switch id="loading-mode" :checked="loading" @update:checked="loading = $event" />
+      <Label htmlFor="loading-mode">Modo Carga</Label>
+    </div>
+    
     <DataTable
       :columns="columns"
       :data="data"
+      :loading="loading"
       :search="{
         columns: ['email', 'status'],
         placeholder: 'Buscar por email o estado...',
@@ -91,8 +107,20 @@ const handleSelection = (rows: any[]) => {
         showEdges: true,
       }"
       show-column-visibility
-      enable-row-selection
       @selection-change="handleSelection"
+    />
+
+    <!-- Ejemplo 3: Estado de Carga -->
+    <h3 class="text-lg font-medium mt-8">Estado de Carga</h3>
+    <div class="flex items-center space-x-2 mb-4">
+      <Switch id="loading-demo" :checked="loading" @update:checked="loading = $event" />
+      <Label htmlFor="loading-demo">Activar Carga</Label>
+    </div>
+    
+    <DataTable
+      :columns="columns"
+      :data="data"
+      :loading="loading"
     />
   </div>
 </template>

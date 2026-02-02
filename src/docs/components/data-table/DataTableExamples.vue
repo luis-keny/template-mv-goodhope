@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { h } from 'vue'
+import { h, ref } from 'vue'
 import DataTable from '@/components/common/DataTable.vue'
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { ArrowUpDown, MoreHorizontal } from 'lucide-vue-next'
+import { Switch } from '@/components/ui/switch'
+import { Label } from '@/components/ui/label'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -39,6 +41,10 @@ const columns = [
       }).format(amount)
       return h('div', { class: 'text-right font-medium' }, formatted)
     },
+    meta: {
+      thClass: 'text-right bg-muted/50',
+      tdClass: 'bg-muted/10',
+    }
   },
   {
     id: 'actions',
@@ -73,20 +79,31 @@ const data = [
 const handleSelection = (rows: any[]) => {
   console.log('Filas seleccionadas:', rows)
 }
+
+const loading = ref(false)
 </script>
 
 <template>
   <Card>
     <CardHeader>
-      <CardTitle>Ejemplo Completo</CardTitle>
-      <CardDescription>
-        Tabla con búsqueda, paginación avanzada, selección y menú de columnas.
-      </CardDescription>
+      <div class="flex items-center justify-between">
+        <div>
+          <CardTitle>Ejemplo Completo</CardTitle>
+          <CardDescription>
+            Tabla con búsqueda, paginación avanzada, selección y menú de columnas.
+          </CardDescription>
+        </div>
+        <div class="flex items-center space-x-2">
+          <Switch id="loading-mode" v-model="loading" />
+          <Label htmlFor="loading-mode">Modo Carga</Label>
+        </div>
+      </div>
     </CardHeader>
     <CardContent>
       <DataTable
         :columns="columns"
         :data="data"
+        :loading="loading"
         :search="{
           columns: ['email', 'status'],
           placeholder: 'Buscar por email o status',
@@ -98,8 +115,24 @@ const handleSelection = (rows: any[]) => {
           showEdges: true,
         }"
         show-column-visibility
-        enable-row-selection
         @selection-change="handleSelection"
+      />
+    </CardContent>
+  </Card>
+
+  <Card class="mt-6">
+    <CardHeader>
+      <div class="flex items-center justify-between">
+        <div>
+          <CardTitle>DataTable basico</CardTitle>
+          <CardDescription>Ejemplo de uso sencillo de DataTable.</CardDescription>
+        </div>
+      </div>
+    </CardHeader>
+    <CardContent>
+      <DataTable
+        :columns="columns"
+        :data="data"
       />
     </CardContent>
   </Card>
