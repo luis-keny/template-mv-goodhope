@@ -46,6 +46,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { Skeleton } from '@/components/ui/skeleton'
 
 const props = withDefaults(
   defineProps<{
@@ -65,6 +66,7 @@ const props = withDefaults(
     }
     showColumnVisibility?: boolean
     enableRowSelection?: boolean
+    loading?: boolean
     funcFilter?: (row: Row<TData>, filterValue: string) => boolean
   }>(),
   {
@@ -72,6 +74,7 @@ const props = withDefaults(
     pagination: false,
     showColumnVisibility: false,
     enableRowSelection: false,
+    loading: false,
     funcFilter: undefined,
   }
 )
@@ -250,7 +253,18 @@ const currentPage = computed({
           </TableRow>
         </TableHeader>
         <TableBody>
-          <template v-if="table.getRowModel().rows?.length">
+          <template v-if="loading">
+            <TableRow v-for="i in 5" :key="i">
+              <TableCell v-for="cell in (
+                enableRowSelection ? 
+                [...table.getAllColumns().filter((column) => column.getCanHide()), { id: 'selection' }] : 
+                table.getAllColumns().filter((column) => column.getCanHide())
+              )" :key="cell.id">
+                <Skeleton class="h-4 w-full" />
+              </TableCell>
+            </TableRow>
+          </template>
+          <template v-else-if="table.getRowModel().rows?.length">
             <TableRow v-for="row in table.getRowModel().rows" :key="row.id" :data-state="row.getIsSelected() && 'selected'">
               <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
                 <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
@@ -259,7 +273,7 @@ const currentPage = computed({
           </template>
 
           <TableRow v-else>
-            <TableCell :colspan="tableColumns.length" class="h-24 text-center">
+            <TableCell :colspan="table.getAllColumns().filter((column) => column.getCanHide()).length + (enableRowSelection ? 1 : 0)" class="h-24 text-center">
               No results.
             </TableCell>
           </TableRow>
