@@ -17,11 +17,10 @@ import {
   useVueTable,
 } from '@tanstack/vue-table'
 import { ChevronDown } from 'lucide-vue-next'
-import { h, ref, computed, watch } from 'vue'
+import { ref, computed, watch } from 'vue'
 
 import { valueUpdater } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import {
   DropdownMenu,

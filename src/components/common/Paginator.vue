@@ -35,15 +35,15 @@ const emit = defineEmits<{
   <Pagination
     v-slot="{ page }"
     :total="total"
-    :sibling-count="siblingCount"
-    :show-edges="showEdges"
-    :default-page="defaultPage"
-    :items-per-page="itemsPerPage"
+    :sibling-count="props.siblingCount"
+    :show-edges="props.showEdges"
+    :default-page="props.defaultPage"
+    :items-per-page="props.itemsPerPage"
     :model-value="modelValue"
     @update:model-value="emit('update:modelValue', $event)"
   >
     <PaginationContent v-slot="{ items }">
-      <PaginationFirst v-if="showEdges" />
+      <PaginationFirst v-if="props.showEdges" />
       <PaginationPrevious />
 
       <template v-for="(item, index) in items">
