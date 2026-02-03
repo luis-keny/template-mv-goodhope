@@ -13,7 +13,29 @@ import SelectDocs from '@/docs/components/select/SelectDocs.vue'
 import PaginationDocs from '@/docs/components/pagination/PaginationDocs.vue'
 import FieldDocs from '@/docs/components/field/FieldDocs.vue'
 import DataTableDocs from '@/docs/components/data-table/DataTableDocs.vue'
+import EmptyDocs from '@/docs/components/empty/EmptyDocs.vue'
+import ItemDocs from '@/docs/components/item/ItemDocs.vue'
+import AccordionDocs from '@/docs/components/accordion/AccordionDocs.vue'
+import AlertDocs from '@/docs/components/alert/AlertDocs.vue'
+import AlertDialogDocs from '@/docs/components/alert-dialog/AlertDialogDocs.vue'
+import AspectRatioDocs from '@/docs/components/aspect-ratio/AspectRatioDocs.vue'
+import AvatarDocs from '@/docs/components/avatar/AvatarDocs.vue'
+import BadgeDocs from '@/docs/components/badge/BadgeDocs.vue'
+import BreadcrumbDocs from '@/docs/components/breadcrumb/BreadcrumbDocs.vue'
+import ButtonGroupDocs from '@/docs/components/button-group/ButtonGroupDocs.vue'
+import CarouselDocs from '@/docs/components/carousel/CarouselDocs.vue'
+import ChartDocs from '@/docs/components/chart/ChartDocs.vue'
+import CheckboxDocs from '@/docs/components/checkbox/CheckboxDocs.vue'
+import CollapsibleDocs from '@/docs/components/collapsible/CollapsibleDocs.vue'
+import CommandDocs from '@/docs/components/command/CommandDocs.vue'
+import ContextMenuDocs from '@/docs/components/context-menu/ContextMenuDocs.vue'
+import DialogDocs from '@/docs/components/dialog/DialogDocs.vue'
+import DrawerDocs from '@/docs/components/drawer/DrawerDocs.vue'
+import DropdownMenuDocs from '@/docs/components/dropdown-menu/DropdownMenuDocs.vue'
+import InputGroupDocs from '@/docs/components/input-group/InputGroupDocs.vue'
+import InputOTPDocs from '@/docs/components/input-otp/InputOTPDocs.vue'
 import { Button } from '@/components/ui/button'
+import HoverCardDocs from '@/docs/components/hover-card/HoverCardDocs.vue'
 
 const route = useRoute()
 const nameParam = computed(() => (route.params.name as string) || '')
@@ -30,6 +52,28 @@ const docsRegistry: Record<string, any> = {
   pagination: PaginationDocs,
   field: FieldDocs,
   'data-table': DataTableDocs,
+  accordion: AccordionDocs,
+  alert: AlertDocs,
+  'alert-dialog': AlertDialogDocs,
+  'aspect-ratio': AspectRatioDocs,
+  avatar: AvatarDocs,
+  badge: BadgeDocs,
+  breadcrumb: BreadcrumbDocs,
+  'button-group': ButtonGroupDocs,
+  carousel: CarouselDocs,
+  chart: ChartDocs,
+  checkbox: CheckboxDocs,
+  collapsible: CollapsibleDocs,
+  command: CommandDocs,
+  'context-menu': ContextMenuDocs,
+  dialog: DialogDocs,
+  drawer: DrawerDocs,
+  'dropdown-menu': DropdownMenuDocs,
+  'hover-card': HoverCardDocs,
+  'input-group': InputGroupDocs,
+  'input-otp': InputOTPDocs,
+  empty: EmptyDocs,
+  item: ItemDocs,
 }
 const currentDoc = computed(() => docsRegistry[nameParam.value] || null)
 const title = computed(() => nameParam.value.replace(/-/g, ' '))
