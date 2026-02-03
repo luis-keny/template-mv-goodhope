@@ -78,7 +78,7 @@ const emit = defineEmits<{
           :checked="item.checked"
           :model-value="item.modelValue"
           :disabled="item.disabled"
-          @update:checked="(val) => item.onSelect?.()"
+          @update:checked="item.onSelect"
         >
           {{ item.label }}
           <ContextMenuShortcut v-if="item.shortcut">

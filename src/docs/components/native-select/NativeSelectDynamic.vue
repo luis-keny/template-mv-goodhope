@@ -19,7 +19,7 @@ export interface SelectGroup {
 // Accepts either a flat array of options OR an array of groups
 export type SelectItems = (SelectOption | SelectGroup)[];
 
-const props = defineProps<{
+defineProps<{
   items: SelectItems;
   modelValue?: string | number;
   placeholder?: string;
@@ -38,7 +38,7 @@ const isGroup = (item: SelectOption | SelectGroup): item is SelectGroup => {
 <template>
   <NativeSelect
     :model-value="modelValue"
-    @update:model-value="(val: any) => emit('update:modelValue', val)"
+    @update:model-value="emit('update:modelValue', $event ?? '')"
   >
     <NativeSelectOption v-if="placeholder" value="" disabled selected>
       {{ placeholder }}

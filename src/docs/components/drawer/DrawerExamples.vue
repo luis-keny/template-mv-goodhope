@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/drawer'
 import { ref } from 'vue'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { VisXYContainer, VisGroupedBar, VisAxis } from '@unovis/vue'
+import { VisXYContainer, VisGroupedBar } from '@unovis/vue'
 
 const goal = ref(350)
 

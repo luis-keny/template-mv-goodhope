@@ -1,13 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Button } from '@/components/ui/button'
 import DynamicDropdownMenu, { type DropdownMenuItemType } from '@/components/ui/dropdown-menu/DynamicDropdownMenu.vue'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-
-const showStatusBar = ref(true)
-const showActivityBar = ref(false)
-const showPanel = ref(false)
-const position = ref('bottom')
 
 const menuItems: DropdownMenuItemType[] = [
   { type: 'label', label: 'My Account' },

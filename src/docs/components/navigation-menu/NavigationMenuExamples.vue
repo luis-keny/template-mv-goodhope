@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import ReusableNavigationMenu from './ReusableNavigationMenu.vue'
+import type { NavigationItem } from './ReusableNavigationMenu.vue'
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from 'lucide-vue-next'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
-const menuItems = [
+const menuItems: NavigationItem[] = [
   {
     trigger: 'Getting Started',
     content: {

@@ -35,11 +35,15 @@ const props = withDefaults(defineProps<Props>(), {
   itemsAfterCollapse: 1,
 })
 
-const displayedItems = computed(() => {
+type DisplayedItem =
+  | ({ type: 'item' } & BreadcrumbItemType)
+  | { type: 'ellipsis'; items: BreadcrumbItemType[] }
+
+const displayedItems = computed<DisplayedItem[]>(() => {
   const { items, maxItems, itemsBeforeCollapse, itemsAfterCollapse } = props
   
   if (items.length <= maxItems) {
-    return items.map(item => ({ type: 'item', ...item }))
+    return items.map(item => ({ type: 'item' as const, ...item }))
   }
 
   const startItems = items.slice(0, itemsBeforeCollapse)
@@ -47,9 +51,9 @@ const displayedItems = computed(() => {
   const collapsedItems = items.slice(itemsBeforeCollapse, -itemsAfterCollapse)
 
   return [
-    ...startItems.map(item => ({ type: 'item', ...item })),
-    { type: 'ellipsis', items: collapsedItems },
-    ...endItems.map(item => ({ type: 'item', ...item }))
+    ...startItems.map(item => ({ type: 'item' as const, ...item })),
+    { type: 'ellipsis' as const, items: collapsedItems },
+    ...endItems.map(item => ({ type: 'item' as const, ...item }))
   ]
 })
 </script>

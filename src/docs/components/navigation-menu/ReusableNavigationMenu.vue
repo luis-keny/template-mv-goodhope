@@ -9,7 +9,6 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import NavigationListItem from './NavigationListItem.vue'
-import { computed } from 'vue'
 
 export interface NavigationItemLink {
   title: string
@@ -32,7 +31,7 @@ export interface NavigationItem {
   }
 }
 
-const props = defineProps<{
+defineProps<{
   items: NavigationItem[]
 }>()
 

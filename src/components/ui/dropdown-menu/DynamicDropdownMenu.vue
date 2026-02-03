@@ -4,7 +4,6 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuPortal,
@@ -83,7 +82,7 @@ const emit = defineEmits<{
           :checked="item.checked"
           :model-value="item.modelValue"
           :disabled="item.disabled"
-          @update:checked="(val) => item.onSelect?.()"
+          @update:checked="item.onSelect"
         >
           {{ item.label }}
           <DropdownMenuShortcut v-if="item.shortcut">

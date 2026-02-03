@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type Ref, ref } from 'vue'
 import {
-  type DateRange,
+  type DateValue,
   getLocalTimeZone,
   today
 } from '@internationalized/date'
@@ -14,7 +14,7 @@ const end = start.add({ days: 7 })
 const value = ref({
   start,
   end,
-}) as Ref<DateRange>
+}) as Ref<{ start: DateValue; end: DateValue }>
 </script>
 
 <template>
