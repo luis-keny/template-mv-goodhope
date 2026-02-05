@@ -73,7 +73,7 @@ const displayedItems = computed<DisplayedItem[]>(() => {
 
         <BreadcrumbItem v-else-if="item.type === 'ellipsis'">
           <DropdownMenu>
-            <DropdownMenuTrigger class="flex items-center gap-1">
+            <DropdownMenuTrigger class="flex items-center gap-1 bg-transparent">
               <BreadcrumbEllipsis class="h-4 w-4" />
               <span class="sr-only">Toggle menu</span>
             </DropdownMenuTrigger>

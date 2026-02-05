@@ -107,20 +107,20 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
       <slot name="calendar-heading" :date="date" :month="ReuseMonthTemplate" :year="ReuseYearTemplate">
         <template v-if="layout === 'month-and-year'">
           <div class="flex items-center justify-center gap-1">
-            <ReuseMonthTemplate :date="date" />
-            <ReuseYearTemplate :date="date" />
+            <ReuseMonthTemplate :date="date"  class="[&_svg]:right-1" />
+            <ReuseYearTemplate :date="date" class="[&_svg]:right-1" />
           </div>
         </template>
         <template v-else-if="layout === 'month-only'">
           <div class="flex items-center justify-center gap-1">
-            <ReuseMonthTemplate :date="date" />
+            <ReuseMonthTemplate :date="date" class="[&_svg]:right-1" />
             {{ formatter.custom(toDate(date), { year: 'numeric' }) }}
           </div>
         </template>
         <template v-else-if="layout === 'year-only'">
           <div class="flex items-center justify-center gap-1">
             {{ formatter.custom(toDate(date), { month: 'short' }) }}
-            <ReuseYearTemplate :date="date" />
+            <ReuseYearTemplate :date="date" class="[&_svg]:right-1" />
           </div>
         </template>
         <template v-else>

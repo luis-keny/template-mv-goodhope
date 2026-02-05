@@ -81,14 +81,14 @@ const Bridge = {
         variant="outline"
         role="combobox"
         :aria-expanded="open"
-        class="w-[200px] justify-between"
+        class="w-fit justify-between"
         :class="buttonClass"
       >
         {{ selectedLabel }}
         <ChevronsUpDownIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </Button>
     </PopoverTrigger>
-    <PopoverContent class="w-[200px] p-0">
+    <PopoverContent class="w-fit p-0">
       <Command>
         <CommandInput :placeholder="`Search...`" />
         <Bridge />

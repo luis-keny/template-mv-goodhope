@@ -6,7 +6,7 @@ const props = defineProps<AspectRatioProps>()
 </script>
 
 <template>
-  <AspectRatio v-bind="props">
+  <AspectRatio v-bind="props" class="h-full">
     <slot />
   </AspectRatio>
 </template>
