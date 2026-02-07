@@ -4,6 +4,7 @@ export const sections = [
   { title: "Installation", url: "/docs/installation" },
 ];
 
+// TODO: Fix the functionality of the components commented, as these components do not currently work in centBrowser.
 export const components = [
   { title: "Accordion", url: "/docs/components/accordion" },
   { title: "Alert", url: "/docs/components/alert" },
@@ -30,11 +31,10 @@ export const components = [
   { title: "Dropdown Menu", url: "/docs/components/dropdown-menu" },
   { title: "Empty", url: "/docs/components/empty" },
   { title: "Field", url: "/docs/components/field" },
-  // { title: "Form", url: "/docs/components/form" },
   { title: "Hover Card", url: "/docs/components/hover-card" },
   { title: "Input", url: "/docs/components/input" },
-  { title: "Input Group", url: "/docs/components/input-group" },
-  { title: "Input OTP", url: "/docs/components/input-otp" },
+  // { title: "Input Group", url: "/docs/components/input-group" },
+  // { title: "Input OTP", url: "/docs/components/input-otp" },
   { title: "Item", url: "/docs/components/item" },
   { title: "Kbd", url: "/docs/components/kbd" },
   { title: "Label", url: "/docs/components/label" },
@@ -43,11 +43,10 @@ export const components = [
   { title: "Navigation Menu", url: "/docs/components/navigation-menu" },
   { title: "Number Field", url: "/docs/components/number-field" },
   { title: "Pagination", url: "/docs/components/pagination" },
-  // { title: "Pin Input", url: "/docs/components/pin-input" },
   { title: "Popover", url: "/docs/components/popover" },
   { title: "Progress", url: "/docs/components/progress" },
   { title: "Radio Group", url: "/docs/components/radio-group" },
-  { title: "Range Calendar", url: "/docs/components/range-calendar" },
+  // { title: "Range Calendar", url: "/docs/components/range-calendar" },
   { title: "Resizable", url: "/docs/components/resizable" },
   { title: "Scroll Area", url: "/docs/components/scroll-area" },
   { title: "Select", url: "/docs/components/select" },
@@ -64,7 +63,6 @@ export const components = [
   { title: "Tabs", url: "/docs/components/tabs" },
   { title: "Tags Input", url: "/docs/components/tags-input" },
   { title: "Textarea", url: "/docs/components/textarea" },
-  // { title: "Toast", url: "/docs/components/toast" },
   { title: "Toggle", url: "/docs/components/toggle" },
   { title: "Toggle Group", url: "/docs/components/toggle-group" },
   { title: "Tooltip", url: "/docs/components/tooltip" },
