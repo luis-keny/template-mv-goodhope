@@ -34,10 +34,29 @@ const longItems = [
       </div>
 
       <div>
-        <h3 class="text-sm font-medium mb-2">Colapsado (max-items="3")</h3>
+        <h3 class="text-sm font-medium mb-2">Colapsado al Centro (Default)</h3>
         <DynamicBreadcrumb 
           :items="longItems" 
-          :max-items="3" 
+          :max-items="5" 
+          expansion-direction="middle"
+        />
+      </div>
+
+      <div>
+        <h3 class="text-sm font-medium mb-2">Colapsado a la Izquierda</h3>
+        <DynamicBreadcrumb 
+          :items="longItems" 
+          :max-items="5" 
+          expansion-direction="left"
+        />
+      </div>
+
+      <div>
+        <h3 class="text-sm font-medium mb-2">Colapsado a la Derecha</h3>
+        <DynamicBreadcrumb 
+          :items="longItems" 
+          :max-items="5" 
+          expansion-direction="right"
         />
       </div>
     </CardContent>

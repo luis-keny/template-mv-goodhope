@@ -77,6 +77,12 @@ const copy = async () => {
                 <TableCell>1</TableCell>
                 <TableCell>Items visibles al final cuando está colapsado.</TableCell>
               </TableRow>
+              <TableRow>
+                <TableCell>expansionDirection</TableCell>
+                <TableCell>'left' | 'right' | 'middle'</TableCell>
+                <TableCell>'middle'</TableCell>
+                <TableCell>Dirección en la que se agrupan las migajas ocultas. Mantiene siempre la primera y última.</TableCell>
+              </TableRow>
             </TableBody>
           </Table>
         </div>
