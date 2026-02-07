@@ -47,6 +47,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { Skeleton } from '@/components/ui/skeleton'
+import Paginator from './Paginator.vue'
 
 const props = withDefaults(
   defineProps<{
@@ -67,6 +68,7 @@ const props = withDefaults(
     showColumnVisibility?: boolean
     loading?: boolean
     funcFilter?: (row: Row<TData>, filterValue: string) => boolean
+    maxHeight?: string
   }>(),
   {
     search: false,
@@ -74,6 +76,7 @@ const props = withDefaults(
     showColumnVisibility: false,
     loading: false,
     funcFilter: undefined,
+    maxHeight: 'none',
   }
 )
 
@@ -217,15 +220,15 @@ const currentPage = computed({
       </DropdownMenu>
     </div>
 
-    <div class="rounded-lg overflow-hidden border">
-      <Table>
+    <div class="rounded-lg overflow-hidden border" :style="`max-height: ${props.maxHeight};`">
+      <Table class="relative">
         <TableHeader>
           <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
             <TableHead 
               v-for="header in headerGroup.headers" 
               :key="header.id" 
               :class="cn(
-                'border-none',
+                'border-none sticky top-0 bg-background',
                 (header.column.columnDef.meta as any)?.thClass
               )"
             >
@@ -316,15 +319,10 @@ const currentPage = computed({
                         v-if="item.type === 'page'"
                         :key="index"
                         :value="item.value"
-                        as-child
+                        :is-active="item.value === page"
+                        class="w-9 h-9 p-0"
                       >
-                        <Button 
-                          class="w-9 h-9 p-0" 
-                          :variant="item.value === page ? 'default' : 'outline'"
-                          @click="table.setPageIndex(item.value - 1)"
-                        >
-                          {{ item.value }}
-                        </Button>
+                        {{ item.value }}
                       </PaginationItem>
                       <PaginationEllipsis
                         v-else
@@ -337,7 +335,7 @@ const currentPage = computed({
                     <PaginationLast v-if="paginationConfig.showEdges" @click="table.setPageIndex(table.getPageCount() - 1)" />
                   </PaginationContent>
                 </Pagination>
-               </div>
+              </div>
             </div>
          </div>
       </div>

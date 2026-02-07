@@ -52,6 +52,7 @@ const emit = defineEmits<{
           :key="index"
           :value="item.value"
           :is-active="item.value === page"
+          class="w-9 h-9 p-0"
         >
           {{ item.value }}
         </PaginationItem>
