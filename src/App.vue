@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import 'vue-sonner/style.css'
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb'
+import DynamicBreadcrumb from '@/components/ui/breadcrumb/DynamicBreadcrumb.vue'
 
 import {
   Sidebar,
@@ -35,14 +28,22 @@ const route = useRoute();
 const breadcrumbItems = computed(() => {
   const segments = route.path.split('/').filter(Boolean);
   let acc = '';
-  const items: Array<{ text: string; to: string; last: boolean }> = [];
+  const items: Array<{ label: string; href: string; isCurrent: boolean }> = [];
+  
+  // Siempre añadir Home al principio
+  items.push({ label: 'Home', href: '/', isCurrent: route.path === '/' });
+
   for (let i = 0; i < segments.length; i++) {
     const part = segments[i];
     acc = `${acc}/${part}`;
     if (!part) continue;
     if (part === 'docs') continue;
-    const text = part.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-    items.push({ text, to: acc, last: i === segments.length - 1 });
+    const label = part.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    items.push({ 
+      label, 
+      href: acc, 
+      isCurrent: i === segments.length - 1 
+    });
   }
   return items;
 });
@@ -107,25 +108,7 @@ const breadcrumbItems = computed(() => {
           <div class="flex items-center gap-2 px-4">
             <SidebarTrigger class="-ml-1" />
           </div>
-          <div>
-            <Breadcrumb>
-              <BreadcrumbList>
-                <template v-for="(item, idx) in breadcrumbItems" :key="item.to">
-                  <BreadcrumbItem v-if="!item.last">
-                    <BreadcrumbLink as-child>
-                      <RouterLink :to="item.to">
-                        {{ item.text }}
-                      </RouterLink>
-                    </BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbItem v-else>
-                    <BreadcrumbPage>{{ item.text }}</BreadcrumbPage>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator v-if="idx < breadcrumbItems.length - 1" />
-                </template>
-              </BreadcrumbList>
-            </Breadcrumb>
-          </div>
+          <DynamicBreadcrumb :items="breadcrumbItems" :max-items="4" expansion-direction="middle" />
         </header>
         <section class="flex-1">
           <router-view />
