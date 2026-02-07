@@ -5,11 +5,11 @@ import { useForm, Field as VeeField } from 'vee-validate'
 import { toast } from 'vue-sonner'
 import { z } from 'zod'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
-import { InputGroup, InputGroupAddon, InputGroupText, InputGroupTextarea } from '@/components/ui/input-group'
 import Sonner from '@/components/ui/sonner/Sonner.vue'
+import Textarea from '@/components/ui/textarea/Textarea.vue'
 
 const formSchema = toTypedSchema(
   z.object({
@@ -67,7 +67,7 @@ const onSubmit = handleSubmit((data) => {
                 autocomplete="off"
                 :aria-invalid="!!errors.length"
               />
-              <FieldError v-if="errors.length" :errors="errors" />
+              <FieldError v-if="errors.length" :errors="errors.map(e => ({ message: e }))" />
             </Field>
           </VeeField>
 
@@ -76,25 +76,18 @@ const onSubmit = handleSubmit((data) => {
               <FieldLabel for="form-vee-demo-description">
                 Descripción
               </FieldLabel>
-              <InputGroup>
-                <InputGroupTextarea
-                  id="form-vee-demo-description"
-                  v-bind="field"
-                  placeholder="Estoy teniendo un problema con el botón de login en móvil."
-                  :rows="6"
-                  class="min-h-24 resize-none"
-                  :aria-invalid="!!errors.length"
-                />
-                <InputGroupAddon align="block-end">
-                  <InputGroupText class="tabular-nums">
-                    {{ field.value?.length || 0 }}/100 caracteres
-                  </InputGroupText>
-                </InputGroupAddon>
-              </InputGroup>
+              <Textarea
+                id="form-vee-demo-description"
+                v-bind="field"
+                placeholder="Al hacer clic en el botón de login desde un dispositivo móvil, no sucede nada. Se espera que se abra el formulario de inicio de sesión."
+                autocomplete="off"
+                :aria-invalid="!!errors.length"
+                class="min-h-20"
+              />
               <FieldDescription>
                 Incluye pasos para reproducir, comportamiento esperado y lo que realmente sucedió.
               </FieldDescription>
-              <FieldError v-if="errors.length" :errors="errors" />
+              <FieldError v-if="errors.length" :errors="errors.map(e => ({ message: e }))" />
             </Field>
           </VeeField>
         </FieldGroup>

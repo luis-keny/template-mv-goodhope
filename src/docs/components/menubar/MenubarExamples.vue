@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import MenubarDynamic, { type MenubarMenuDef } from './MenubarDynamic.vue'
+import MenubarDynamic, { type MenubarMenuDef } from '@/components/ui/menubar/MenubarDynamic.vue'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 const showBookmarks = ref(false)

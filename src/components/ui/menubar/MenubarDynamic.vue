@@ -43,7 +43,7 @@ defineProps<{
 <template>
   <Menubar>
     <MenubarMenu v-for="(menu, index) in menus" :key="index">
-      <MenubarTrigger>{{ menu.trigger }}</MenubarTrigger>
+      <MenubarTrigger class="bg-transparent">{{ menu.trigger }}</MenubarTrigger>
       <MenubarContent>
         <template v-for="(item, itemIndex) in menu.items" :key="itemIndex">
           
