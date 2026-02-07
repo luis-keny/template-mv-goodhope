@@ -1,53 +1,61 @@
 <script setup lang="ts"> 
  import { Button } from '@/components/ui/button' 
- import { Input } from '@/components/ui/input' 
- import { Label } from '@/components/ui/label' 
- import { 
-   Sheet, 
-   SheetClose, 
-   SheetContent, 
-   SheetDescription, 
-   SheetFooter, 
-   SheetHeader, 
-   SheetTitle, 
-   SheetTrigger, 
- } from '@/components/ui/sheet' 
- </script> 
- 
- <template> 
-   <Sheet> 
-     <SheetTrigger as-child> 
-       <Button variant="outline"> 
-         Open 
-       </Button> 
-     </SheetTrigger> 
-     <SheetContent> 
-       <SheetHeader> 
-         <SheetTitle>Edit profile</SheetTitle> 
-         <SheetDescription> 
-           Make changes to your profile here. Click save when you're done. 
-         </SheetDescription> 
-       </SheetHeader> 
-       <div class="grid flex-1 auto-rows-min gap-6 px-4"> 
-         <div class="grid gap-3"> 
-           <Label for="sheet-demo-name">Name</Label> 
-           <Input id="sheet-demo-name" default-value="Pedro Duarte" /> 
-         </div> 
-         <div class="grid gap-3"> 
-           <Label for="sheet-demo-username">Username</Label> 
-           <Input id="sheet-demo-username" default-value="@peduarte" /> 
-         </div> 
-       </div> 
-       <SheetFooter> 
-         <Button type="submit"> 
-           Save changes 
-         </Button> 
-         <SheetClose as-child> 
-           <Button variant="outline"> 
-             Close 
-           </Button> 
-         </SheetClose> 
-       </SheetFooter> 
-     </SheetContent> 
-   </Sheet> 
- </template>
+import { Input } from '@/components/ui/input' 
+import { Label } from '@/components/ui/label' 
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { 
+  Sheet, 
+  SheetClose, 
+  SheetContent, 
+  SheetDescription, 
+  SheetFooter, 
+  SheetHeader, 
+  SheetTitle, 
+  SheetTrigger, 
+} from '@/components/ui/sheet' 
+</script> 
+
+<template> 
+  <Card>
+    <CardHeader>
+      <CardTitle>Sheet Básico</CardTitle>
+      <CardDescription>
+        Uso estándar del componente Sheet de Radix Vue / Shadcn UI.
+      </CardDescription>
+    </CardHeader>
+    <CardContent>
+      <Sheet> 
+        <SheetTrigger as-child> 
+          <Button variant="outline"> 
+            Abrir Sheet
+          </Button> 
+        </SheetTrigger> 
+        <SheetContent> 
+          <SheetHeader> 
+            <SheetTitle>Edit profile</SheetTitle> 
+            <SheetDescription> 
+              Make changes to your profile here. Click save when you're done. 
+            </SheetDescription> 
+          </SheetHeader> 
+          <div class="grid gap-4 py-4"> 
+            <div class="grid grid-cols-4 items-center gap-4"> 
+              <Label for="name" class="text-right">Name</Label> 
+              <Input id="name" default-value="Pedro Duarte" class="col-span-3" /> 
+            </div> 
+            <div class="grid grid-cols-4 items-center gap-4"> 
+              <Label for="username" class="text-right">Username</Label> 
+              <Input id="username" default-value="@peduarte" class="col-span-3" /> 
+            </div> 
+          </div> 
+          <SheetFooter> 
+            <SheetClose as-child> 
+              <Button type="submit"> 
+                Save changes 
+              </Button> 
+            </SheetClose> 
+          </SheetFooter> 
+        </SheetContent> 
+      </Sheet> 
+    </CardContent>
+  </Card>
+</template>
