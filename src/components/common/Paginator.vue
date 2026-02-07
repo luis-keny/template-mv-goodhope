@@ -26,9 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
   showEdges: false,
 })
 
-const emit = defineEmits<{
-  'update:modelValue': [value: number]
-}>()
+const model = defineModel<number>()
 </script>
 
 <template>
@@ -39,8 +37,7 @@ const emit = defineEmits<{
     :show-edges="props.showEdges"
     :default-page="props.defaultPage"
     :items-per-page="props.itemsPerPage"
-    :model-value="modelValue"
-    @update:model-value="emit('update:modelValue', $event)"
+    v-model:page="model"
   >
     <PaginationContent v-slot="{ items }">
       <PaginationFirst v-if="props.showEdges" />
@@ -64,7 +61,7 @@ const emit = defineEmits<{
       </template>
 
       <PaginationNext />
-      <PaginationLast v-if="showEdges" />
+      <PaginationLast v-if="props.showEdges" />
     </PaginationContent>
   </Pagination>
 </template>

@@ -29,16 +29,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationNext,
-  PaginationPrevious,
-  PaginationFirst,
-  PaginationLast,
-} from '@/components/ui/pagination'
-import {
   Table,
   TableBody,
   TableCell,
@@ -300,41 +290,13 @@ const currentPage = computed({
          <div class="flex items-center justify-end">
             <div class="flex items-center space-x-6 lg:space-x-8">
               <div class="flex items-center space-x-2">
-                <Pagination
-                  v-slot="{ page }"
+                <Paginator
                   :total="table.getFilteredRowModel().rows.length"
-                  :sibling-count="paginationConfig.siblingCount || 1"
-                  :show-edges="paginationConfig.showEdges"
-                  :default-page="1"
                   :items-per-page="table.getState().pagination.pageSize"
-                  :model-value="currentPage"
-                  @update:model-value="(val: number) => table.setPageIndex(val - 1)"
-                >
-                  <PaginationContent v-slot="{ items }">
-                    <PaginationFirst v-if="paginationConfig.showEdges" @click="table.setPageIndex(0)" />
-                    <PaginationPrevious @click="table.previousPage()" />
-
-                    <template v-for="(item, index) in items">
-                      <PaginationItem
-                        v-if="item.type === 'page'"
-                        :key="index"
-                        :value="item.value"
-                        :is-active="item.value === page"
-                        class="w-9 h-9 p-0"
-                      >
-                        {{ item.value }}
-                      </PaginationItem>
-                      <PaginationEllipsis
-                        v-else
-                        :key="item.type + index"
-                        :index="index"
-                      />
-                    </template>
-
-                    <PaginationNext @click="table.nextPage()" />
-                    <PaginationLast v-if="paginationConfig.showEdges" @click="table.setPageIndex(table.getPageCount() - 1)" />
-                  </PaginationContent>
-                </Pagination>
+                  :sibling-count="paginationConfig.siblingCount"
+                  :show-edges="paginationConfig.showEdges"
+                  v-model="currentPage"
+                />
               </div>
             </div>
          </div>
