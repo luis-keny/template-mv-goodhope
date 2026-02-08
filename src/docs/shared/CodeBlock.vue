@@ -46,7 +46,7 @@ const copy = async () => {
 </script>
 
 <template>
-  <div class="relative hljs rounded-md bg-black/90 p-4 text-xs leading-relaxed">
+  <div class="relative hljs bg-black/90 p-4 text-xs leading-relaxed">
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger as-child>
