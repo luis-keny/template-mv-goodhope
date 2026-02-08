@@ -15,12 +15,25 @@ const selected = ref('')
 const onChange = (val: string | null) => {
   toast('Selection changed', {
     description: val ? \`Selected: \${val}\` : 'Cleared selection',
-    action: { label: 'Undo', onClick: () => (selected.value = '') },
+    action: {
+      label: 'Undo',
+      onClick: () => {
+        selected.value = ''
+      },
+    },
   })
 }
 </script>
 
 <template>
-  <Combobox v-model="selected" :items="frameworks" placeholder="Select framework..." @change="onChange" />
+  <div class="space-y-4">
+    <Combobox
+      v-model="selected"
+      :items="frameworks"
+      placeholder="Seleccionar framework..."
+      @change="onChange"
+    />
+    <div class="text-sm text-muted-foreground">Seleccionado: {{ selected || 'ninguno' }}</div>
+  </div>
 </template>
 `

@@ -2,38 +2,22 @@
 import CollapsibleExamples from './CollapsibleExamples.vue'
 import { collapsibleExamplesCode } from '@/docs/snippets/collapsibleExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { ref } from 'vue'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-
-const copied = ref(false)
-const copy = async () => {
-  await navigator.clipboard.writeText(collapsibleExamplesCode)
-  copied.value = true
-  setTimeout(() => (copied.value = false), 1200)
-}
 </script>
 
 <template>
   <div class="space-y-6">
-    <CollapsibleExamples />
-    
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente</CardTitle>
-          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="collapsibleExamplesCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Collapsible</h2>
+      <p class="text-muted-foreground">
+        Un componente interactivo que expande y colapsa un panel de contenido.
+      </p>
+    </div>
+
+    <DocExampleContainer :code="collapsibleExamplesCode">
+      <CollapsibleExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

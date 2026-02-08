@@ -14,6 +14,9 @@ const selected = ref('')
 </script>
 
 <template>
-  <Combobox v-model="selected" :items="frameworks" placeholder="Select framework..." />
+  <div class="space-y-4">
+    <Combobox v-model="selected" :items="frameworks" placeholder="Seleccionar framework..." />
+    <div class="text-sm text-muted-foreground">Seleccionado: {{ selected || 'ninguno' }}</div>
+  </div>
 </template>
 `

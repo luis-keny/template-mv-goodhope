@@ -8,6 +8,12 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-6">
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Accordion</h2>
+      <p class="text-muted-foreground">
+        Un componente de acordeón que permite expandir y colapsar secciones de contenido.
+      </p>
+    </div>
     
     <DocExampleContainer :code="accordionExamplesCode">
       <AccordionExamples />

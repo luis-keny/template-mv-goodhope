@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Combobox from '@/components/common/Combobox.vue'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { toast } from 'vue-sonner'
 
 const frameworks = [
@@ -27,19 +26,13 @@ const onChange = (val: string | null) => {
 </script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Combobox con Evento Change</CardTitle>
-      <CardDescription>Muestra un toast al seleccionar</CardDescription>
-    </CardHeader>
-    <CardContent class="space-y-4">
-      <Combobox
-        v-model="selected"
-        :items="frameworks"
-        placeholder="Seleccionar framework..."
-        @change="onChange"
-      />
-      <div class="text-sm text-muted-foreground">Seleccionado: {{ selected || 'ninguno' }}</div>
-    </CardContent>
-  </Card>
+  <div class="space-y-4">
+    <Combobox
+      v-model="selected"
+      :items="frameworks"
+      placeholder="Seleccionar framework..."
+      @change="onChange"
+    />
+    <div class="text-sm text-muted-foreground">Seleccionado: {{ selected || 'ninguno' }}</div>
+  </div>
 </template>

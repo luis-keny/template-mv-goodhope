@@ -2,7 +2,6 @@
 import ReusableNavigationMenu from './ReusableNavigationMenu.vue'
 import type { NavigationItem } from './ReusableNavigationMenu.vue'
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from 'lucide-vue-next'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 const menuItems: NavigationItem[] = [
   {
@@ -54,15 +53,7 @@ const menuItems: NavigationItem[] = [
 </script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Navigation Menu</CardTitle>
-      <CardDescription>
-        Un menú de navegación responsivo con soporte para vistas previas de contenido.
-      </CardDescription>
-    </CardHeader>
-    <CardContent class="flex justify-center p-10">
-      <ReusableNavigationMenu :items="menuItems" />
-    </CardContent>
-  </Card>
+  <div class="flex justify-center w-full py-10">
+    <ReusableNavigationMenu :items="menuItems" />
+  </div>
 </template>

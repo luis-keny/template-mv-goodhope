@@ -22,7 +22,7 @@ const menuItems: MenuItem[] = [
       { type: 'separator' },
       { label: 'Developer Tools', icon: Code2Icon },
       { type: 'separator' },
-      { label: 'Delete', icon: TrashIcon, value: 'delete' }, // Added value for styling logic
+      { label: 'Delete', icon: TrashIcon, value: 'delete' },
     ],
   },
   { type: 'separator' },
@@ -53,10 +53,12 @@ const menuItems: MenuItem[] = [
 </script>
 
 <template>
-  <DynamicContextMenu :items="menuItems" class="w-64">
-    <div class="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
-      Right click here
-    </div>
-  </DynamicContextMenu>
+  <div class="flex items-center justify-center py-10 w-full">
+    <DynamicContextMenu :items="menuItems" menu-class="w-64">
+      <div class="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm cursor-context-menu hover:bg-accent/50 transition-colors">
+        Right click here
+      </div>
+    </DynamicContextMenu>
+  </div>
 </template>
 `

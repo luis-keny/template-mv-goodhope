@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import {
   Carousel,
   CarouselContent,
@@ -10,31 +10,21 @@ import {
 </script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Carousel</CardTitle>
-      <CardDescription>
-        Un carrusel de movimiento con soporte para gestos táctiles.
-      </CardDescription>
-    </CardHeader>
-    <CardContent>
-      <div class="flex justify-center">
-        <Carousel class="w-full max-w-xs">
-          <CarouselContent>
-            <CarouselItem v-for="i in 5" :key="i">
-              <div class="p-1">
-                <Card>
-                  <CardContent class="flex aspect-square items-center justify-center p-6">
-                    <span class="text-4xl font-semibold">{{ i }}</span>
-                  </CardContent>
-                </Card>
-              </div>
-            </CarouselItem>
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
-      </div>
-    </CardContent>
-  </Card>
+  <div class="flex justify-center w-full">
+    <Carousel class="w-full max-w-xs">
+      <CarouselContent>
+        <CarouselItem v-for="i in 5" :key="i">
+          <div class="p-1">
+            <Card>
+              <CardContent class="flex aspect-square items-center justify-center p-6">
+                <span class="text-4xl font-semibold">{{ i }}</span>
+              </CardContent>
+            </Card>
+          </div>
+        </CarouselItem>
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+  </div>
 </template>

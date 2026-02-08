@@ -30,9 +30,11 @@ const groups = [
 </script>
 
 <template>
-  <DynamicCommand
-    :groups="groups"
-    placeholder="Type a command or search..."
-  />
+  <div class="flex justify-center w-full max-w-md mx-auto">
+    <DynamicCommand
+      :groups="groups"
+      placeholder="Type a command or search..."
+    />
+  </div>
 </template>
 `

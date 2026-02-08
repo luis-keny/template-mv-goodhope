@@ -2,62 +2,21 @@
 import NativeSelectExamples from './NativeSelectExamples.vue'
 import { nativeSelectExamplesCode, nativeSelectDynamicComponentCode } from '@/docs/snippets/nativeSelectExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { ref } from 'vue'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-
-const copiedUsage = ref(false)
-const copiedComponent = ref(false)
-
-const copyUsage = async () => {
-  await navigator.clipboard.writeText(nativeSelectExamplesCode)
-  copiedUsage.value = true
-  setTimeout(() => (copiedUsage.value = false), 1200)
-}
-
-const copyComponent = async () => {
-  await navigator.clipboard.writeText(nativeSelectDynamicComponentCode)
-  copiedComponent.value = true
-  setTimeout(() => (copiedComponent.value = false), 1200)
-}
 </script>
 
 <template>
-  <div class="space-y-6">
-    <NativeSelectExamples />
-    
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Ejemplo de Uso</CardTitle>
-          <CardDescription>Cómo utilizar el componente dinámico</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copyUsage">
-          <span v-if="!copiedUsage">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="nativeSelectExamplesCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
-
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Componente Reutilizable</CardTitle>
-          <CardDescription>NativeSelectDynamic.vue - Copiar este archivo a tu proyecto</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copyComponent">
-          <span v-if="!copiedComponent">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="nativeSelectDynamicComponentCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+  <div class="space-y-10">
+    <section>
+      <h2 class="text-2xl font-semibold mb-2">Native Select</h2>
+      <p class="text-muted-foreground mb-6">
+        Un componente de selección nativo del navegador, estilizado para coincidir con el sistema de diseño.
+      </p>
+      <DocExampleContainer :code="[nativeSelectExamplesCode, nativeSelectDynamicComponentCode]" :language="['vue', 'vue']">
+        <NativeSelectExamples />
+      </DocExampleContainer>
+    </section>
 
     <Card>
       <CardHeader>

@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import NativeSelectDynamic, { type SelectItems } from './NativeSelectDynamic.vue'
 import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 const selectedStatus = ref('')
 const selectedFramework = ref('')
@@ -37,43 +36,35 @@ const frameworkOptions: SelectItems = [
 </script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Native Select</CardTitle>
-      <CardDescription>
-        Un componente de selección nativo del navegador, estilizado para coincidir con el sistema de diseño.
-      </CardDescription>
-    </CardHeader>
-    <CardContent class="space-y-8">
-      
-      <!-- Simple Options -->
-      <div class="grid w-full max-w-sm items-center gap-1.5">
-        <Label for="status-demo">Project Status</Label>
-        <NativeSelectDynamic
-          id="status-demo"
-          v-model="selectedStatus"
-          :items="statusOptions"
-          placeholder="Select status"
-        />
-        <p class="text-sm text-muted-foreground">
-          Selected: {{ selectedStatus || 'None' }}
-        </p>
-      </div>
+  <div class="space-y-8 w-full flex flex-col items-center">
+    
+    <!-- Simple Options -->
+    <div class="grid w-full max-w-sm items-center gap-1.5">
+      <Label for="status-demo">Project Status</Label>
+      <NativeSelectDynamic
+        id="status-demo"
+        v-model="selectedStatus"
+        :items="statusOptions"
+        placeholder="Select status"
+      />
+      <p class="text-sm text-muted-foreground">
+        Selected: {{ selectedStatus || 'None' }}
+      </p>
+    </div>
 
-      <!-- Grouped Options -->
-      <div class="grid w-full max-w-sm items-center gap-1.5">
-        <Label for="framework-demo">Tech Stack (Grouped)</Label>
-        <NativeSelectDynamic
-          id="framework-demo"
-          v-model="selectedFramework"
-          :items="frameworkOptions"
-          placeholder="Select a framework"
-        />
-        <p class="text-sm text-muted-foreground">
-          Selected: {{ selectedFramework || 'None' }}
-        </p>
-      </div>
+    <!-- Grouped Options -->
+    <div class="grid w-full max-w-sm items-center gap-1.5">
+      <Label for="framework-demo">Tech Stack (Grouped)</Label>
+      <NativeSelectDynamic
+        id="framework-demo"
+        v-model="selectedFramework"
+        :items="frameworkOptions"
+        placeholder="Select a framework"
+      />
+      <p class="text-sm text-muted-foreground">
+        Selected: {{ selectedFramework || 'None' }}
+      </p>
+    </div>
 
-    </CardContent>
-  </Card>
+  </div>
 </template>

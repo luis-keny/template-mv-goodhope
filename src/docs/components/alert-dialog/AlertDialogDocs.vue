@@ -4,55 +4,39 @@ import CommonAlertDialogExample from './CommonAlertDialogExample.vue'
 import { alertDialogExamplesCode } from '@/docs/snippets/alertDialogExamples'
 import { commonAlertDialogExampleCode } from '@/docs/snippets/commonAlertDialogExample'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { ref } from 'vue'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-
-const copied = ref(false)
-const copy = async () => {
-  await navigator.clipboard.writeText(alertDialogExamplesCode)
-  copied.value = true
-  setTimeout(() => (copied.value = false), 1200)
-}
 </script>
 
 <template>
-  <div class="space-y-6">
-    <AlertDialogExamples />
-    <CommonAlertDialogExample />
-    
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente (Básico)</CardTitle>
-          <CardDescription>Uso estándar de Radix</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="alertDialogExamplesCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+  <div class="space-y-10">
+    <!-- AlertDialog Básico -->
+    <section class="space-y-4">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight">AlertDialog</h2>
+        <p class="text-muted-foreground">
+          Un cuadro de diálogo modal que interrumpe al usuario con contenido importante y espera una respuesta.
+        </p>
+      </div>
 
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente (Common)</CardTitle>
-          <CardDescription>Uso con el Store centralizado</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="commonAlertDialogExampleCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+      <DocExampleContainer :code="alertDialogExamplesCode">
+        <AlertDialogExamples />
+      </DocExampleContainer>
+    </section>
+
+    <!-- CommonAlertDialog Reutilizable -->
+    <section class="space-y-4">
+      <div>
+        <h2 class="text-xl font-semibold tracking-tight">Alerta Reutilizable (Common)</h2>
+        <p class="text-muted-foreground">
+          Uso de CommonAlertDialog para confirmaciones críticas centralizadas mediante el overlay store.
+        </p>
+      </div>
+
+      <DocExampleContainer :code="commonAlertDialogExampleCode">
+        <CommonAlertDialogExample />
+      </DocExampleContainer>
+    </section>
 
     <Card>
       <CardHeader>

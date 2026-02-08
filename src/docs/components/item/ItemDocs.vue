@@ -2,38 +2,21 @@
 import ItemExamples from './ItemExamples.vue'
 import { itemExamplesCode } from '@/docs/snippets/itemExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { ref } from 'vue'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-
-const copied = ref(false)
-const copy = async () => {
-  await navigator.clipboard.writeText(itemExamplesCode)
-  copied.value = true
-  setTimeout(() => (copied.value = false), 1200)
-}
 </script>
 
 <template>
-  <div class="space-y-6">
-    <ItemExamples />
-    
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente</CardTitle>
-          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="itemExamplesCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+  <div class="space-y-10">
+    <section>
+      <h2 class="text-2xl font-semibold mb-2">Item</h2>
+      <p class="text-muted-foreground mb-6">
+        Un componente flexible para mostrar elementos de lista con contenido, medios y acciones.
+      </p>
+      <DocExampleContainer :code="itemExamplesCode">
+        <ItemExamples />
+      </DocExampleContainer>
+    </section>
 
     <Card>
       <CardHeader>

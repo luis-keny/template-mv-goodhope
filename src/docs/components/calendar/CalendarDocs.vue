@@ -2,37 +2,22 @@
 import CalendarExamples from './CalendarExamples.vue'
 import { calendarExamplesCode } from '@/docs/snippets/calendarExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
-import { ref } from 'vue'
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-
-const copied = ref(false)
-const copy = async () => {
-  await navigator.clipboard.writeText(calendarExamplesCode)
-  copied.value = true
-  setTimeout(() => (copied.value = false), 1200)
-}
 </script>
 
 <template>
   <div class="space-y-6">
-    <CalendarExamples />
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente</CardTitle>
-          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="calendarExamplesCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Calendar</h2>
+      <p class="text-muted-foreground">
+        Un componente de calendario optimizado para la selección de fechas y visualización de meses.
+      </p>
+    </div>
+
+    <DocExampleContainer :code="calendarExamplesCode" minHeight="400px">
+      <CalendarExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>
@@ -110,7 +95,7 @@ const copy = async () => {
                 <TableCell>disabled</TableCell>
                 <TableCell>boolean</TableCell>
                 <TableCell>false</TableCell>
-                <TableCell>Deshabilitar interacciones</TableCell>
+                <TableCell>Deshabilita la interacción con el calendario</TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>readonly</TableCell>

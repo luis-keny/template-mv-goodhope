@@ -4,60 +4,31 @@ import FieldExamplesSimple from './FieldExamplesSimple.vue'
 import { fieldExamplesComplexCode } from '@/docs/snippets/fieldExamplesComplex'
 import { fieldExamplesSimpleCode } from '@/docs/snippets/fieldExamplesSimple'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
-import { ref } from 'vue'
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-
-const copiedComplex = ref(false)
-const copiedSimple = ref(false)
-const copyComplex = async () => {
-  await navigator.clipboard.writeText(fieldExamplesComplexCode)
-  copiedComplex.value = true
-  setTimeout(() => (copiedComplex.value = false), 1200)
-}
-const copySimple = async () => {
-  await navigator.clipboard.writeText(fieldExamplesSimpleCode)
-  copiedSimple.value = true
-  setTimeout(() => (copiedSimple.value = false), 1200)
-}
 </script>
 
 <template>
-  <div class="space-y-6">
-    <FieldExamplesComplex />
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente (Complejo)</CardTitle>
-          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copyComplex">
-          <span v-if="!copiedComplex">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="fieldExamplesComplexCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+  <div class="space-y-10">
+    <section>
+      <h2 class="text-2xl font-semibold mb-2">Reportar Error (Validación Compleja)</h2>
+      <p class="text-muted-foreground mb-6">
+        Ejemplo de un formulario con validación compleja utilizando VeeValidate y Zod, con manejo de estados de error y descripciones.
+      </p>
+      <DocExampleContainer :code="fieldExamplesComplexCode" minHeight="500px">
+        <FieldExamplesComplex />
+      </DocExampleContainer>
+    </section>
 
-    <FieldExamplesSimple />
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente (Edición simple)</CardTitle>
-          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copySimple">
-          <span v-if="!copiedSimple">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="fieldExamplesSimpleCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+    <section>
+      <h2 class="text-2xl font-semibold mb-2">Edición de Usuario (Múltiples Inputs)</h2>
+      <p class="text-muted-foreground mb-6">
+        Muestra cómo integrar diferentes tipos de controles (Input, Checkbox, Select, Radio) dentro de un mismo FieldGroup.
+      </p>
+      <DocExampleContainer :code="fieldExamplesSimpleCode" minHeight="600px">
+        <FieldExamplesSimple />
+      </DocExampleContainer>
+    </section>
 
     <Card>
       <CardHeader>

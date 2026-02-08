@@ -10,13 +10,15 @@ import {
 </script>
 
 <template>
-  <NumberField id="age" :default-value="18" :min="0">
-    <Label for="age">Age</Label>
-    <NumberFieldContent>
-      <NumberFieldDecrement />
-      <NumberFieldInput />
-      <NumberFieldIncrement />
-    </NumberFieldContent>
-  </NumberField>
+  <div class="flex justify-center w-full">
+    <NumberField id="age" :default-value="18" :min="0" class="w-full max-w-[200px]">
+      <Label for="age">Age</Label>
+      <NumberFieldContent>
+        <NumberFieldDecrement />
+        <NumberFieldInput />
+        <NumberFieldIncrement />
+      </NumberFieldContent>
+    </NumberField>
+  </div>
 </template>
 

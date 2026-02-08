@@ -2,6 +2,8 @@
  import { Textarea } from '@/components/ui/textarea' 
  </script> 
  
- <template> 
-   <Textarea placeholder="Type your message here." /> 
- </template>
+ <template>
+  <div class="w-full max-w-sm">
+    <Textarea placeholder="Type your message here." />
+  </div>
+</template>

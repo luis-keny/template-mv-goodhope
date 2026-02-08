@@ -1,4 +1,4 @@
-export const progressExamplesCode = `<script setup lang=\"ts\">
+export const progressExamplesCode = `<script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { Progress } from '@/components/ui/progress'
 
@@ -14,7 +14,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <Progress :model-value=\"progress\" class=\"w-[60%]\" />
+  <div class="flex justify-center w-full">
+    <Progress :model-value="progress" class="w-full max-w-md" />
+  </div>
 </template>
 `
-

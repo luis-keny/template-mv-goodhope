@@ -1,5 +1,4 @@
-export const switchExamplesCode = `
-<script setup lang="ts">
+export const switchExamplesCode = `<script setup lang="ts">
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 </script>

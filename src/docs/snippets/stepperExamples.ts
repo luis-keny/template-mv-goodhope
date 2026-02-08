@@ -32,6 +32,8 @@ const steps = [
 </script>
 
 <template>
-  <DynamicStepper :steps="steps" />
+  <div class="flex justify-center w-full max-w-2xl mx-auto">
+    <DynamicStepper :steps="steps" />
+  </div>
 </template>
 `

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import DynamicCommand from '@/components/ui/command/DynamicCommand.vue'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import {
   Calculator,
   Calendar,
@@ -31,20 +30,10 @@ const groups = [
 </script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Command</CardTitle>
-      <CardDescription>
-        Interfaz de línea de comandos rápida, componible y sin estilos para buscar y filtrar.
-      </CardDescription>
-    </CardHeader>
-    <CardContent>
-      <div class="flex justify-center">
-        <DynamicCommand
-          :groups="groups"
-          placeholder="Type a command or search..."
-        />
-      </div>
-    </CardContent>
-  </Card>
+  <div class="flex justify-center w-full max-w-md mx-auto">
+    <DynamicCommand
+      :groups="groups"
+      placeholder="Type a command or search..."
+    />
+  </div>
 </template>

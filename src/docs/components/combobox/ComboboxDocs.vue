@@ -4,55 +4,35 @@ import ComboboxOnChangeExample from './ComboboxOnChangeExample.vue'
 import { comboboxExamplesCode } from '@/docs/snippets/comboboxExamples'
 import { comboboxOnChangeCode } from '@/docs/snippets/comboboxOnChange'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
-import { ref } from 'vue'
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import Sonner from '@/components/ui/sonner/Sonner.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-
-const copied = ref(false)
-const copy = async () => {
-  await navigator.clipboard.writeText(comboboxExamplesCode)
-  copied.value = true
-  setTimeout(() => (copied.value = false), 1200)
-}
 </script>
 
 <template>
-  <div class="space-y-6">
-    <ComboboxExamples />
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente</CardTitle>
-          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="comboboxExamplesCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
-    <ComboboxOnChangeExample />
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente (OnChange + Toast)</CardTitle>
-          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="comboboxOnChangeCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+  <div class="space-y-10">
+    <section>
+      <h2 class="text-2xl font-semibold mb-2">Combobox</h2>
+      <p class="text-muted-foreground mb-6">
+        Un componente de selección con búsqueda integrada y popover.
+      </p>
+      <DocExampleContainer :code="comboboxExamplesCode">
+        <ComboboxExamples />
+      </DocExampleContainer>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-2">Evento Change</h2>
+      <p class="text-muted-foreground mb-6">
+        Ejemplo de cómo manejar el evento change para disparar acciones adicionales.
+      </p>
+      <DocExampleContainer :code="comboboxOnChangeCode">
+        <ComboboxOnChangeExample />
+      </DocExampleContainer>
+    </section>
+
     <Sonner />
+
     <Card>
       <CardHeader>
         <CardTitle>API</CardTitle>

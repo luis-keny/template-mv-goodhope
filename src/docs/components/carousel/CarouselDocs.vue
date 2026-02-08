@@ -2,38 +2,22 @@
 import CarouselExamples from './CarouselExamples.vue'
 import { carouselExamplesCode } from '@/docs/snippets/carouselExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { ref } from 'vue'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-
-const copied = ref(false)
-const copy = async () => {
-  await navigator.clipboard.writeText(carouselExamplesCode)
-  copied.value = true
-  setTimeout(() => (copied.value = false), 1200)
-}
 </script>
 
 <template>
   <div class="space-y-6">
-    <CarouselExamples />
-    
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente</CardTitle>
-          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="carouselExamplesCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Carousel</h2>
+      <p class="text-muted-foreground">
+        Un carrusel de movimiento con soporte para gestos táctiles y navegación.
+      </p>
+    </div>
+
+    <DocExampleContainer :code="carouselExamplesCode">
+      <CarouselExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

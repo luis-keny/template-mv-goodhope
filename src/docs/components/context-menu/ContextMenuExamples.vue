@@ -2,7 +2,6 @@
 import { Code2Icon, PlusIcon, TrashIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import DynamicContextMenu, { type MenuItem } from '@/components/ui/context-menu/DynamicContextMenu.vue'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 const showBookmarks = ref(true)
 const showFullUrls = ref(false)
@@ -54,21 +53,11 @@ const menuItems: MenuItem[] = [
 </script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Context Menu</CardTitle>
-      <CardDescription>
-        Muestra un menú contextual al hacer clic derecho.
-      </CardDescription>
-    </CardHeader>
-    <CardContent>
-      <div class="flex items-center justify-center py-10">
-        <DynamicContextMenu :items="menuItems" menu-class="w-64">
-          <div class="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm cursor-context-menu">
-            Right click here
-          </div>
-        </DynamicContextMenu>
+  <div class="flex items-center justify-center py-10 w-full">
+    <DynamicContextMenu :items="menuItems" menu-class="w-64">
+      <div class="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm cursor-context-menu hover:bg-accent/50 transition-colors">
+        Right click here
       </div>
-    </CardContent>
-  </Card>
+    </DynamicContextMenu>
+  </div>
 </template>

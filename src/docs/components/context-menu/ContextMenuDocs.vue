@@ -2,38 +2,21 @@
 import ContextMenuExamples from './ContextMenuExamples.vue'
 import { contextMenuExamplesCode } from '@/docs/snippets/contextMenuExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { ref } from 'vue'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-
-const copied = ref(false)
-const copy = async () => {
-  await navigator.clipboard.writeText(contextMenuExamplesCode)
-  copied.value = true
-  setTimeout(() => (copied.value = false), 1200)
-}
 </script>
 
 <template>
-  <div class="space-y-6">
-    <ContextMenuExamples />
-    
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente</CardTitle>
-          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="contextMenuExamplesCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+  <div class="space-y-10">
+    <section>
+      <h2 class="text-2xl font-semibold mb-2">Context Menu</h2>
+      <p class="text-muted-foreground mb-6">
+        Muestra un menú contextual al hacer clic derecho sobre un área específica.
+      </p>
+      <DocExampleContainer :code="contextMenuExamplesCode">
+        <ContextMenuExamples />
+      </DocExampleContainer>
+    </section>
 
     <Card>
       <CardHeader>

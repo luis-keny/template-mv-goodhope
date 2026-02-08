@@ -6,6 +6,9 @@ const email = ref('')
 </script>
 
 <template>
-  <Input v-model="email" type="email" placeholder="Email" class="max-w-sm" />
+  <div class="space-y-4 w-full flex flex-col items-center">
+    <Input v-model="email" type="email" placeholder="Email" class="max-w-sm" />
+    <div class="text-sm text-muted-foreground">Valor: {{ email }}</div>
+  </div>
 </template>
 `

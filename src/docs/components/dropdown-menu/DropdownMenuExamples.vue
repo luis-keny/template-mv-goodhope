@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
 import DynamicDropdownMenu, { type DropdownMenuItemType } from '@/components/ui/dropdown-menu/DynamicDropdownMenu.vue'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 const menuItems: DropdownMenuItemType[] = [
   { type: 'label', label: 'My Account' },
@@ -33,21 +32,11 @@ const menuItems: DropdownMenuItemType[] = [
 </script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Dropdown Menu</CardTitle>
-      <CardDescription>
-        Muestra un menú al usuario, como un conjunto de acciones o funciones, disparado por un botón.
-      </CardDescription>
-    </CardHeader>
-    <CardContent>
-      <div class="flex items-center justify-center">
-        <DynamicDropdownMenu :items="menuItems" menu-class="w-56">
-          <Button variant="outline">
-            Open
-          </Button>
-        </DynamicDropdownMenu>
-      </div>
-    </CardContent>
-  </Card>
+  <div class="flex items-center justify-center">
+    <DynamicDropdownMenu :items="menuItems" menu-class="w-56">
+      <Button variant="outline">
+        Open
+      </Button>
+    </DynamicDropdownMenu>
+  </div>
 </template>

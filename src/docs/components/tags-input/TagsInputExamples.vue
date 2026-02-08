@@ -6,12 +6,14 @@ const modelValue = ref(['Apple', 'Banana'])
 </script>
 
 <template>
-  <TagsInput v-model="modelValue" class="w-[300px]">
-    <TagsInputItem v-for="item in modelValue" :key="item" :value="item">
-      <TagsInputItemText />
-      <TagsInputItemDelete />
-    </TagsInputItem>
+  <div class="flex items-center justify-center w-full">
+    <TagsInput v-model="modelValue" class="w-[300px]">
+      <TagsInputItem v-for="item in modelValue" :key="item" :value="item">
+        <TagsInputItemText />
+        <TagsInputItemDelete />
+      </TagsInputItem>
 
-    <TagsInputInput placeholder="Fruits..." />
-  </TagsInput>
+      <TagsInputInput placeholder="Fruits..." />
+    </TagsInput>
+  </div>
 </template>

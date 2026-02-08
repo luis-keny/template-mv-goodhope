@@ -2,38 +2,21 @@
 import ToggleExamples from './ToggleExamples.vue'
 import { toggleExamplesCode } from '@/docs/snippets/toggleExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { ref } from 'vue'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-
-const copied = ref(false)
-const copy = async () => {
-  await navigator.clipboard.writeText(toggleExamplesCode)
-  copied.value = true
-  setTimeout(() => (copied.value = false), 1200)
-}
 </script>
 
 <template>
-  <div class="space-y-6">
-    <ToggleExamples />
-    
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente</CardTitle>
-          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="toggleExamplesCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+  <div class="space-y-8">
+    <div>
+      <h2 class="text-2xl font-semibold tracking-tight">Ejemplo</h2>
+      <p class="text-muted-foreground mb-4">
+        Un botón de dos estados que puede estar activado o desactivado.
+      </p>
+      <DocExampleContainer :code="toggleExamplesCode">
+        <ToggleExamples />
+      </DocExampleContainer>
+    </div>
 
     <Card>
       <CardHeader>

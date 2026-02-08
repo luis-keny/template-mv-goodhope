@@ -1,38 +1,24 @@
 <script setup lang="ts">
 import CardExamples from './CardExamples.vue'
 import { cardExamplesCode } from '@/docs/snippets/cardExamples'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { ref } from 'vue'
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-
-const copied = ref(false)
-const copy = async () => {
-  await navigator.clipboard.writeText(cardExamplesCode)
-  copied.value = true
-  setTimeout(() => (copied.value = false), 1200)
-}
 </script>
 
 <template>
   <div class="space-y-6">
-    <CardExamples />
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente</CardTitle>
-          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="cardExamplesCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+    <div>
+      <h2 class="text-2xl font-bold tracking-tight">Card</h2>
+      <p class="text-muted-foreground">
+        Muestra contenido en un contenedor estructurado con encabezado, cuerpo y pie.
+      </p>
+    </div>
+
+    <DocExampleContainer :code="cardExamplesCode">
+      <CardExamples />
+    </DocExampleContainer>
+
     <Card>
       <CardHeader>
         <CardTitle>API</CardTitle>

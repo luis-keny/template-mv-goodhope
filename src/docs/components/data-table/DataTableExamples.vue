@@ -2,7 +2,6 @@
 import { h, ref } from 'vue'
 import DataTable from '@/components/common/DataTable.vue'
 import { Button } from '@/components/ui/button'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { ArrowUpDown, MoreHorizontal } from 'lucide-vue-next'
 import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
@@ -84,56 +83,29 @@ const loading = ref(false)
 </script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <div class="flex items-center justify-between">
-        <div>
-          <CardTitle>Ejemplo Completo</CardTitle>
-          <CardDescription>
-            Tabla con búsqueda, paginación avanzada, selección y menú de columnas.
-          </CardDescription>
-        </div>
-        <div class="flex items-center space-x-2">
-          <Switch id="loading-mode" v-model="loading" />
-          <Label htmlFor="loading-mode">Modo Carga</Label>
-        </div>
-      </div>
-    </CardHeader>
-    <CardContent>
-      <DataTable
-        :columns="columns"
-        :data="data"
-        :loading="loading"
-        :search="{
-          columns: ['email', 'status'],
-          placeholder: 'Buscar por email o status',
-        }"
-        :pagination="{
-          type: 'advanced',
-          siblingCount: 2,
-          itemsPerPage: 4,
-          showEdges: true,
-        }"
-        show-column-visibility
-        @selection-change="handleSelection"
-      />
-    </CardContent>
-  </Card>
+  <div class="space-y-8 w-full">
+    <div class="flex items-center justify-end space-x-2 mb-4">
+      <Switch id="loading-mode" v-model="loading" />
+      <Label htmlFor="loading-mode">Modo Carga</Label>
+    </div>
 
-  <Card class="mt-6">
-    <CardHeader>
-      <div class="flex items-center justify-between">
-        <div>
-          <CardTitle>DataTable basico</CardTitle>
-          <CardDescription>Ejemplo de uso sencillo de DataTable.</CardDescription>
-        </div>
-      </div>
-    </CardHeader>
-    <CardContent>
-      <DataTable
-        :columns="columns"
-        :data="data"
-      />
-    </CardContent>
-  </Card>
+    <DataTable
+      :columns="columns"
+      :data="data"
+      :loading="loading"
+      :search="{
+        columns: ['email', 'status'],
+        placeholder: 'Filtrar por email o status...'
+      }"
+      :pagination="{
+        type: 'advanced',
+        itemsPerPage: 5,
+        siblingCount: 1,
+        showEdges: true,
+      }"
+      show-column-visibility
+      show-selection
+      @selection-change="handleSelection"
+    />
+  </div>
 </template>

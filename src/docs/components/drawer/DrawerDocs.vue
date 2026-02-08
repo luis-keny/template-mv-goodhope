@@ -4,55 +4,31 @@ import CommonDrawerExample from './CommonDrawerExample.vue'
 import { drawerExamplesCode } from '@/docs/snippets/drawerExamples'
 import { commonDrawerExampleCode } from '@/docs/snippets/commonDrawerExample'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { ref } from 'vue'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-
-const copied = ref(false)
-const copy = async () => {
-  await navigator.clipboard.writeText(drawerExamplesCode)
-  copied.value = true
-  setTimeout(() => (copied.value = false), 1200)
-}
 </script>
 
 <template>
-  <div class="space-y-6">
-    <DrawerExamples />
-    <CommonDrawerExample />
-    
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente (Básico)</CardTitle>
-          <CardDescription>Uso estándar de Radix</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="drawerExamplesCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+  <div class="space-y-10">
+    <section>
+      <h2 class="text-2xl font-semibold mb-2">Drawer</h2>
+      <p class="text-muted-foreground mb-6">
+        Un componente de panel inferior (cajón) optimizado para interacciones táctiles y móviles.
+      </p>
+      <DocExampleContainer :code="drawerExamplesCode">
+        <DrawerExamples />
+      </DocExampleContainer>
+    </section>
 
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente (Common)</CardTitle>
-          <CardDescription>Uso con el Store centralizado</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="commonDrawerExampleCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+    <section>
+      <h3 class="text-xl font-medium mb-2">Drawer Reutilizable (Common)</h3>
+      <p class="text-muted-foreground mb-6">
+        Uso de CommonDrawer con el store centralizado para manejar paneles inferiores de forma global.
+      </p>
+      <DocExampleContainer :code="commonDrawerExampleCode">
+        <CommonDrawerExample />
+      </DocExampleContainer>
+    </section>
 
     <Card>
       <CardHeader>

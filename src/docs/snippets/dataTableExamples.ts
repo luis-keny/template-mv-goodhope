@@ -1,6 +1,6 @@
 export const dataTableExamplesCode = `<script setup lang="ts">
 import { h, ref } from 'vue'
-import { DataTable } from '@/components/common/DataTable.vue'
+import DataTable from '@/components/common/DataTable.vue'
 import { Button } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
@@ -41,8 +41,8 @@ const columns = [
       return h('div', { class: 'text-right font-medium' }, formatted)
     },
     meta: {
-      thClass: 'text-right bg-muted/50', // Clase para el encabezado
-      tdClass: 'bg-muted/10', // Clase para la celda
+      thClass: 'text-right bg-muted/50',
+      tdClass: 'bg-muted/10',
     }
   },
   {
@@ -70,6 +70,9 @@ const data = [
   { id: '3', amount: 837, status: 'processing', email: 'Monserrat44@gmail.com' },
   { id: '4', amount: 874, status: 'success', email: 'Silas22@gmail.com' },
   { id: '5', amount: 721, status: 'failed', email: 'carmella@hotmail.com' },
+  { id: '6', amount: 123, status: 'success', email: 'example@gmail.com' },
+  { id: '7', amount: 456, status: 'processing', email: 'test@hotmail.com' },
+  { id: '8', amount: 789, status: 'failed', email: 'demo@yahoo.com' },
 ]
 
 const loading = ref(false)
@@ -80,25 +83,19 @@ const handleSelection = (rows: any[]) => {
 </script>
 
 <template>
-  <div class="space-y-4">
-    <!-- Ejemplo 1: Básico -->
-    <h3 class="text-lg font-medium">Básico</h3>
-    <DataTable :columns="columns" :data="data" />
-
-    <!-- Ejemplo 2: Completo (Búsqueda Avanzada, Paginación, Selección, Carga) -->
-    <h3 class="text-lg font-medium mt-8">Completo</h3>
-    <div class="flex items-center space-x-2 mb-4">
-      <Switch id="loading-mode" :checked="loading" @update:checked="loading = $event" />
+  <div class="space-y-8 w-full">
+    <div class="flex items-center justify-end space-x-2 mb-4">
+      <Switch id="loading-mode" v-model="loading" />
       <Label htmlFor="loading-mode">Modo Carga</Label>
     </div>
-    
+
     <DataTable
       :columns="columns"
       :data="data"
       :loading="loading"
       :search="{
         columns: ['email', 'status'],
-        placeholder: 'Buscar por email o estado...',
+        placeholder: 'Filtrar por email o status...'
       }"
       :pagination="{
         type: 'advanced',
@@ -107,20 +104,8 @@ const handleSelection = (rows: any[]) => {
         showEdges: true,
       }"
       show-column-visibility
+      show-selection
       @selection-change="handleSelection"
-    />
-
-    <!-- Ejemplo 3: Estado de Carga -->
-    <h3 class="text-lg font-medium mt-8">Estado de Carga</h3>
-    <div class="flex items-center space-x-2 mb-4">
-      <Switch id="loading-demo" :checked="loading" @update:checked="loading = $event" />
-      <Label htmlFor="loading-demo">Activar Carga</Label>
-    </div>
-    
-    <DataTable
-      :columns="columns"
-      :data="data"
-      :loading="loading"
     />
   </div>
 </template>

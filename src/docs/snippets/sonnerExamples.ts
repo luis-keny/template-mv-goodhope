@@ -31,13 +31,11 @@ const triggerPromise = () => {
 </script>
 
 <template>
-  <div class="space-y-4">
-    <div class="flex gap-2 flex-wrap">
-      <Button variant="outline" @click="triggerSimple">Simple</Button>
-      <Button variant="outline" @click="triggerSuccess">Success</Button>
-      <Button variant="outline" @click="triggerError">Error + Action</Button>
-      <Button variant="outline" @click="triggerPromise">Promise</Button>
-    </div>
+  <div class="flex gap-2 flex-wrap justify-center">
+    <Button variant="outline" @click="triggerSimple">Simple</Button>
+    <Button variant="outline" @click="triggerSuccess">Success</Button>
+    <Button variant="outline" @click="triggerError">Error + Action</Button>
+    <Button variant="outline" @click="triggerPromise">Promise</Button>
     <Sonner :rich-colors="true" :close-button="true" position="top-right" />
   </div>
 </template>

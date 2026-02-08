@@ -5,7 +5,6 @@ import { useForm, Field as VeeField } from 'vee-validate'
 import { toast } from 'vue-sonner'
 import { z } from 'zod'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 import Sonner from '@/components/ui/sonner/Sonner.vue'
@@ -45,62 +44,53 @@ const onSubmit = handleSubmit((data) => {
 </script>
 
 <template>
-  <Card class="w-full sm:max-w-md">
-    <CardHeader>
-      <CardTitle>Reportar Error</CardTitle>
-      <CardDescription>
-        Ayúdanos a mejorar reportando los errores que encuentres.
-      </CardDescription>
-    </CardHeader>
-    <CardContent>
-      <form id="form-vee-demo" @submit="onSubmit">
-        <FieldGroup>
-          <VeeField v-slot="{ field, errors }" name="title">
-            <Field :data-invalid="!!errors.length">
-              <FieldLabel for="form-vee-demo-title">
-                Título del Error
-              </FieldLabel>
-              <Input
-                id="form-vee-demo-title"
-                v-bind="field"
-                placeholder="El botón de login no funciona en móvil"
-                autocomplete="off"
-                :aria-invalid="!!errors.length"
-              />
-              <FieldError v-if="errors.length" :errors="errors.map(e => ({ message: e }))" />
-            </Field>
-          </VeeField>
+  <div class="w-full sm:max-w-md">
+    <form id="form-vee-demo" @submit="onSubmit">
+      <FieldGroup>
+        <VeeField v-slot="{ field, errors }" name="title">
+          <Field :data-invalid="!!errors.length">
+            <FieldLabel for="form-vee-demo-title">
+              Título del Error
+            </FieldLabel>
+            <Input
+              id="form-vee-demo-title"
+              v-bind="field"
+              placeholder="El botón de login no funciona en móvil"
+              autocomplete="off"
+              :aria-invalid="!!errors.length"
+            />
+            <FieldError v-if="errors.length" :errors="errors.map(e => ({ message: e }))" />
+          </Field>
+        </VeeField>
 
-          <VeeField v-slot="{ field, errors }" name="description">
-            <Field :data-invalid="!!errors.length">
-              <FieldLabel for="form-vee-demo-description">
-                Descripción
-              </FieldLabel>
-              <Textarea
-                id="form-vee-demo-description"
-                v-bind="field"
-                placeholder="Al hacer clic en el botón de login desde un dispositivo móvil, no sucede nada. Se espera que se abra el formulario de inicio de sesión."
-                autocomplete="off"
-                :aria-invalid="!!errors.length"
-                class="min-h-20"
-              />
-              <FieldDescription>
-                Incluye pasos para reproducir, comportamiento esperado y lo que realmente sucedió.
-              </FieldDescription>
-              <FieldError v-if="errors.length" :errors="errors.map(e => ({ message: e }))" />
-            </Field>
-          </VeeField>
-        </FieldGroup>
-        <Field orientation="horizontal" class="mt-4">
-          <Button type="button" variant="outline" @click="resetForm">
-            Reiniciar
-          </Button>
-          <Button type="submit">
-            Enviar
-          </Button>
-        </Field>
-      </form>
-    </CardContent>
-    <Sonner />
-  </Card>
+        <VeeField v-slot="{ field, errors }" name="description">
+          <Field :data-invalid="!!errors.length">
+            <FieldLabel for="form-vee-demo-description">
+              Descripción
+            </FieldLabel>
+            <Textarea
+              id="form-vee-demo-description"
+              v-bind="field"
+              placeholder="Al hacer clic en el botón de login desde un dispositivo móvil, no sucede nada. Se espera que se abra el formulario de inicio de sesión."
+              autocomplete="off"
+              :aria-invalid="!!errors.length"
+              class="min-h-20"
+            />
+            <FieldDescription>
+              Incluye pasos para reproducir, comportamiento esperado y lo que realmente sucedió.
+            </FieldDescription>
+            <FieldError v-if="errors.length" :errors="errors.map(e => ({ message: e }))" />
+          </Field>
+        </VeeField>
+      </FieldGroup>
+      <Field orientation="horizontal" class="mt-4">
+        <Button type="button" variant="outline" @click="resetForm">
+          Reiniciar
+        </Button>
+        <Button type="submit">
+          Enviar
+        </Button>
+      </Field>
+    </form>
+  </div>
 </template>

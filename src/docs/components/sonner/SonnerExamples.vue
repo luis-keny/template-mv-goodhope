@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Sonner from '@/components/ui/sonner/Sonner.vue'
 import { toast } from 'vue-sonner'
@@ -32,19 +31,11 @@ const triggerPromise = () => {
 </script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Sonner (Toasts)</CardTitle>
-      <CardDescription>Notificaciones ligeras y configurables</CardDescription>
-    </CardHeader>
-    <CardContent class="space-y-4">
-      <div class="flex gap-2 flex-wrap">
-        <Button variant="outline" @click="triggerSimple">Simple</Button>
-        <Button variant="outline" @click="triggerSuccess">Success</Button>
-        <Button variant="outline" @click="triggerError">Error + Action</Button>
-        <Button variant="outline" @click="triggerPromise">Promise</Button>
-      </div>
-      <Sonner :rich-colors="true" :close-button="true" position="top-right" />
-    </CardContent>
-  </Card>
+  <div class="flex gap-2 flex-wrap justify-center">
+    <Button variant="outline" @click="triggerSimple">Simple</Button>
+    <Button variant="outline" @click="triggerSuccess">Success</Button>
+    <Button variant="outline" @click="triggerError">Error + Action</Button>
+    <Button variant="outline" @click="triggerPromise">Promise</Button>
+    <Sonner :rich-colors="true" :close-button="true" position="top-right" />
+  </div>
 </template>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import MenubarDynamic, { type MenubarMenuDef } from '@/components/ui/menubar/MenubarDynamic.vue'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 const showBookmarks = ref(false)
 const showFullUrls = ref(true)
@@ -98,15 +97,7 @@ const menus = ref<MenubarMenuDef[]>([
 </script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Menubar</CardTitle>
-      <CardDescription>
-        A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
-      </CardDescription>
-    </CardHeader>
-    <CardContent class="flex justify-center p-6">
-      <MenubarDynamic :menus="menus" />
-    </CardContent>
-  </Card>
+  <div class="flex justify-center w-full">
+    <MenubarDynamic :menus="menus" />
+  </div>
 </template>

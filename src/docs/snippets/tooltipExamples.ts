@@ -10,17 +10,19 @@ import {
 </script>
 
 <template>
-  <TooltipProvider>
-    <Tooltip>
-      <TooltipTrigger as-child>
-        <Button variant="outline">
-          Hover
-        </Button>
-      </TooltipTrigger>
-      <TooltipContent>
-        <p>Add to library</p>
-      </TooltipContent>
-    </Tooltip>
-  </TooltipProvider>
+  <div class="flex items-center justify-center w-full">
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger as-child>
+          <Button variant="outline">
+            Hover
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Add to library</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  </div>
 </template>
 `

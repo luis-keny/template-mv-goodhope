@@ -6,32 +6,42 @@ import CommonDrawer from '@/components/common/CommonDrawer.vue'
 const overlay = useOverlayStore()
 
 const openDrawer = () => {
-  overlay.open('my-drawer-id', { 
-    items: ['Opción A', 'Opción B'] 
+  overlay.open('doc-common-drawer', {
+    stats: [
+      { label: 'Objetivo', value: 400 },
+      { label: 'Actual', value: 250 },
+      { label: 'Restante', value: 150 }
+    ]
   })
 }
 </script>
 
 <template>
-  <Button @click="openDrawer">Abrir Drawer</Button>
+  <div class="flex items-center justify-center">
+    <Button variant="outline" @click="openDrawer">Ver Estadísticas Diarias</Button>
 
-  <CommonDrawer 
-    id="my-drawer-id" 
-    title="Opciones Rápidas" 
-    description="Selecciona una de las siguientes"
-  >
-    <template #default="{ data }">
-      <div class="flex flex-col gap-2">
-        <Button v-for="i in data?.items" :key="i" variant="ghost">
-          {{ i }}
-        </Button>
-      </div>
-    </template>
-    <template #footer>
-      <Button variant="outline" @click="overlay.close('my-drawer-id')">
-        Cerrar
-      </Button>
-    </template>
-  </CommonDrawer>
+    <CommonDrawer 
+      id="doc-common-drawer" 
+      title="Resumen de Actividad" 
+      description="Datos actualizados hace 5 minutos."
+    >
+      <template #default="{ data }">
+        <div class="py-6 space-y-4 text-center">
+          <div class="grid grid-cols-3 gap-4">
+            <div v-for="stat in data?.stats" :key="stat.label" class="space-y-1">
+              <p class="text-2xl font-bold">{{ stat.value }}</p>
+              <p class="text-xs text-muted-foreground uppercase tracking-wider">{{ stat.label }}</p>
+            </div>
+          </div>
+        </div>
+      </template>
+      <template #footer>
+        <div class="flex flex-col gap-2 w-full">
+          <Button @click="overlay.close('doc-common-drawer')">Confirmar</Button>
+          <Button variant="outline" @click="overlay.close('doc-common-drawer')">Cancelar</Button>
+        </div>
+      </template>
+    </CommonDrawer>
+  </div>
 </template>
-`;
+`

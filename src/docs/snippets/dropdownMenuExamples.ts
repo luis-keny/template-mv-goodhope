@@ -1,12 +1,6 @@
 export const dropdownMenuExamplesCode = `<script setup lang="ts">
-import { ref } from 'vue'
 import { Button } from '@/components/ui/button'
 import DynamicDropdownMenu, { type DropdownMenuItemType } from '@/components/ui/dropdown-menu/DynamicDropdownMenu.vue'
-
-const showStatusBar = ref(true)
-const showActivityBar = ref(false)
-const showPanel = ref(false)
-const position = ref('bottom')
 
 const menuItems: DropdownMenuItemType[] = [
   { type: 'label', label: 'My Account' },
@@ -38,10 +32,12 @@ const menuItems: DropdownMenuItemType[] = [
 </script>
 
 <template>
-  <DynamicDropdownMenu :items="menuItems" menu-class="w-56">
-    <Button variant="outline">
-      Open
-    </Button>
-  </DynamicDropdownMenu>
+  <div class="flex items-center justify-center">
+    <DynamicDropdownMenu :items="menuItems" menu-class="w-56">
+      <Button variant="outline">
+        Open
+      </Button>
+    </DynamicDropdownMenu>
+  </div>
 </template>
 `

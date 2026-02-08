@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DatePicker from '@/components/common/DatePicker.vue'
 import { today, startOfMonth, getLocalTimeZone } from '@internationalized/date'
 
@@ -11,14 +10,10 @@ const selected = ref()
 </script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Date Picker</CardTitle>
-      <CardDescription>Selecciona una fecha dentro del rango permitido</CardDescription>
-    </CardHeader>
-    <CardContent class="space-y-4">
-      <DatePicker v-model="selected" :min-value="min" :max-value="max" />
-      <div class="text-sm text-muted-foreground">Seleccionado: {{ selected ? selected.toString() : 'ninguno' }}</div>
-    </CardContent>
-  </Card>
+  <div class="flex flex-col items-center gap-4 w-full max-w-sm">
+    <DatePicker v-model="selected" :min-value="min" :max-value="max" />
+    <div class="text-sm text-muted-foreground italic">
+      Seleccionado: {{ selected ? selected.toString() : 'ninguno' }}
+    </div>
+  </div>
 </template>

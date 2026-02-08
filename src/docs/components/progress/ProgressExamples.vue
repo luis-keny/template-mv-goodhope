@@ -14,6 +14,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <Progress :model-value="progress" class="w-[60%]" />
+  <div class="flex justify-center w-full">
+    <Progress :model-value="progress" class="w-full max-w-md" />
+  </div>
 </template>
 

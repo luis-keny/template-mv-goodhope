@@ -4,55 +4,31 @@ import CommonDialogExample from './CommonDialogExample.vue'
 import { dialogExamplesCode } from '@/docs/snippets/dialogExamples'
 import { commonDialogExampleCode } from '@/docs/snippets/commonDialogExample'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { ref } from 'vue'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-
-const copied = ref(false)
-const copy = async () => {
-  await navigator.clipboard.writeText(dialogExamplesCode)
-  copied.value = true
-  setTimeout(() => (copied.value = false), 1200)
-}
 </script>
 
 <template>
-  <div class="space-y-6">
-    <DialogExamples />
-    <CommonDialogExample />
-    
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente (Básico)</CardTitle>
-          <CardDescription>Uso estándar de Radix</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="dialogExamplesCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+  <div class="space-y-10">
+    <section>
+      <h2 class="text-2xl font-semibold mb-2">Dialog</h2>
+      <p class="text-muted-foreground mb-6">
+        Una ventana superpuesta que enfoca la atención del usuario en una tarea o información específica.
+      </p>
+      <DocExampleContainer :code="dialogExamplesCode">
+        <DialogExamples />
+      </DocExampleContainer>
+    </section>
 
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente (Common)</CardTitle>
-          <CardDescription>Uso con el Store centralizado</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="commonDialogExampleCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+    <section>
+      <h3 class="text-xl font-medium mb-2">Diálogo Reutilizable (Common)</h3>
+      <p class="text-muted-foreground mb-6">
+        Uso de CommonDialog con el store centralizado para manejar datos dinámicos y estados globales.
+      </p>
+      <DocExampleContainer :code="commonDialogExampleCode">
+        <CommonDialogExample />
+      </DocExampleContainer>
+    </section>
 
     <Card>
       <CardHeader>

@@ -4,55 +4,32 @@ import CommonSheetExample from './CommonSheetExample.vue'
 import { sheetExamplesCode } from '@/docs/snippets/sheetExamples'
 import { commonSheetExampleCode } from '@/docs/snippets/commonSheetExample'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { ref } from 'vue'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-
-const copied = ref(false)
-const copy = async () => {
-  await navigator.clipboard.writeText(sheetExamplesCode)
-  copied.value = true
-  setTimeout(() => (copied.value = false), 1200)
-}
 </script>
 
 <template>
-  <div class="space-y-6">
-    <SheetExamples />
-    <CommonSheetExample />
-    
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente (Básico)</CardTitle>
-          <CardDescription>Uso estándar de Radix</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="sheetExamplesCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+  <div class="space-y-10">
+    <section>
+      <h2 class="text-2xl font-bold tracking-tight mb-2">Sheet Básico</h2>
+      <p class="text-muted-foreground mb-6">
+        Uso estándar del componente Sheet de Radix Vue / Shadcn UI para diálogos laterales.
+      </p>
+      <DocExampleContainer :code="sheetExamplesCode">
+        <SheetExamples />
+      </DocExampleContainer>
+    </section>
 
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente (Common)</CardTitle>
-          <CardDescription>Uso con el Store centralizado</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="commonSheetExampleCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+    <section>
+      <h2 class="text-2xl font-bold tracking-tight mb-2">CommonSheet</h2>
+      <p class="text-muted-foreground mb-6">
+        Uso de CommonSheet para navegación lateral o paneles de configuración persistentes mediante el Store centralizado.
+      </p>
+      <DocExampleContainer :code="commonSheetExampleCode">
+        <CommonSheetExample />
+      </DocExampleContainer>
+    </section>
+
     <Card>
       <CardHeader>
         <CardTitle>API</CardTitle>

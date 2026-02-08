@@ -6,26 +6,31 @@ import CommonDialog from '@/components/common/CommonDialog.vue'
 const overlay = useOverlayStore()
 
 const openDialog = () => {
-  overlay.open('my-dialog-id', { title: 'Hola Mundo' })
+  overlay.open('doc-common-dialog', {
+    user: { name: 'John Doe', email: 'john@example.com' }
+  })
 }
 </script>
 
 <template>
-  <Button @click="openDialog">Abrir Diálogo</Button>
+  <div class="flex items-center justify-center">
+    <Button variant="outline" @click="openDialog">Ver Perfil de Usuario</Button>
 
-  <CommonDialog 
-    id="my-dialog-id" 
-    title="Mi Diálogo" 
-    description="Descripción de ejemplo"
-  >
-    <template #default="{ data }">
-      <p>Contenido dinámico: {{ data?.title }}</p>
-    </template>
-    <template #footer>
-      <Button variant="secondary" @click="overlay.close('my-dialog-id')">
-        Entendido
-      </Button>
-    </template>
-  </CommonDialog>
+    <CommonDialog 
+      id="doc-common-dialog" 
+      title="Información del Usuario" 
+      description="Detalles recuperados desde el store."
+    >
+      <template #default="{ data }">
+        <div class="py-4 space-y-2">
+          <p><strong>Nombre:</strong> {{ data?.user?.name }}</p>
+          <p><strong>Email:</strong> {{ data?.user?.email }}</p>
+        </div>
+      </template>
+      <template #footer>
+        <Button @click="overlay.close('doc-common-dialog')">Cerrar</Button>
+      </template>
+    </CommonDialog>
+  </div>
 </template>
-`;
+`

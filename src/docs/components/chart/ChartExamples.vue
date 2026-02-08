@@ -5,13 +5,6 @@ import type {
 
 import { VisAxis, VisGroupedBar, VisXYContainer } from "@unovis/vue"
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import {
   ChartContainer,
   ChartCrosshair,
   ChartTooltip,
@@ -139,13 +132,13 @@ const total = computed(() => ({
 </script>
 
 <template>
-  <Card class="py-4 sm:py-0">
-    <CardHeader class="flex flex-col items-stretch border-b !p-0 sm:flex-row">
+  <div class="w-full">
+    <div class="flex flex-col items-stretch border-b !p-0 sm:flex-row">
       <div class="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6 w-fit">
-        <CardTitle class="w-fit">Bar Chart - Interactive</CardTitle>
-        <CardDescription class="w-fit">
+        <h3 class="text-lg font-semibold w-fit">Bar Chart - Interactive</h3>
+        <p class="text-sm text-muted-foreground w-fit">
           Showing total visitors for the last 3 months
-        </CardDescription>
+        </p>
       </div>
       <div class="flex">
         <button
@@ -163,8 +156,8 @@ const total = computed(() => ({
           </span>
         </button>
       </div>
-    </CardHeader>
-    <CardContent class="px-2 sm:p-6">
+    </div>
+    <div class="px-2 pt-4 sm:p-6">
       <ChartContainer :config="chartConfig" class="aspect-auto h-[250px] w-full" cursor>
         <VisXYContainer
           :data="chartData"
@@ -213,6 +206,6 @@ const total = computed(() => ({
           />
         </VisXYContainer>
       </ChartContainer>
-    </CardContent>
-  </Card>
+    </div>
+  </div>
 </template>

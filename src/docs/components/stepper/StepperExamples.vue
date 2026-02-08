@@ -3,7 +3,6 @@ import { BookUser, CreditCard, Truck } from 'lucide-vue-next'
 import {
   DynamicStepper
 } from '@/components/ui/stepper'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 const steps = [
   {
@@ -33,15 +32,7 @@ const steps = [
 </script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Stepper</CardTitle>
-      <CardDescription>
-        Un componente para mostrar el progreso a través de una secuencia de pasos numerados.
-      </CardDescription>
-    </CardHeader>
-    <CardContent class="flex justify-center p-6">
-      <DynamicStepper :steps="steps" />
-    </CardContent>
-  </Card>
+  <div class="flex justify-center w-full max-w-2xl mx-auto">
+    <DynamicStepper :steps="steps" />
+  </div>
 </template>

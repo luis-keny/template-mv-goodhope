@@ -4,54 +4,31 @@ import { datePickerExamplesCode } from '@/docs/snippets/datePickerExamples'
 import DatePickerMonthYearExample from './DatePickerMonthYearExample.vue'
 import { datePickerMonthYearCode } from '@/docs/snippets/datePickerMonthYear'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
-import { ref } from 'vue'
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-
-const copied = ref(false)
-const copy = async () => {
-  await navigator.clipboard.writeText(datePickerExamplesCode)
-  copied.value = true
-  setTimeout(() => (copied.value = false), 1200)
-}
 </script>
 
 <template>
-  <div class="space-y-6">
-    <DatePickerExamples />
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente</CardTitle>
-          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="datePickerExamplesCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+  <div class="space-y-10">
+    <section>
+      <h2 class="text-2xl font-semibold mb-2">Date Picker</h2>
+      <p class="text-muted-foreground mb-6">
+        Un componente de selección de fecha que permite a los usuarios elegir una fecha única de un calendario desplegable.
+      </p>
+      <DocExampleContainer :code="datePickerExamplesCode">
+        <DatePickerExamples />
+      </DocExampleContainer>
+    </section>
 
-    <DatePickerMonthYearExample />
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente (Mes y Año)</CardTitle>
-          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="datePickerMonthYearCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+    <section>
+      <h3 class="text-xl font-medium mb-2">Mes y Año</h3>
+      <p class="text-muted-foreground mb-6">
+        Variación con selectores de mes y año integrados para una navegación más rápida.
+      </p>
+      <DocExampleContainer :code="datePickerMonthYearCode">
+        <DatePickerMonthYearExample />
+      </DocExampleContainer>
+    </section>
 
     <Card>
       <CardHeader>
