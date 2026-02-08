@@ -66,5 +66,4 @@ export const components = [
   { title: "Toggle", url: "/docs/components/toggle" },
   { title: "Toggle Group", url: "/docs/components/toggle-group" },
   { title: "Tooltip", url: "/docs/components/tooltip" },
-  { title: "Typography", url: "/docs/components/typography" },
 ];
