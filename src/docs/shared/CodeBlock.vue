@@ -67,11 +67,11 @@ const copy = async () => {
       </Tooltip>
     </TooltipProvider>
     
-    <div class="flex">
+    <div class="flex max-h-[400px] overflow-y-auto no-scrollbar">
       <div v-if="showLineNumbers" aria-hidden="true" class="mr-4 select-none text-right text-neutral-400">
         <span class="block" v-for="n in lineCount" :key="n">{{ n }}</span>
       </div>
-      <div class="overflow-x-auto no-scrollbar">
+      <div class="overflow-x-auto h-full no-scrollbar">
         <pre class="m-0" v-html="html"></pre>
       </div>
     </div>
