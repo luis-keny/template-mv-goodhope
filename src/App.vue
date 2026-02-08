@@ -102,7 +102,7 @@ const breadcrumbItems = computed(() => {
           </SidebarGroup>
         </SidebarContent>
       </Sidebar>
-    <main class="flex-1 overflow-x-hidden">
+    <main class="flex-1 overflow-x-hidden h-screen overflow-y-auto">
       <SidebarInset>
         <header class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 sticky top-0 z-10 bg-transparent backdrop-blur-sm">
           <div class="flex items-center gap-2 px-4">
