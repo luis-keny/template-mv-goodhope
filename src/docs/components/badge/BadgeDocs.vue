@@ -7,15 +7,12 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 </script>
 
 <template>
-  <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold tracking-tight">Badge</h2>
-      <p class="text-muted-foreground">
-        Muestra una insignia o un componente similar a una etiqueta.
-      </p>
-    </div>
-
-    <DocExampleContainer :code="badgeExamplesCode">
+  <div class="space-y-10">
+    <DocExampleContainer 
+      :code="badgeExamplesCode"
+      title="Badge"
+      description="Un pequeño elemento visual para mostrar estados, etiquetas o recuentos numéricos."
+    >
       <BadgeExamples />
     </DocExampleContainer>
 

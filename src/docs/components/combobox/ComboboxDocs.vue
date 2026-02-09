@@ -11,25 +11,21 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Combobox</h2>
-      <p class="text-muted-foreground mb-6">
-        Un componente de selección con búsqueda integrada y popover.
-      </p>
-      <DocExampleContainer :code="comboboxExamplesCode">
-        <ComboboxExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer 
+      :code="comboboxExamplesCode"
+      title="Combobox"
+      description="Un componente que combina un input de texto con una lista de opciones filtrable."
+    >
+      <ComboboxExamples />
+    </DocExampleContainer>
 
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Evento Change</h2>
-      <p class="text-muted-foreground mb-6">
-        Ejemplo de cómo manejar el evento change para disparar acciones adicionales.
-      </p>
-      <DocExampleContainer :code="comboboxOnChangeCode">
-        <ComboboxOnChangeExample />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer 
+      :code="comboboxOnChangeCode"
+      title="Evento On Change"
+      description="Uso del evento @change para ejecutar acciones personalizadas al seleccionar una opción."
+    >
+      <ComboboxOnChangeExample />
+    </DocExampleContainer>
 
     <Sonner />
 

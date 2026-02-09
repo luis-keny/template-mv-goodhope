@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Progress</h2>
-      <p class="text-muted-foreground mb-6">
-        Muestra un indicador visual del progreso de una tarea o proceso.
-      </p>
-      <DocExampleContainer :code="progressExamplesCode">
-        <ProgressExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="progressExamplesCode">
+      <ProgressExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

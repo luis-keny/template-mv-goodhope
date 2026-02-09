@@ -8,13 +8,6 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-semibold tracking-tight">Stepper</h2>
-      <p class="text-muted-foreground">
-        Un componente para mostrar el progreso a través de una secuencia de pasos numerados.
-      </p>
-    </div>
-
     <DocExampleContainer 
       :code="stepperExamplesCode"
     >

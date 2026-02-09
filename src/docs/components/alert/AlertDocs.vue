@@ -7,15 +7,12 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 </script>
 
 <template>
-  <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold tracking-tight">Alert</h2>
-      <p class="text-muted-foreground">
-        Muestra un mensaje de llamada a la acción para la atención del usuario.
-      </p>
-    </div>
-
-    <DocExampleContainer :code="alertExamplesCode">
+  <div class="space-y-10">
+    <DocExampleContainer 
+      :code="alertExamplesCode"
+      title="Alert"
+      description="Muestra mensajes de información, advertencia o error de forma destacada."
+    >
       <AlertExamples />
     </DocExampleContainer>
 

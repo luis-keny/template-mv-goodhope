@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Scroll Area</h2>
-      <p class="text-muted-foreground mb-6">
-        Aumenta las áreas de desplazamiento nativas con estilos personalizados y compatibilidad entre navegadores.
-      </p>
-      <DocExampleContainer :code="scrollAreaExamplesCode">
-        <ScrollAreaExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="scrollAreaExamplesCode">
+      <ScrollAreaExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

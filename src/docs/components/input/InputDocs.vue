@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Input</h2>
-      <p class="text-muted-foreground mb-6">
-        Un campo de entrada de texto que permite a los usuarios introducir y editar datos.
-      </p>
-      <DocExampleContainer :code="inputExamplesCode">
-        <InputExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="inputExamplesCode">
+      <InputExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

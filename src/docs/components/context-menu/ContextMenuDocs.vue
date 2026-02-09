@@ -8,15 +8,13 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Context Menu</h2>
-      <p class="text-muted-foreground mb-6">
-        Muestra un menú contextual al hacer clic derecho sobre un área específica.
-      </p>
-      <DocExampleContainer :code="contextMenuExamplesCode">
-        <ContextMenuExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer 
+      :code="contextMenuExamplesCode"
+      title="Context Menu"
+      description="Menú que aparece al hacer clic derecho sobre un elemento."
+    >
+      <ContextMenuExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

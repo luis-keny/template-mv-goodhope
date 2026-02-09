@@ -8,13 +8,6 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold tracking-tight">Checkbox</h2>
-      <p class="text-muted-foreground">
-        Un control que permite al usuario seleccionar una o más opciones de un conjunto.
-      </p>
-    </div>
-
     <DocExampleContainer :code="checkboxExamplesCode">
       <CheckboxExamples />
     </DocExampleContainer>

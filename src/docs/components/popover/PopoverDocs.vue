@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Popover</h2>
-      <p class="text-muted-foreground mb-6">
-        Muestra contenido enriquecido en un contenedor flotante que aparece al interactuar con un elemento.
-      </p>
-      <DocExampleContainer :code="popoverExamplesCode">
-        <PopoverExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="popoverExamplesCode">
+      <PopoverExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

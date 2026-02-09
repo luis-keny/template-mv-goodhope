@@ -8,16 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-bold tracking-tight mb-2">Slider</h2>
-      <p class="text-muted-foreground mb-6">
-        Un control de entrada que permite al usuario seleccionar un valor dentro de un rango.
-      </p>
-
-      <DocExampleContainer :code="sliderExamplesCode">
-        <SliderExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="sliderExamplesCode">
+      <SliderExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

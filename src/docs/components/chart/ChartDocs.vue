@@ -8,13 +8,6 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold tracking-tight">Chart</h2>
-      <p class="text-muted-foreground">
-        Gráficos interactivos construidos sobre Unovis para la visualización de datos.
-      </p>
-    </div>
-
     <DocExampleContainer :code="chartExamplesCode" minHeight="450px">
       <ChartExamples />
     </DocExampleContainer>

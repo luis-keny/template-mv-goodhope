@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import NativeSelectExamples from './NativeSelectExamples.vue'
-import { nativeSelectExamplesCode, nativeSelectDynamicComponentCode } from '@/docs/snippets/nativeSelectExamples'
+import { nativeSelectDynamicComponentCode } from '@/docs/snippets/nativeSelectExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Native Select</h2>
-      <p class="text-muted-foreground mb-6">
-        Un componente de selección nativo del navegador, estilizado para coincidir con el sistema de diseño.
-      </p>
-      <DocExampleContainer :code="[nativeSelectExamplesCode, nativeSelectDynamicComponentCode]" :language="['vue', 'vue']">
-        <NativeSelectExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="nativeSelectDynamicComponentCode" :language="['vue', 'vue']">
+      <NativeSelectExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

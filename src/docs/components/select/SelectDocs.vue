@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Select</h2>
-      <p class="text-muted-foreground mb-6">
-        Permite a los usuarios elegir un valor de una lista de opciones.
-      </p>
-      <DocExampleContainer :code="selectExamplesCode">
-        <SelectExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="selectExamplesCode">
+      <SelectExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

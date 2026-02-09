@@ -7,15 +7,13 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 </script>
 
 <template>
-  <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold tracking-tight">Breadcrumb</h2>
-      <p class="text-muted-foreground">
-        Muestra la ruta de la página actual, facilitando la navegación hacia arriba en la jerarquía.
-      </p>
-    </div>
-
-    <DocExampleContainer :code="breadcrumbExamplesCode" minHeight="450px">
+  <div class="space-y-10">
+    <DocExampleContainer 
+      :code="breadcrumbExamplesCode" 
+      minHeight="450px"
+      title="Breadcrumb"
+      description="Una ruta de navegación que permite a los usuarios visualizar la jerarquía de la página actual."
+    >
       <BreadcrumbExamples />
     </DocExampleContainer>
 

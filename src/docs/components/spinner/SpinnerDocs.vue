@@ -8,13 +8,6 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-semibold tracking-tight">Spinner</h2>
-      <p class="text-muted-foreground">
-        Un indicador de carga simple y personalizable para mostrar estados de espera.
-      </p>
-    </div>
-
     <DocExampleContainer 
       :code="spinnerExamplesCode"
     >

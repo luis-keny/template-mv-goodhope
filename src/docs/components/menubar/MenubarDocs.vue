@@ -9,15 +9,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Menubar</h2>
-      <p class="text-muted-foreground mb-6">
-        Un menú persistente común en aplicaciones de escritorio que proporciona acceso rápido a un conjunto consistente de comandos.
-      </p>
-      <DocExampleContainer :code="menubarExamplesCode">
-        <MenubarExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="menubarExamplesCode">
+      <MenubarExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

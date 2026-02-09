@@ -8,13 +8,6 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-semibold tracking-tight">Tabs</h2>
-      <p class="text-muted-foreground">
-        Un conjunto de secciones de contenido en capas (paneles) que se muestran de una en una.
-      </p>
-    </div>
-
     <DocExampleContainer 
       :code="tabsExamplesCode"
     >

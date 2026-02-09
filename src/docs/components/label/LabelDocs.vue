@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Label</h2>
-      <p class="text-muted-foreground mb-6">
-        Muestra una etiqueta accesible para un elemento de formulario.
-      </p>
-      <DocExampleContainer :code="labelExamplesCode">
-        <LabelExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="labelExamplesCode">
+      <LabelExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

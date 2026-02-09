@@ -8,15 +8,14 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Command</h2>
-      <p class="text-muted-foreground mb-6">
-        Interfaz de línea de comandos rápida, componible y sin estilos para buscar y filtrar.
-      </p>
-      <DocExampleContainer :code="commandExamplesCode" minHeight="450px">
-        <CommandExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer 
+      :code="commandExamplesCode" 
+      minHeight="450px"
+      title="Command"
+      description="Una interfaz de línea de comandos para realizar acciones rápidas."
+    >
+      <CommandExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

@@ -10,25 +10,13 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Date Picker</h2>
-      <p class="text-muted-foreground mb-6">
-        Un componente de selección de fecha que permite a los usuarios elegir una fecha única de un calendario desplegable.
-      </p>
-      <DocExampleContainer :code="datePickerExamplesCode">
-        <DatePickerExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="datePickerExamplesCode" title="Date Picker" description="Un componente de selección de fecha que permite a los usuarios elegir una fecha única de un calendario desplegable.">
+      <DatePickerExamples />
+    </DocExampleContainer>
 
-    <section>
-      <h3 class="text-xl font-medium mb-2">Mes y Año</h3>
-      <p class="text-muted-foreground mb-6">
-        Variación con selectores de mes y año integrados para una navegación más rápida.
-      </p>
-      <DocExampleContainer :code="datePickerMonthYearCode">
-        <DatePickerMonthYearExample />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="datePickerMonthYearCode" title="Mes y Año" description="Variación con selectores de mes y año integrados para una navegación más rápida.">
+      <DatePickerMonthYearExample />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

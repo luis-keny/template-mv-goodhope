@@ -10,25 +10,13 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Reportar Error (Validación Compleja)</h2>
-      <p class="text-muted-foreground mb-6">
-        Ejemplo de un formulario con validación compleja utilizando VeeValidate y Zod, con manejo de estados de error y descripciones.
-      </p>
-      <DocExampleContainer :code="fieldExamplesComplexCode" minHeight="500px">
-        <FieldExamplesComplex />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="fieldExamplesComplexCode" minHeight="500px">
+      <FieldExamplesComplex />
+    </DocExampleContainer>
 
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Edición de Usuario (Múltiples Inputs)</h2>
-      <p class="text-muted-foreground mb-6">
-        Muestra cómo integrar diferentes tipos de controles (Input, Checkbox, Select, Radio) dentro de un mismo FieldGroup.
-      </p>
-      <DocExampleContainer :code="fieldExamplesSimpleCode" minHeight="600px">
-        <FieldExamplesSimple />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="fieldExamplesSimpleCode" minHeight="600px">
+      <FieldExamplesSimple />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

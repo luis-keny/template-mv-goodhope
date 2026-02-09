@@ -8,16 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-bold tracking-tight mb-2">Sonner (Toasts)</h2>
-      <p class="text-muted-foreground mb-6">
-        Notificaciones ligeras y configurables para mostrar mensajes informativos, de éxito o error.
-      </p>
-
-      <DocExampleContainer :code="sonnerExamplesCode">
-        <SonnerExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="sonnerExamplesCode">
+      <SonnerExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

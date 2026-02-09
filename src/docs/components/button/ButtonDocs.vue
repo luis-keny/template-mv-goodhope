@@ -7,15 +7,12 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 </script>
 
 <template>
-  <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold tracking-tight">Button</h2>
-      <p class="text-muted-foreground">
-        Botones interactivos con soporte para diferentes variantes, tamaños y estados.
-      </p>
-    </div>
-
-    <DocExampleContainer :code="buttonExamplesCode">
+  <div class="space-y-10">
+    <DocExampleContainer 
+      :code="buttonExamplesCode"
+      title="Button"
+      description="Un elemento interactivo utilizado para disparar acciones o navegar entre páginas."
+    >
       <ButtonExamples />
     </DocExampleContainer>
 

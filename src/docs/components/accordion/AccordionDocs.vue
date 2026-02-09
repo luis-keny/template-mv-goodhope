@@ -7,15 +7,12 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 </script>
 
 <template>
-  <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold tracking-tight">Accordion</h2>
-      <p class="text-muted-foreground">
-        Un componente de acordeón que permite expandir y colapsar secciones de contenido.
-      </p>
-    </div>
-    
-    <DocExampleContainer :code="accordionExamplesCode">
+  <div class="space-y-10">
+    <DocExampleContainer 
+      :code="accordionExamplesCode"
+      title="Accordion"
+      description="Un conjunto de paneles de contenido apilados verticalmente que se pueden expandir o contraer."
+    >
       <AccordionExamples />
     </DocExampleContainer>
 

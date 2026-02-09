@@ -8,13 +8,6 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold tracking-tight">Collapsible</h2>
-      <p class="text-muted-foreground">
-        Un componente interactivo que expande y colapsa un panel de contenido.
-      </p>
-    </div>
-
     <DocExampleContainer :code="collapsibleExamplesCode">
       <CollapsibleExamples />
     </DocExampleContainer>

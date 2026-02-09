@@ -7,15 +7,12 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 </script>
 
 <template>
-  <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold tracking-tight">Card</h2>
-      <p class="text-muted-foreground">
-        Muestra contenido en un contenedor estructurado con encabezado, cuerpo y pie.
-      </p>
-    </div>
-
-    <DocExampleContainer :code="cardExamplesCode">
+  <div class="space-y-10">
+    <DocExampleContainer 
+      :code="cardExamplesCode"
+      title="Card"
+      description="Un contenedor versátil para agrupar contenido relacionado, como texto, imágenes y acciones."
+    >
       <CardExamples />
     </DocExampleContainer>
 

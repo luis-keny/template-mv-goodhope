@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import DialogExamples from './DialogExamples.vue'
 import CommonDialogExample from './CommonDialogExample.vue'
-import { dialogExamplesCode } from '@/docs/snippets/dialogExamples'
 import { commonDialogExampleCode } from '@/docs/snippets/commonDialogExample'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
@@ -10,25 +8,13 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Dialog</h2>
-      <p class="text-muted-foreground mb-6">
-        Una ventana superpuesta que enfoca la atención del usuario en una tarea o información específica.
-      </p>
-      <DocExampleContainer :code="dialogExamplesCode">
-        <DialogExamples />
-      </DocExampleContainer>
-    </section>
-
-    <section>
-      <h3 class="text-xl font-medium mb-2">Diálogo Reutilizable (Common)</h3>
-      <p class="text-muted-foreground mb-6">
-        Uso de CommonDialog con el store centralizado para manejar datos dinámicos y estados globales.
-      </p>
-      <DocExampleContainer :code="commonDialogExampleCode">
-        <CommonDialogExample />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer 
+      :code="commonDialogExampleCode"
+      title="Diálogo Reutilizable (Common)"
+      description="Uso de CommonDialog con el store centralizado para manejar datos dinámicos y estados globales."
+    >
+      <CommonDialogExample />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

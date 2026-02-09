@@ -7,15 +7,12 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 </script>
 
 <template>
-  <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold tracking-tight">Aspect Ratio</h2>
-      <p class="text-muted-foreground">
-        Muestra contenido dentro de una proporción deseada.
-      </p>
-    </div>
-
-    <DocExampleContainer :code="aspectRatioExamplesCode">
+  <div class="space-y-10">
+    <DocExampleContainer 
+      :code="aspectRatioExamplesCode"
+      title="Aspect Ratio"
+      description="Muestra contenido con una relación de aspecto específica."
+    >
       <AspectRatioExamples />
     </DocExampleContainer>
 

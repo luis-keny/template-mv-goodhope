@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Item</h2>
-      <p class="text-muted-foreground mb-6">
-        Un componente flexible para mostrar elementos de lista con contenido, medios y acciones.
-      </p>
-      <DocExampleContainer :code="itemExamplesCode">
-        <ItemExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="itemExamplesCode">
+      <ItemExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

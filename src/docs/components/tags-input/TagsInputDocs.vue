@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-8">
-    <div>
-      <h2 class="text-2xl font-semibold tracking-tight">Ejemplo</h2>
-      <p class="text-muted-foreground mb-4">
-        Un input para gestionar una lista de etiquetas.
-      </p>
-      <DocExampleContainer :code="tagsInputExamplesCode">
-        <TagsInputExamples />
-      </DocExampleContainer>
-    </div>
+    <DocExampleContainer :code="tagsInputExamplesCode">
+      <TagsInputExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

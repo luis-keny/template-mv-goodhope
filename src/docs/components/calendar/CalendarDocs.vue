@@ -7,15 +7,13 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 </script>
 
 <template>
-  <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold tracking-tight">Calendar</h2>
-      <p class="text-muted-foreground">
-        Un componente de calendario optimizado para la selección de fechas y visualización de meses.
-      </p>
-    </div>
-
-    <DocExampleContainer :code="calendarExamplesCode" minHeight="400px">
+  <div class="space-y-10">
+    <DocExampleContainer 
+      :code="calendarExamplesCode" 
+      minHeight="400px"
+      title="Calendar"
+      description="Un componente de calendario con todas las funciones que permite a los usuarios seleccionar fechas y navegar por meses."
+    >
       <CalendarExamples />
     </DocExampleContainer>
 

@@ -8,16 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-bold tracking-tight mb-2">Skeleton</h2>
-      <p class="text-muted-foreground mb-6">
-        Se usa para mostrar un estado de carga mientras se espera que se cargue el contenido.
-      </p>
-
-      <DocExampleContainer :code="skeletonExamplesCode">
-        <SkeletonExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="skeletonExamplesCode">
+      <SkeletonExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

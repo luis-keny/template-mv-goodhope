@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Kbd</h2>
-      <p class="text-muted-foreground mb-6">
-        Muestra atajos de teclado o teclas específicas en una interfaz de usuario.
-      </p>
-      <DocExampleContainer :code="kbdExamplesCode">
-        <KbdExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="kbdExamplesCode">
+      <KbdExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

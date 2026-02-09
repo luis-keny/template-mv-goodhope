@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Radio Group</h2>
-      <p class="text-muted-foreground mb-6">
-        Un conjunto de botones de radio donde solo se puede seleccionar un item a la vez.
-      </p>
-      <DocExampleContainer :code="radioGroupExamplesCode">
-        <RadioGroupExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="radioGroupExamplesCode">
+      <RadioGroupExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

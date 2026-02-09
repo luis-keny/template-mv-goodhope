@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Number Field</h2>
-      <p class="text-muted-foreground mb-6">
-        Un campo de entrada numérico con controles de incremento y decremento.
-      </p>
-      <DocExampleContainer :code="numberFieldExamplesCode">
-        <NumberFieldExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="numberFieldExamplesCode">
+      <NumberFieldExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

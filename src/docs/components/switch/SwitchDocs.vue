@@ -8,13 +8,6 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-semibold tracking-tight">Switch</h2>
-      <p class="text-muted-foreground">
-        Un control que permite al usuario alternar entre estados activado y desactivado.
-      </p>
-    </div>
-
     <DocExampleContainer 
       :code="switchExamplesCode"
     >

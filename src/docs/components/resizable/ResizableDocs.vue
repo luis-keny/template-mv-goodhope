@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Resizable</h2>
-      <p class="text-muted-foreground mb-6">
-        Grupos de paneles redimensionables accesibles que permiten layouts flexibles.
-      </p>
-      <DocExampleContainer :code="resizableExamplesCode">
-        <ResizableExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="resizableExamplesCode">
+      <ResizableExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

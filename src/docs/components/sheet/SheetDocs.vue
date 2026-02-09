@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import SheetExamples from './SheetExamples.vue'
 import CommonSheetExample from './CommonSheetExample.vue'
-import { sheetExamplesCode } from '@/docs/snippets/sheetExamples'
 import { commonSheetExampleCode } from '@/docs/snippets/commonSheetExample'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
@@ -10,25 +8,10 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-bold tracking-tight mb-2">Sheet Básico</h2>
-      <p class="text-muted-foreground mb-6">
-        Uso estándar del componente Sheet de Radix Vue / Shadcn UI para diálogos laterales.
-      </p>
-      <DocExampleContainer :code="sheetExamplesCode">
-        <SheetExamples />
-      </DocExampleContainer>
-    </section>
 
-    <section>
-      <h2 class="text-2xl font-bold tracking-tight mb-2">CommonSheet</h2>
-      <p class="text-muted-foreground mb-6">
-        Uso de CommonSheet para navegación lateral o paneles de configuración persistentes mediante el Store centralizado.
-      </p>
-      <DocExampleContainer :code="commonSheetExampleCode">
-        <CommonSheetExample />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="commonSheetExampleCode">
+      <CommonSheetExample />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

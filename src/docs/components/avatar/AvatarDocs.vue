@@ -7,15 +7,12 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 </script>
 
 <template>
-  <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold tracking-tight">Avatar</h2>
-      <p class="text-muted-foreground">
-        Un elemento de imagen que representa al usuario o entidad.
-      </p>
-    </div>
-
-    <DocExampleContainer :code="avatarExamplesCode">
+  <div class="space-y-10">
+    <DocExampleContainer 
+      :code="avatarExamplesCode"
+      title="Avatar"
+      description="Un elemento visual que representa a un usuario mediante una imagen, iniciales o un icono de reserva."
+    >
       <AvatarExamples />
     </DocExampleContainer>
 

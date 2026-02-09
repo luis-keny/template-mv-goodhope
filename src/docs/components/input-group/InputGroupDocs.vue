@@ -7,6 +7,8 @@ import { ref } from 'vue'
 import CodeBlock from '@/docs/shared/CodeBlock.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
 
+import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
+
 const copied = ref(false)
 const copy = async () => {
   await navigator.clipboard.writeText(inputGroupExamplesCode)
@@ -16,24 +18,14 @@ const copy = async () => {
 </script>
 
 <template>
-  <div class="space-y-6">
-    <InputGroupExamples />
-    
-    <Card>
-      <CardHeader class="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Código Fuente</CardTitle>
-          <CardDescription>Copiar y pegar en tu proyecto</CardDescription>
-        </div>
-        <Button variant="outline" size="sm" @click="copy">
-          <span v-if="!copied">Copiar</span>
-          <span v-else>Copiado</span>
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <CodeBlock :code="inputGroupExamplesCode" language="vue" :showLineNumbers="true" />
-      </CardContent>
-    </Card>
+  <div class="space-y-10">
+    <DocExampleContainer 
+      :code="inputGroupExamplesCode"
+      title="Input Group"
+      description="Agrupa inputs con iconos, botones o texto adicional."
+    >
+      <InputGroupExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

@@ -7,15 +7,12 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 </script>
 
 <template>
-  <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold tracking-tight">Carousel</h2>
-      <p class="text-muted-foreground">
-        Un carrusel de movimiento con soporte para gestos táctiles y navegación.
-      </p>
-    </div>
-
-    <DocExampleContainer :code="carouselExamplesCode">
+  <div class="space-y-10">
+    <DocExampleContainer 
+      :code="carouselExamplesCode"
+      title="Carousel"
+      description="Un componente de carrusel interactivo que permite navegar a través de una serie de elementos de contenido."
+    >
       <CarouselExamples />
     </DocExampleContainer>
 

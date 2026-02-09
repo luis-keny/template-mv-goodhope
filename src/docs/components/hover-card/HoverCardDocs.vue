@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Hover Card</h2>
-      <p class="text-muted-foreground mb-6">
-        Permite a los usuarios videntes obtener una vista previa del contenido disponible detrás de un enlace al pasar el cursor.
-      </p>
-      <DocExampleContainer :code="hoverCardExamplesCode">
-        <HoverCardExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="hoverCardExamplesCode">
+      <HoverCardExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

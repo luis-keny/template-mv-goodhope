@@ -10,6 +10,9 @@ import { Badge } from '@/components/ui/badge'
       <Badge variant="secondary">
         Secondary
       </Badge>
+      <Badge variant="tertiary">
+        Tertiary
+      </Badge>
       <Badge variant="destructive">
         Destructive
       </Badge>
@@ -25,8 +28,8 @@ import { Badge } from '@/components/ui/badge'
         <BadgeCheckIcon class="mr-1 h-3 w-3" />
         Verified
       </Badge>
-      <Badge class="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums">
-        8
+      <Badge class="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums grid place-items-center">
+        <span>8</span>
       </Badge>
       <Badge
         class="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums"

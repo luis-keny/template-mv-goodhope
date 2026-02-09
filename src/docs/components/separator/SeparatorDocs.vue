@@ -8,16 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-bold tracking-tight mb-2">Separator</h2>
-      <p class="text-muted-foreground mb-6">
-        Utiliza el componente Separator para dividir visualmente secciones de contenido de forma clara y organizada.
-      </p>
-
-      <DocExampleContainer :code="separatorExamplesCode">
-        <SeparatorExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="separatorExamplesCode">
+      <SeparatorExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

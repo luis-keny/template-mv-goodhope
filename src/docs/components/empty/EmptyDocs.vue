@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Empty State</h2>
-      <p class="text-muted-foreground mb-6">
-        Muestra un estado vacío cuando no hay datos para mostrar, guiando al usuario sobre qué hacer a continuación.
-      </p>
-      <DocExampleContainer :code="emptyExamplesCode" minHeight="400px">
-        <EmptyExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="emptyExamplesCode" minHeight="400px">
+      <EmptyExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

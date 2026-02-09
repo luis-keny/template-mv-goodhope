@@ -7,15 +7,12 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 </script>
 
 <template>
-  <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold tracking-tight">Button Group</h2>
-      <p class="text-muted-foreground">
-        Agrupa una serie de botones juntos en una sola línea.
-      </p>
-    </div>
-
-    <DocExampleContainer :code="buttonGroupExamplesCode">
+  <div class="space-y-10">
+    <DocExampleContainer 
+      :code="buttonGroupExamplesCode"
+      title="Button Group"
+      description="Agrupa botones relacionados visualmente para indicar una acción común o navegación."
+    >
       <ButtonGroupExamples />
     </DocExampleContainer>
     

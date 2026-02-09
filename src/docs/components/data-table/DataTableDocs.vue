@@ -8,15 +8,14 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Data Table</h2>
-      <p class="text-muted-foreground mb-6">
-        Un componente de tabla potente y flexible construido sobre TanStack Table, que soporta ordenación, búsqueda, paginación y selección.
-      </p>
-      <DocExampleContainer :code="dataTableExamplesCode" minHeight="500px">
-        <DataTableExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer 
+      :code="dataTableExamplesCode" 
+      minHeight="500px"
+      title="Data Table"
+      description="Una tabla de datos potente y flexible construida sobre TanStack Table, con soporte para búsqueda, paginación y selección."
+    >
+      <DataTableExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

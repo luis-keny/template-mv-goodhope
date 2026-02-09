@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import AlertDialogExamples from './AlertDialogExamples.vue'
 import CommonAlertDialogExample from './CommonAlertDialogExample.vue'
-import { alertDialogExamplesCode } from '@/docs/snippets/alertDialogExamples'
 import { commonAlertDialogExampleCode } from '@/docs/snippets/commonAlertDialogExample'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
@@ -10,33 +8,14 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <!-- AlertDialog Básico -->
-    <section class="space-y-4">
-      <div>
-        <h2 class="text-2xl font-bold tracking-tight">AlertDialog</h2>
-        <p class="text-muted-foreground">
-          Un cuadro de diálogo modal que interrumpe al usuario con contenido importante y espera una respuesta.
-        </p>
-      </div>
 
-      <DocExampleContainer :code="alertDialogExamplesCode">
-        <AlertDialogExamples />
-      </DocExampleContainer>
-    </section>
-
-    <!-- CommonAlertDialog Reutilizable -->
-    <section class="space-y-4">
-      <div>
-        <h2 class="text-xl font-semibold tracking-tight">Alerta Reutilizable (Common)</h2>
-        <p class="text-muted-foreground">
-          Uso de CommonAlertDialog para confirmaciones críticas centralizadas mediante el overlay store.
-        </p>
-      </div>
-
-      <DocExampleContainer :code="commonAlertDialogExampleCode">
-        <CommonAlertDialogExample />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer 
+      :code="commonAlertDialogExampleCode"
+      title="Common Alert Dialog"
+      description="Una versión simplificada y reutilizable del diálogo de alerta gestionada por un store."
+    >
+      <CommonAlertDialogExample />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

@@ -8,15 +8,9 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Pagination</h2>
-      <p class="text-muted-foreground mb-6">
-        Un componente de paginación que permite a los usuarios navegar a través de una serie de páginas.
-      </p>
-      <DocExampleContainer :code="paginationExamplesCode">
-        <PaginationExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer :code="paginationExamplesCode">
+      <PaginationExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>

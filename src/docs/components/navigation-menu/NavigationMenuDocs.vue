@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import NavigationMenuExamples from './NavigationMenuExamples.vue'
-import { 
-  navigationMenuExamplesCode, 
-  reusableNavigationMenuCode, 
-  navigationListItemCode 
-} from '@/docs/snippets/navigationMenuExamples'
+import { reusableNavigationMenuCode } from '@/docs/snippets/navigationMenuExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
@@ -12,18 +8,12 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
 <template>
   <div class="space-y-10">
-    <section>
-      <h2 class="text-2xl font-semibold mb-2">Navigation Menu</h2>
-      <p class="text-muted-foreground mb-6">
-        Un menú de navegación responsivo con soporte para vistas previas de contenido.
-      </p>
-      <DocExampleContainer 
-        :code="[navigationMenuExamplesCode, reusableNavigationMenuCode, navigationListItemCode]" 
-        :language="['vue', 'vue', 'vue']"
-      >
-        <NavigationMenuExamples />
-      </DocExampleContainer>
-    </section>
+    <DocExampleContainer 
+      :code="reusableNavigationMenuCode" 
+      language="vue"
+    >
+      <NavigationMenuExamples />
+    </DocExampleContainer>
 
     <Card>
       <CardHeader>
