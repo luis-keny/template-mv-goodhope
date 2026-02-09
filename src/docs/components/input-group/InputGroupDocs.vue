@@ -2,19 +2,10 @@
 import InputGroupExamples from './InputGroupExamples.vue'
 import { inputGroupExamplesCode } from '@/docs/snippets/inputGroupExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { ref } from 'vue'
-import CodeBlock from '@/docs/shared/CodeBlock.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
 
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 
-const copied = ref(false)
-const copy = async () => {
-  await navigator.clipboard.writeText(inputGroupExamplesCode)
-  copied.value = true
-  setTimeout(() => (copied.value = false), 1200)
-}
 </script>
 
 <template>

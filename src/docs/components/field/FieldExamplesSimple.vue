@@ -12,7 +12,7 @@ import RadioGroup from '@/components/ui/radio-group/RadioGroup.vue'
 import RadioGroupItem from '@/components/ui/radio-group/RadioGroupItem.vue'
 import { reactive, watch, h } from 'vue'
 import { toast } from 'vue-sonner'
-import Sonner from '@/components/ui/sonner/Sonner.vue'
+import { Toaster } from '@/components/ui/sonner'
 
 type User = { name: string; email: string; subscribe: boolean; role: string; status: string }
 const existing: User = reactive({ name: 'Ada Lovelace', email: 'ada@example.com', subscribe: true, role: 'user', status: 'active' })
@@ -54,6 +54,7 @@ const onSubmit = handleSubmit((data) => {
 </script>
 
 <template>
+  <Toaster />
   <div class="w-full sm:max-w-md">
     <form @submit="onSubmit" class="space-y-4">
       <FieldGroup>
@@ -89,7 +90,7 @@ const onSubmit = handleSubmit((data) => {
             <FieldError v-if="errors.length" :errors="errors.map(e => ({ message: e }))" />
           </Field>
         </VeeField>
-        <VeeField v-slot="{ field, errors }" name="status">
+        <VeeField v-slot="{ errors }" name="status">
           <Field :data-invalid="!!errors.length">
             <FieldLabel>Status</FieldLabel>
             <RadioGroup v-model="existing.status" class="flex gap-4">

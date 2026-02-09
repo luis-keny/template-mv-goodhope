@@ -7,7 +7,7 @@ import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
-import Sonner from '@/components/ui/sonner/Sonner.vue'
+import { Toaster } from '@/components/ui/sonner'
 import Textarea from '@/components/ui/textarea/Textarea.vue'
 
 const formSchema = toTypedSchema(
@@ -44,6 +44,7 @@ const onSubmit = handleSubmit((data) => {
 </script>
 
 <template>
+  <Toaster />
   <div class="w-full sm:max-w-md">
     <form id="form-vee-demo" @submit="onSubmit">
       <FieldGroup>
