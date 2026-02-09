@@ -30,7 +30,7 @@
     <section class="space-y-2">
       <h2 class="text-xl font-semibold">Instalación</h2>
       <p class="text-sm text-muted-foreground">
-        Para configurar las plantillas o integrar componentes en un proyecto existente, sigue los pasos en la página de Instalación.
+        Para obtener las plantillas preparadas para comenzar a desarrollar, sigue los pasos en la página de Instalación.
       </p>
       <RouterLink
         to="/docs/installation"

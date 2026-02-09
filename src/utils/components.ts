@@ -1,7 +1,7 @@
 export const sections = [
-  { title: "Get Started", url: "/docs/introduction" },
+  { title: "Comenzar", url: "/docs/introduction" },
+  { title: "Instalación", url: "/docs/installation" },
   { title: "Components", url: "/docs/components" },
-  { title: "Installation", url: "/docs/installation" },
 ];
 
 // TODO: Fix the functionality of the components commented, as these components do not currently work in centBrowser.
