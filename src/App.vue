@@ -22,7 +22,6 @@ import CommandMenu from './components/command/CommandMenu.vue';
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { sections, components } from './utils/components';
-import { Github } from 'lucide-vue-next';
 import { Button } from './components/ui/button';
 
 
