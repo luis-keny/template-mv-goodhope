@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import type { ComponentMeta } from '../src/types/component-meta'
-import { componentRegistry } from '../src/data/component-registry'
-import { components } from '../src/utils/components'
+import type { ComponentMeta } from '../src/types/component-meta.ts'
+import { componentRegistry } from '../src/data/component-registry.ts'
+import { components } from '../src/utils/components.ts'
 
 // ---------------------------------------------------------------------------
 // URL lookup: map component title → URL from the nav registry
