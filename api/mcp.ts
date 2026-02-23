@@ -1,14 +1,19 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import type { ComponentMeta } from '../src/types/component-meta.ts'
-import { componentRegistry } from '../src/data/component-registry.ts'
-import { components } from '../src/utils/components.ts'
 
 // ---------------------------------------------------------------------------
-// URL lookup: map component title → URL from the nav registry
+// Types
 // ---------------------------------------------------------------------------
-const urlMap = new Map(components.map((c) => [c.title.toLowerCase(), c.url]))
+interface NavComponent {
+  title: string
+  url: string
+}
 
-function getUrl(meta: ComponentMeta): string {
+// ---------------------------------------------------------------------------
+// URL lookup
+// ---------------------------------------------------------------------------
+function getUrl(meta: ComponentMeta, components: NavComponent[]): string {
+  const urlMap = new Map(components.map((c) => [c.title.toLowerCase(), c.url]))
   return (
     urlMap.get(meta.name.toLowerCase()) ??
     `/docs/components/${meta.name.toLowerCase().replace(/ /g, '-')}`
@@ -16,7 +21,7 @@ function getUrl(meta: ComponentMeta): string {
 }
 
 // ---------------------------------------------------------------------------
-// Scoring: keyword match against description + useCases + keywords
+// Scoring
 // ---------------------------------------------------------------------------
 function score(meta: ComponentMeta, context: string): number {
   const terms = context.toLowerCase().split(/\W+/).filter(Boolean)
@@ -27,7 +32,7 @@ function score(meta: ComponentMeta, context: string): number {
 }
 
 // ---------------------------------------------------------------------------
-// find_component tool implementation
+// find_component tool
 // ---------------------------------------------------------------------------
 interface FindComponentMatch {
   name: string
@@ -37,7 +42,11 @@ interface FindComponentMatch {
   url: string
 }
 
-function findComponent(context: string): { matches: FindComponentMatch[]; message?: string } {
+function findComponent(
+  context: string,
+  componentRegistry: ComponentMeta[],
+  components: NavComponent[],
+): { matches: FindComponentMatch[]; message?: string } {
   if (!context.trim()) {
     return {
       matches: [],
@@ -54,7 +63,7 @@ function findComponent(context: string): { matches: FindComponentMatch[]; messag
       description: r.meta.description,
       useCases: r.meta.useCases,
       notFor: r.meta.notFor,
-      url: getUrl(r.meta),
+      url: getUrl(r.meta, components),
     }))
 
   if (results.length === 0) {
@@ -99,7 +108,11 @@ interface JsonRpcRequest {
   params?: Record<string, unknown>
 }
 
-function handleRpc(request: JsonRpcRequest): unknown {
+function handleRpc(
+  request: JsonRpcRequest,
+  componentRegistry: ComponentMeta[],
+  components: NavComponent[],
+): unknown {
   const { method, params, id } = request
 
   const ok = (result: unknown) => ({ jsonrpc: '2.0', id, result })
@@ -118,7 +131,6 @@ function handleRpc(request: JsonRpcRequest): unknown {
   }
 
   if (method === 'notifications/initialized') {
-    // Fire-and-forget notification — no response needed per JSON-RPC spec
     return null
   }
 
@@ -132,7 +144,7 @@ function handleRpc(request: JsonRpcRequest): unknown {
       return err(-32601, `Herramienta desconocida: ${toolParams?.name}`)
     }
     const context = (toolParams?.arguments?.context as string) ?? ''
-    const result = findComponent(context)
+    const result = findComponent(context, componentRegistry, components)
     return ok({
       content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
     })
@@ -142,10 +154,9 @@ function handleRpc(request: JsonRpcRequest): unknown {
 }
 
 // ---------------------------------------------------------------------------
-// Vercel Function entry point
+// Vercel Function entry point — dynamic imports to surface load errors
 // ---------------------------------------------------------------------------
-export default function handler(req: VercelRequest, res: VercelResponse) {
-  // CORS — allow any origin so Claude Code can reach the endpoint
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
@@ -158,17 +169,33 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method Not Allowed' })
   }
 
+  // Dynamic imports so any load error surfaces as JSON instead of 500
+  let componentRegistry: ComponentMeta[]
+  let components: NavComponent[]
+  try {
+    const reg = await import('../src/data/component-registry.ts')
+    componentRegistry = reg.componentRegistry
+    const nav = await import('../src/utils/components.ts')
+    components = nav.components
+  } catch (e: unknown) {
+    return res.status(500).json({
+      error: 'module_load_failed',
+      message: e instanceof Error ? e.message : String(e),
+      stack: e instanceof Error ? e.stack?.split('\n').slice(0, 8) : undefined,
+    })
+  }
+
   const body = req.body as JsonRpcRequest | JsonRpcRequest[]
 
-  // Support JSON-RPC batch (array) and single requests
   if (Array.isArray(body)) {
-    const responses = body.map(handleRpc).filter(Boolean)
+    const responses = body
+      .map((r) => handleRpc(r, componentRegistry, components))
+      .filter(Boolean)
     return res.status(200).json(responses)
   }
 
-  const response = handleRpc(body)
+  const response = handleRpc(body, componentRegistry, components)
   if (response === null) {
-    // Notification — return 204 with no body
     return res.status(204).end()
   }
   return res.status(200).json(response)
