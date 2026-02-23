@@ -6,6 +6,7 @@ import type {
   VisibilityState,
   RowSelectionState,
   Row,
+  TableMeta,
 } from '@tanstack/vue-table'
 import { cn } from '@/lib/utils'
 import {
@@ -59,6 +60,7 @@ const props = withDefaults(
     loading?: boolean
     funcFilter?: (row: Row<TData>, filterValue: string) => boolean
     maxHeight?: string
+     tableMeta?: TableMeta<TData>
   }>(),
   {
     search: false,
@@ -116,6 +118,7 @@ const paginationConfig = computed(() => {
 const table = useVueTable({
   get data() { return props.data },
   get columns() { return props.columns },
+  get meta() { return props.tableMeta },
   getCoreRowModel: getCoreRowModel(),
   getPaginationRowModel: getPaginationRowModel(),
   getSortedRowModel: getSortedRowModel(),

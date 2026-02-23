@@ -25,7 +25,7 @@ npm install
 npm run dev
 
 # TypeScript
-git clone https://github.com/your-org/template-goodhope-ts.git
+git clone https://github.com/luis-keny/template-goodhope-ts.git
 cd template-goodhope-ts
 npm install
 npm run dev</code></pre>

@@ -3,6 +3,8 @@ import DatePickerExamples from './DatePickerExamples.vue'
 import { datePickerExamplesCode } from '@/docs/snippets/datePickerExamples'
 import DatePickerMonthYearExample from './DatePickerMonthYearExample.vue'
 import { datePickerMonthYearCode } from '@/docs/snippets/datePickerMonthYear'
+import DatePickerTodayExample from './DatePickerTodayExample.vue'
+import { datePickerTodayCode } from '@/docs/snippets/datePickerToday'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
@@ -16,6 +18,10 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
 
     <DocExampleContainer :code="datePickerMonthYearCode" title="Mes y Año" description="Variación con selectores de mes y año integrados para una navegación más rápida.">
       <DatePickerMonthYearExample />
+    </DocExampleContainer>
+
+    <DocExampleContainer :code="datePickerTodayCode" title="Fecha Actual por Defecto" description="Ejemplo que muestra cómo inicializar el selector con la fecha del día de hoy utilizando @internationalized/date.">
+      <DatePickerTodayExample />
     </DocExampleContainer>
 
     <Card>

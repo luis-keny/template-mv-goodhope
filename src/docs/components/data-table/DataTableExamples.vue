@@ -83,7 +83,7 @@ const loading = ref(false)
 </script>
 
 <template>
-  <div class="space-y-8 w-full">
+  <div class="space-y-6 w-full">
     <div class="flex items-center justify-end space-x-2 mb-4">
       <Switch id="loading-mode" v-model="loading" />
       <Label htmlFor="loading-mode">Modo Carga</Label>

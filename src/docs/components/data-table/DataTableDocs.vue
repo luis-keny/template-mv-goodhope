@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import DataTableExamples from './DataTableExamples.vue'
+import DataTableMetaExample from './DataTableMetaExample.vue'
 import { dataTableExamplesCode } from '@/docs/snippets/dataTableExamples'
+import { dataTableMetaExampleCode } from '@/docs/snippets/dataTableMetaExample'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
@@ -15,6 +17,15 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@
       description="Una tabla de datos potente y flexible construida sobre TanStack Table, con soporte para búsqueda, paginación y selección."
     >
       <DataTableExamples />
+    </DocExampleContainer>
+
+    <DocExampleContainer 
+      :code="dataTableMetaExampleCode" 
+      minHeight="500px"
+      title="Acciones y Meta"
+      description="Ejemplo avanzado que utiliza table-meta para pasar funciones (como abrir un modal) desde el componente padre a las celdas de la tabla."
+    >
+      <DataTableMetaExample />
     </DocExampleContainer>
 
     <Card>

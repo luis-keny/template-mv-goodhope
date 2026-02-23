@@ -7,6 +7,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { computed } from 'vue'
+import { Loader2 } from 'lucide-vue-next'
 
 interface Props {
   modelValue?: string
@@ -16,6 +17,7 @@ interface Props {
   itemValue?: string | ((item: any) => string)
   itemDisabled?: string | ((item: any) => boolean)
   disabled?: boolean
+  loading?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -25,6 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
   itemText: 'label',
   itemValue: 'value',
   itemDisabled: 'disabled',
+  loading: false,
 })
 
 const emit = defineEmits<{
@@ -77,9 +80,13 @@ const internalValue = computed({
 </script>
 
 <template>
-  <Select v-model="internalValue" :disabled="disabled">
-    <SelectTrigger>
-      <SelectValue :placeholder="placeholder" />
+  <Select v-model="internalValue" :disabled="disabled || loading">
+    <SelectTrigger class="bg-white">
+      <div v-if="loading" class="flex items-center gap-2 text-muted-foreground">
+        <Loader2 class="size-4 animate-spin" />
+        <span>Cargando...</span>
+      </div>
+      <SelectValue v-else :placeholder="placeholder" />
     </SelectTrigger>
     <SelectContent>
       <SelectItem

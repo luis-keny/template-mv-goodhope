@@ -2,9 +2,9 @@ export const dataTableExamplesCode = `<script setup lang="ts">
 import { h, ref } from 'vue'
 import DataTable from '@/components/common/DataTable.vue'
 import { Button } from '@/components/ui/button'
+import { ArrowUpDown, MoreHorizontal } from 'lucide-vue-next'
 import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
-import { ArrowUpDown, MoreHorizontal } from 'lucide-vue-next'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -70,9 +70,6 @@ const data = [
   { id: '3', amount: 837, status: 'processing', email: 'Monserrat44@gmail.com' },
   { id: '4', amount: 874, status: 'success', email: 'Silas22@gmail.com' },
   { id: '5', amount: 721, status: 'failed', email: 'carmella@hotmail.com' },
-  { id: '6', amount: 123, status: 'success', email: 'example@gmail.com' },
-  { id: '7', amount: 456, status: 'processing', email: 'test@hotmail.com' },
-  { id: '8', amount: 789, status: 'failed', email: 'demo@yahoo.com' },
 ]
 
 const loading = ref(false)
@@ -83,7 +80,7 @@ const handleSelection = (rows: any[]) => {
 </script>
 
 <template>
-  <div class="space-y-8 w-full">
+  <div class="space-y-6 w-full">
     <div class="flex items-center justify-end space-x-2 mb-4">
       <Switch id="loading-mode" v-model="loading" />
       <Label htmlFor="loading-mode">Modo Carga</Label>
@@ -109,4 +106,4 @@ const handleSelection = (rows: any[]) => {
     />
   </div>
 </template>
-`
+`;
