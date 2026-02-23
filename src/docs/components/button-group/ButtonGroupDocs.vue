@@ -4,11 +4,14 @@ import { buttonGroupExamplesCode } from '@/docs/snippets/buttonGroupExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/button-group/meta'
 </script>
 
 <template>
   <div class="space-y-10">
-    <DocExampleContainer 
+    <ComponentMeta :meta="meta" />
+    <DocExampleContainer
       :code="buttonGroupExamplesCode"
       title="Button Group"
       description="Agrupa botones relacionados visualmente para indicar una acción común o navegación."

@@ -4,12 +4,15 @@ import { calendarExamplesCode } from '@/docs/snippets/calendarExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/calendar/meta'
 </script>
 
 <template>
   <div class="space-y-10">
-    <DocExampleContainer 
-      :code="calendarExamplesCode" 
+    <ComponentMeta :meta="meta" />
+    <DocExampleContainer
+      :code="calendarExamplesCode"
       minHeight="400px"
       title="Calendar"
       description="Un componente de calendario con todas las funciones que permite a los usuarios seleccionar fechas y navegar por meses."

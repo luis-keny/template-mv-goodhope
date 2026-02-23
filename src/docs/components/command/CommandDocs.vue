@@ -4,12 +4,15 @@ import { commandExamplesCode } from '@/docs/snippets/commandExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/command/meta'
 </script>
 
 <template>
   <div class="space-y-10">
-    <DocExampleContainer 
-      :code="commandExamplesCode" 
+    <ComponentMeta :meta="meta" />
+    <DocExampleContainer
+      :code="commandExamplesCode"
       minHeight="450px"
       title="Command"
       description="Una interfaz de línea de comandos para realizar acciones rápidas."

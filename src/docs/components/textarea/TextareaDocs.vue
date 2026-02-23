@@ -4,10 +4,13 @@ import { textareaExamplesCode } from '@/docs/snippets/textareaExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/textarea/meta'
 </script>
 
 <template>
   <div class="space-y-8">
+    <ComponentMeta :meta="meta" />
     <DocExampleContainer :code="textareaExamplesCode">
       <TextareaExamples />
     </DocExampleContainer>

@@ -4,11 +4,14 @@ import { commonDrawerExampleCode } from '@/docs/snippets/commonDrawerExample'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/drawer/meta'
 </script>
 
 <template>
   <div class="space-y-10">
-    <DocExampleContainer 
+    <ComponentMeta :meta="meta" />
+    <DocExampleContainer
       :code="commonDrawerExampleCode"
       title="Drawer Reutilizable (Common)"
       description="Uso de CommonDrawer con el store centralizado para manejar paneles inferiores de forma global."

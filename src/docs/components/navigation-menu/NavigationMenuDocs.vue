@@ -4,12 +4,15 @@ import { reusableNavigationMenuCode } from '@/docs/snippets/navigationMenuExampl
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/navigation-menu/meta'
 </script>
 
 <template>
   <div class="space-y-10">
-    <DocExampleContainer 
-      :code="reusableNavigationMenuCode" 
+    <ComponentMeta :meta="meta" />
+    <DocExampleContainer
+      :code="reusableNavigationMenuCode"
       language="vue"
     >
       <NavigationMenuExamples />

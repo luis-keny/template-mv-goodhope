@@ -4,10 +4,13 @@ import { scrollAreaExamplesCode } from '@/docs/snippets/scrollAreaExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/scroll-area/meta'
 </script>
 
 <template>
   <div class="space-y-10">
+    <ComponentMeta :meta="meta" />
     <DocExampleContainer :code="scrollAreaExamplesCode">
       <ScrollAreaExamples />
     </DocExampleContainer>

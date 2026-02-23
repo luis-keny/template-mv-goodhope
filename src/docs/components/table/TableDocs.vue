@@ -4,11 +4,14 @@ import { tableExamplesCode } from '@/docs/snippets/tableExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/table/meta'
 </script>
 
 <template>
   <div class="space-y-6">
-    <DocExampleContainer 
+    <ComponentMeta :meta="meta" />
+    <DocExampleContainer
       :code="tableExamplesCode"
     >
       <TableExamples />

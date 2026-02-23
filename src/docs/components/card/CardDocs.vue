@@ -4,11 +4,14 @@ import { cardExamplesCode } from '@/docs/snippets/cardExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/card/meta'
 </script>
 
 <template>
   <div class="space-y-10">
-    <DocExampleContainer 
+    <ComponentMeta :meta="meta" />
+    <DocExampleContainer
       :code="cardExamplesCode"
       title="Card"
       description="Un contenedor versátil para agrupar contenido relacionado, como texto, imágenes y acciones."

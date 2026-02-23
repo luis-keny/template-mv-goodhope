@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import IntroductionView from '../views/IntroductionView.vue';
 import InstallationView from '../views/InstallationView.vue';
+import MCPView from '../views/MCPView.vue';
 import ComponentsIndexView from '../views/ComponentsIndexView.vue';
 import ComponentDetailView from '../views/ComponentDetailView.vue';
 
@@ -22,6 +23,11 @@ const router = createRouter({
       path: '/docs/installation',
       name: 'installation',
       component: InstallationView,
+    },
+    {
+      path: '/docs/mcp',
+      name: 'mcp',
+      component: MCPView,
     },
     {
       path: '/docs/components',

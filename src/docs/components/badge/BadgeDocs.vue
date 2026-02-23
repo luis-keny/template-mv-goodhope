@@ -4,11 +4,14 @@ import { badgeExamplesCode } from '@/docs/snippets/badgeExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/badge/meta'
 </script>
 
 <template>
   <div class="space-y-10">
-    <DocExampleContainer 
+    <ComponentMeta :meta="meta" />
+    <DocExampleContainer
       :code="badgeExamplesCode"
       title="Badge"
       description="Un pequeño elemento visual para mostrar estados, etiquetas o recuentos numéricos."

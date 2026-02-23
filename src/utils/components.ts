@@ -1,6 +1,7 @@
 export const sections = [
   { title: "Comenzar", url: "/docs/introduction" },
   { title: "Instalación", url: "/docs/installation" },
+  { title: "MCP", url: "/docs/mcp" },
   { title: "Components", url: "/docs/components" },
 ];
 

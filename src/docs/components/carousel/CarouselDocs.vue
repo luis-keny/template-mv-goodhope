@@ -4,11 +4,14 @@ import { carouselExamplesCode } from '@/docs/snippets/carouselExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/carousel/meta'
 </script>
 
 <template>
   <div class="space-y-10">
-    <DocExampleContainer 
+    <ComponentMeta :meta="meta" />
+    <DocExampleContainer
       :code="carouselExamplesCode"
       title="Carousel"
       description="Un componente de carrusel interactivo que permite navegar a través de una serie de elementos de contenido."

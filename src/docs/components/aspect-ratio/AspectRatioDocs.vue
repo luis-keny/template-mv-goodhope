@@ -4,11 +4,14 @@ import { aspectRatioExamplesCode } from '@/docs/snippets/aspectRatioExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/aspect-ratio/meta'
 </script>
 
 <template>
   <div class="space-y-10">
-    <DocExampleContainer 
+    <ComponentMeta :meta="meta" />
+    <DocExampleContainer
       :code="aspectRatioExamplesCode"
       title="Aspect Ratio"
       description="Muestra contenido con una relación de aspecto específica."

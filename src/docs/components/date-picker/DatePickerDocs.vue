@@ -8,10 +8,13 @@ import { datePickerTodayCode } from '@/docs/snippets/datePickerToday'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/date-picker/meta'
 </script>
 
 <template>
   <div class="space-y-10">
+    <ComponentMeta :meta="meta" />
     <DocExampleContainer :code="datePickerExamplesCode" title="Date Picker" description="Un componente de selección de fecha que permite a los usuarios elegir una fecha única de un calendario desplegable.">
       <DatePickerExamples />
     </DocExampleContainer>

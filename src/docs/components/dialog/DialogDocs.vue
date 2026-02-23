@@ -4,11 +4,14 @@ import { commonDialogExampleCode } from '@/docs/snippets/commonDialogExample'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/dialog/meta'
 </script>
 
 <template>
   <div class="space-y-10">
-    <DocExampleContainer 
+    <ComponentMeta :meta="meta" />
+    <DocExampleContainer
       :code="commonDialogExampleCode"
       title="Diálogo Reutilizable (Common)"
       description="Uso de CommonDialog con el store centralizado para manejar datos dinámicos y estados globales."

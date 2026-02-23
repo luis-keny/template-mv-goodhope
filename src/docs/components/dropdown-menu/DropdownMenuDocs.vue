@@ -4,11 +4,14 @@ import { dropdownMenuExamplesCode } from '@/docs/snippets/dropdownMenuExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/dropdown-menu/meta'
 </script>
 
 <template>
   <div class="space-y-10">
-    <DocExampleContainer 
+    <ComponentMeta :meta="meta" />
+    <DocExampleContainer
       :code="dropdownMenuExamplesCode"
       title="Dropdown Menu"
       description="Muestra un menú al usuario, como un conjunto de acciones o funciones, disparado por un botón."

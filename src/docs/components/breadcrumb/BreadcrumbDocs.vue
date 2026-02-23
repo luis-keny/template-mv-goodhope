@@ -4,12 +4,15 @@ import { breadcrumbExamplesCode } from '@/docs/snippets/breadcrumbExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/breadcrumb/meta'
 </script>
 
 <template>
   <div class="space-y-10">
-    <DocExampleContainer 
-      :code="breadcrumbExamplesCode" 
+    <ComponentMeta :meta="meta" />
+    <DocExampleContainer
+      :code="breadcrumbExamplesCode"
       minHeight="450px"
       title="Breadcrumb"
       description="Una ruta de navegación que permite a los usuarios visualizar la jerarquía de la página actual."

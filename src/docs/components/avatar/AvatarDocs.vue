@@ -4,11 +4,14 @@ import { avatarExamplesCode } from '@/docs/snippets/avatarExamples'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import DocExampleContainer from '@/docs/shared/DocExampleContainer.vue'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import ComponentMeta from '@/docs/shared/ComponentMeta.vue'
+import { meta } from '@/components/ui/avatar/meta'
 </script>
 
 <template>
   <div class="space-y-10">
-    <DocExampleContainer 
+    <ComponentMeta :meta="meta" />
+    <DocExampleContainer
       :code="avatarExamplesCode"
       title="Avatar"
       description="Un elemento visual que representa a un usuario mediante una imagen, iniciales o un icono de reserva."

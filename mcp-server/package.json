@@ -1,0 +1,13 @@
+{
+  "name": "goodhope-mcp-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "MCP server for GoodHope component catalog",
+  "scripts": {
+    "start": "node --import tsx index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "tsx": "^4.0.0"
+  }
+}
