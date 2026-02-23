@@ -1,0 +1,37 @@
+schema: spec-driven
+
+context: |
+  Project: template-mv-goodhope — catálogo de componentes UI para Clínica GoodHope
+  Stack: Vue 3 + TypeScript + Vite + TailwindCSS + shadcn-vue (reka-ui) + CVA
+  Architecture: docs-site con sidebar + router; componentes en src/components/ui/; docs en src/docs/
+  Patterns: CVA variants, Composition API (<script setup lang="ts">), cn() para clases
+  Colors: solo primary (#4672b1), secondary (#0ca4eb), tertiary (#1ab5c0)
+  Registry: src/utils/components.ts (nav) + ComponentDetailView.vue (docsRegistry)
+  Testing: ninguno configurado
+  Style: TypeScript estricto, sin any, sin style scoped, TailwindCSS puro
+
+rules:
+  proposal:
+    - Identificar si el cambio requiere modificar el docsRegistry en ComponentDetailView.vue
+    - Incluir plan de rollback para cambios en la paleta de colores o design tokens
+  specs:
+    - Usar formato Given/When/Then para escenarios de comportamiento de componentes
+    - Usar RFC 2119 (MUST, SHALL, SHOULD, MAY)
+    - Especificar variantes CVA esperadas (variant, size) cuando aplique
+  design:
+    - Documentar decisiones sobre variantes vs props adicionales
+    - Incluir estructura de archivos afectados (index.ts, .vue, Docs.vue, snippets)
+  tasks:
+    - Agrupar por fase: estructura UI → lógica/variantes → documentación → registro
+    - Numeración jerárquica (1.1, 1.2, etc.)
+    - Cada tarea completable en una sola sesión
+  apply:
+    - Seguir patrón exacto de src/components/ui/button/ como referencia
+    - Cargar skill vercel-composition-patterns para decisiones de API de componentes
+    - No usar colores fuera de primary/secondary/tertiary
+  verify:
+    - Verificar que el componente aparece en el sidebar (utils/components.ts)
+    - Verificar que la ruta /docs/components/:name renderiza correctamente (docsRegistry)
+    - Verificar que npm run build pasa sin errores de TypeScript
+  archive:
+    - Advertir si se eliminan variantes existentes (breaking change para consumidores)

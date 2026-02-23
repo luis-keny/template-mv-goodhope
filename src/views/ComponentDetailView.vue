@@ -9,7 +9,6 @@ import InputDocs from '@/docs/components/input/InputDocs.vue'
 import SonnerDocs from '@/docs/components/sonner/SonnerDocs.vue'
 import PopoverDocs from '@/docs/components/popover/PopoverDocs.vue'
 import CardDocs from '@/docs/components/card/CardDocs.vue'
-import RangeCalendarDocs from '@/docs/components/range-calendar/RangeCalendarDocs.vue'
 import ResizableDocs from '@/docs/components/resizable/ResizableDocs.vue'
 import SelectDocs from '@/docs/components/select/SelectDocs.vue'
 import SliderDocs from '@/docs/components/slider/SliderDocs.vue'
@@ -43,8 +42,6 @@ import ContextMenuDocs from '@/docs/components/context-menu/ContextMenuDocs.vue'
 import DialogDocs from '@/docs/components/dialog/DialogDocs.vue'
 import DrawerDocs from '@/docs/components/drawer/DrawerDocs.vue'
 import DropdownMenuDocs from '@/docs/components/dropdown-menu/DropdownMenuDocs.vue'
-import InputGroupDocs from '@/docs/components/input-group/InputGroupDocs.vue'
-import InputOTPDocs from '@/docs/components/input-otp/InputOTPDocs.vue'
 import { Button } from '@/components/ui/button'
 import HoverCardDocs from '@/docs/components/hover-card/HoverCardDocs.vue'
 import KbdDocs from '@/docs/components/kbd/KbdDocs.vue'
@@ -72,7 +69,6 @@ const docsRegistry: Record<string, any> = {
   input: InputDocs,
   sonner: SonnerDocs,
   popover: PopoverDocs,
-  'range-calendar': RangeCalendarDocs,
   resizable: ResizableDocs,
   card: CardDocs,
   select: SelectDocs,
@@ -99,8 +95,6 @@ const docsRegistry: Record<string, any> = {
   'dropdown-menu': DropdownMenuDocs,
   'hover-card': HoverCardDocs,
   kbd: KbdDocs,
-  'input-group': InputGroupDocs,
-  'input-otp': InputOTPDocs,
   empty: EmptyDocs,
   item: ItemDocs,
   label: LabelDocs,
