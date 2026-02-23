@@ -1,6 +1,7 @@
 {
   "mcpServers": {
     "goodhope": {
+      "type": "http",
       "url": "https://template-mv-goodhope.vercel.app/api/mcp"
     }
   }

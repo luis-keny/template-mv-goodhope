@@ -13,5 +13,9 @@
       "Bash(tail:*)",
       "Bash(cd \"D:/Trabajo/002. GoodHope/002. frontend/001-.template-mv/template-mv-goodhope\" && npx tsx scripts/generate-registry.ts 2>&1)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "goodhope"
+  ],
+  "enableAllProjectMcpServers": true
 }
