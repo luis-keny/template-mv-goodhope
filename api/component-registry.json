@@ -66,7 +66,7 @@
       "advertencia",
       "modal"
     ],
-    "url": "/docs/components/alertdialog"
+    "url": "/docs/components/alert-dialog"
   },
   {
     "name": "AspectRatio",
@@ -90,7 +90,7 @@
       "video",
       "responsive"
     ],
-    "url": "/docs/components/aspectratio"
+    "url": "/docs/components/aspect-ratio"
   },
   {
     "name": "Avatar",
@@ -205,7 +205,7 @@
       "conjunto",
       "barra de acciones"
     ],
-    "url": "/docs/components/buttongroup"
+    "url": "/docs/components/button-group"
   },
   {
     "name": "Calendar",
@@ -412,7 +412,7 @@
       "lista",
       "menú"
     ],
-    "url": "/docs/components/contextmenu"
+    "url": "/docs/components/context-menu"
   },
   {
     "name": "DataTable",
@@ -435,7 +435,7 @@
       "dataset",
       "selección"
     ],
-    "url": "/docs/components/datatable"
+    "url": "/docs/components/data-table"
   },
   {
     "name": "DatePicker",
@@ -458,7 +458,7 @@
       "nacimiento",
       "ingreso"
     ],
-    "url": "/docs/components/datepicker"
+    "url": "/docs/components/date-picker"
   },
   {
     "name": "Dialog",
@@ -528,7 +528,7 @@
       "menú",
       "perfil"
     ],
-    "url": "/docs/components/dropdownmenu"
+    "url": "/docs/components/dropdown-menu"
   },
   {
     "name": "Empty",
@@ -597,7 +597,7 @@
       "perfil",
       "enlace"
     ],
-    "url": "/docs/components/hovercard"
+    "url": "/docs/components/hover-card"
   },
   {
     "name": "Input",
@@ -733,7 +733,7 @@
       "formulario",
       "navegador"
     ],
-    "url": "/docs/components/nativeselect"
+    "url": "/docs/components/native-select"
   },
   {
     "name": "NavigationMenu",
@@ -755,7 +755,7 @@
       "dropdown",
       "principal"
     ],
-    "url": "/docs/components/navigationmenu"
+    "url": "/docs/components/navigation-menu"
   },
   {
     "name": "NumberField",
@@ -777,7 +777,7 @@
       "dosis",
       "valor numérico"
     ],
-    "url": "/docs/components/numberfield"
+    "url": "/docs/components/number-field"
   },
   {
     "name": "Pagination",
@@ -867,7 +867,7 @@
       "formulario",
       "elegir"
     ],
-    "url": "/docs/components/radiogroup"
+    "url": "/docs/components/radio-group"
   },
   {
     "name": "Resizable",
@@ -912,7 +912,7 @@
       "panel",
       "overflow"
     ],
-    "url": "/docs/components/scrollarea"
+    "url": "/docs/components/scroll-area"
   },
   {
     "name": "Select",
@@ -1206,7 +1206,7 @@
       "valores",
       "alergias"
     ],
-    "url": "/docs/components/tagsinput"
+    "url": "/docs/components/tags-input"
   },
   {
     "name": "Textarea",
@@ -1275,7 +1275,7 @@
       "vista",
       "opciones"
     ],
-    "url": "/docs/components/togglegroup"
+    "url": "/docs/components/toggle-group"
   },
   {
     "name": "Tooltip",

@@ -7,7 +7,8 @@ import { writeFileSync } from 'node:fs'
 import { componentRegistry } from '../src/data/component-registry.ts'
 import { components } from '../src/utils/components.ts'
 
-const urlMap = new Map(components.map((c) => [c.title.toLowerCase(), c.url]))
+// Normalize by removing spaces so "Radio Group" matches "RadioGroup"
+const urlMap = new Map(components.map((c) => [c.title.toLowerCase().replace(/ /g, ''), c.url]))
 
 const data = componentRegistry.map((meta) => ({
   name: meta.name,
@@ -16,7 +17,7 @@ const data = componentRegistry.map((meta) => ({
   notFor: meta.notFor,
   keywords: meta.keywords ?? [],
   url:
-    urlMap.get(meta.name.toLowerCase()) ??
+    urlMap.get(meta.name.toLowerCase().replace(/ /g, '')) ??
     `/docs/components/${meta.name.toLowerCase().replace(/ /g, '-')}`,
 }))
 
