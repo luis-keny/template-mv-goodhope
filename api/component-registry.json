@@ -1,0 +1,1303 @@
+[
+  {
+    "name": "Accordion",
+    "description": "Lista de secciones expandibles donde solo una puede estar abierta a la vez, ideal para FAQs y contenido agrupado.",
+    "useCases": [
+      "Preguntas frecuentes del sistema o guía de usuario",
+      "Secciones de configuración agrupadas por categoría",
+      "Lista de procedimientos clínicos con descripción detallada colapsable"
+    ],
+    "notFor": [
+      "Sección única que se colapsa (usar Collapsible)",
+      "Navegación entre vistas con contenido complejo (usar Tabs)",
+      "Panel lateral que se abre desde el borde (usar Sheet)"
+    ],
+    "keywords": [
+      "acordeón",
+      "FAQ",
+      "expandible",
+      "colapsable",
+      "secciones",
+      "toggle"
+    ],
+    "url": "/docs/components/accordion"
+  },
+  {
+    "name": "Alert",
+    "description": "Bloque de mensaje informativo, de advertencia o error visible permanentemente en la página para comunicar estado del sistema.",
+    "useCases": [
+      "Mostrar advertencia de sesión próxima a expirar en la parte superior",
+      "Indicar que hay campos inválidos al intentar guardar un formulario",
+      "Informar sobre mantenimiento planificado o cambios importantes del sistema"
+    ],
+    "notFor": [
+      "Notificaciones temporales que desaparecen solas (usar Sonner)",
+      "Confirmación de acciones críticas que bloquean la UI (usar AlertDialog)",
+      "Estado de un campo individual en un formulario (usar Field)"
+    ],
+    "keywords": [
+      "alerta",
+      "advertencia",
+      "error",
+      "información",
+      "mensaje",
+      "sistema"
+    ],
+    "url": "/docs/components/alert"
+  },
+  {
+    "name": "AlertDialog",
+    "description": "Diálogo de confirmación bloqueante para acciones irreversibles, con botones Confirmar y Cancelar bien diferenciados.",
+    "useCases": [
+      "Confirmar eliminación permanente de datos clínicos o registros",
+      "Advertir sobre acciones que no pueden deshacerse antes de ejecutarlas",
+      "Requerir consentimiento explícito antes de una operación crítica"
+    ],
+    "notFor": [
+      "Formularios con múltiples campos (usar Dialog)",
+      "Mensajes de error o éxito que no requieren confirmación (usar Sonner o Alert)",
+      "Información contextual no crítica (usar Popover o HoverCard)"
+    ],
+    "keywords": [
+      "alerta",
+      "confirmar",
+      "eliminar",
+      "irreversible",
+      "advertencia",
+      "modal"
+    ],
+    "url": "/docs/components/alertdialog"
+  },
+  {
+    "name": "AspectRatio",
+    "description": "Contenedor que mantiene una proporción de aspecto fija (como 16:9 o 1:1) para imágenes, videos o contenido incrustado.",
+    "useCases": [
+      "Imagen de portada de un artículo que debe mantener proporción 16:9",
+      "Miniatura cuadrada de avatar o imagen de producto",
+      "Video o iframe incrustado con proporción responsive consistente"
+    ],
+    "notFor": [
+      "Layouts generales de página (usar CSS grid/flex directamente)",
+      "Imágenes que deben adaptarse libremente al contenido (usar img con object-fit)",
+      "Contenedores con altura variable según contenido (no usar)"
+    ],
+    "keywords": [
+      "aspecto",
+      "proporción",
+      "16:9",
+      "1:1",
+      "imagen",
+      "video",
+      "responsive"
+    ],
+    "url": "/docs/components/aspectratio"
+  },
+  {
+    "name": "Avatar",
+    "description": "Imagen circular de perfil con fallback a iniciales cuando la foto no está disponible.",
+    "useCases": [
+      "Foto de perfil del médico o paciente en headers y listas",
+      "Identificador visual de usuario en comentarios o actividad reciente",
+      "Iniciales de nombre como placeholder cuando no hay foto disponible"
+    ],
+    "notFor": [
+      "Imágenes de contenido general (usar img o AspectRatio)",
+      "Íconos de función o acción (usar Lucide icons directamente)",
+      "Grupos de varios avatars superpuestos (requiere implementación custom)"
+    ],
+    "keywords": [
+      "avatar",
+      "foto",
+      "perfil",
+      "usuario",
+      "iniciales",
+      "imagen"
+    ],
+    "url": "/docs/components/avatar"
+  },
+  {
+    "name": "Badge",
+    "description": "Etiqueta compacta de estado, categoría o conteo que se aplica sobre otro elemento para clasificarlo o destacarlo visualmente.",
+    "useCases": [
+      "Indicar el estado de un paciente (Activo, Inactivo, En espera)",
+      "Mostrar el conteo de notificaciones no leídas sobre un ícono",
+      "Etiquetar la prioridad o categoría de un registro clínico"
+    ],
+    "notFor": [
+      "Mensajes de alerta con texto explicativo (usar Alert)",
+      "Estado complejo con múltiples líneas de información (usar Card o Alert)",
+      "Progreso de una tarea en porcentaje (usar Progress)"
+    ],
+    "keywords": [
+      "etiqueta",
+      "estado",
+      "conteo",
+      "categoría",
+      "tag",
+      "pill"
+    ],
+    "url": "/docs/components/badge"
+  },
+  {
+    "name": "Breadcrumb",
+    "description": "Rastro de navegación que muestra la posición actual dentro de la jerarquía del sitio.",
+    "useCases": [
+      "Indicar la ruta actual en sitios con múltiples niveles de profundidad",
+      "Permitir navegación rápida hacia secciones padre",
+      "Orientar al usuario en catálogos, configuraciones o portales con jerarquía"
+    ],
+    "notFor": [
+      "Sitios planos sin jerarquía de navegación",
+      "Navegación principal del sitio (usar NavigationMenu)",
+      "Alternar entre secciones del mismo nivel (usar Tabs)"
+    ],
+    "keywords": [
+      "migas de pan",
+      "ruta",
+      "jerarquía",
+      "ubicación",
+      "navegación"
+    ],
+    "url": "/docs/components/breadcrumb"
+  },
+  {
+    "name": "Button",
+    "description": "Elemento interactivo para disparar acciones o iniciar navegación.",
+    "useCases": [
+      "Confirmar o enviar un formulario",
+      "Navegar a otra sección o página",
+      "Disparar acciones como guardar, eliminar o exportar",
+      "Iniciar flujos como crear, cargar o descargar"
+    ],
+    "notFor": [
+      "Selección entre opciones mutuamente excluyentes (usar RadioGroup)",
+      "Activar o desactivar un estado persistente (usar Switch o Toggle)",
+      "Navegación principal del sitio (usar NavigationMenu o Tabs)",
+      "Agrupar múltiples acciones relacionadas (usar ButtonGroup)"
+    ],
+    "keywords": [
+      "acción",
+      "clic",
+      "submit",
+      "formulario",
+      "guardar",
+      "eliminar"
+    ],
+    "url": "/docs/components/button"
+  },
+  {
+    "name": "ButtonGroup",
+    "description": "Agrupa botones relacionados visualmente como una unidad cohesiva.",
+    "useCases": [
+      "Acciones de guardar, cancelar y eliminar en un mismo contexto",
+      "Controles de paginación anterior/siguiente",
+      "Opciones de acción sobre un mismo objeto (editar, duplicar, eliminar)"
+    ],
+    "notFor": [
+      "Un único botón de acción (usar Button directamente)",
+      "Selección de una opción entre varias (usar ToggleGroup o RadioGroup)",
+      "Navegación principal entre secciones (usar Tabs o NavigationMenu)"
+    ],
+    "keywords": [
+      "grupo",
+      "botones",
+      "acciones",
+      "conjunto",
+      "barra de acciones"
+    ],
+    "url": "/docs/components/buttongroup"
+  },
+  {
+    "name": "Calendar",
+    "description": "Calendario visual permanente para seleccionar fechas o navegar por el tiempo.",
+    "useCases": [
+      "Mostrar un calendario inline dentro de un dashboard o panel",
+      "Seleccionar una fecha de cita o evento cuando el contexto visual importa",
+      "Navegación mensual donde el usuario necesita ver el mes completo"
+    ],
+    "notFor": [
+      "Selección de fecha en un campo de formulario compacto (usar DatePicker)",
+      "Cuando el espacio es limitado (usar DatePicker)"
+    ],
+    "keywords": [
+      "calendario",
+      "fecha",
+      "mes",
+      "día",
+      "cita",
+      "evento",
+      "inline"
+    ],
+    "url": "/docs/components/calendar"
+  },
+  {
+    "name": "Card",
+    "description": "Contenedor con borde y sombra para agrupar información relacionada en una unidad visual cohesiva.",
+    "useCases": [
+      "Presentar el resumen de datos de un paciente (nombre, edad, diagnóstico)",
+      "Agrupar métricas del dashboard en unidades independientes",
+      "Mostrar resultados de búsqueda como fichas visuales"
+    ],
+    "notFor": [
+      "Tabla de datos tabulares con columnas y filas (usar Table o DataTable)",
+      "Formularios extensos que necesitan navegación por pasos (usar Stepper)",
+      "Listas de ítems sin jerarquía visual (usar lista simple o Item)"
+    ],
+    "keywords": [
+      "tarjeta",
+      "contenedor",
+      "panel",
+      "dashboard",
+      "ficha",
+      "resumen"
+    ],
+    "url": "/docs/components/card"
+  },
+  {
+    "name": "Carousel",
+    "description": "Presentación deslizable de elementos en una fila, con controles de navegación anterior/siguiente y soporte para swipe.",
+    "useCases": [
+      "Galería de imágenes médicas o documentos escaneados",
+      "Recorrido visual de pasos o instrucciones de forma secuencial",
+      "Presentar tarjetas de contenido en pantallas con espacio horizontal limitado"
+    ],
+    "notFor": [
+      "Lista navegable de grandes datasets (usar DataTable)",
+      "Pasos de un flujo con validación (usar Stepper)",
+      "Imágenes que se pueden ver todas a la vez (usar grid)"
+    ],
+    "keywords": [
+      "carrusel",
+      "galería",
+      "deslizable",
+      "imágenes",
+      "slider",
+      "swipe"
+    ],
+    "url": "/docs/components/carousel"
+  },
+  {
+    "name": "Chart",
+    "description": "Gráficos de barras, líneas, torta y área para visualizar tendencias y distribuciones de datos clínicos o administrativos.",
+    "useCases": [
+      "Evolución de métricas clínicas de un paciente a lo largo del tiempo (línea)",
+      "Distribución de consultas por especialidad o departamento (barras/torta)",
+      "Comparación de indicadores del dashboard en el tiempo (área)"
+    ],
+    "notFor": [
+      "Datos tabulares que se deben consultar por fila (usar DataTable)",
+      "Un solo número o métrica importante (usar Card con valor destacado)",
+      "Lista de valores exactos (usar Table)"
+    ],
+    "keywords": [
+      "gráfico",
+      "barras",
+      "líneas",
+      "torta",
+      "tendencia",
+      "visualización",
+      "métricas"
+    ],
+    "url": "/docs/components/chart"
+  },
+  {
+    "name": "Checkbox",
+    "description": "Control de selección booleana o múltiple para formularios.",
+    "useCases": [
+      "Aceptar términos y condiciones",
+      "Seleccionar múltiples ítems de una lista",
+      "Activar o desactivar una opción dentro de un formulario que se guarda"
+    ],
+    "notFor": [
+      "Activar un estado del sistema de forma inmediata (usar Switch)",
+      "Selección de una única opción entre varias (usar RadioGroup)",
+      "Ingresar múltiples valores de texto libre (usar TagsInput)"
+    ],
+    "keywords": [
+      "check",
+      "marcar",
+      "múltiple",
+      "formulario",
+      "booleano"
+    ],
+    "url": "/docs/components/checkbox"
+  },
+  {
+    "name": "Collapsible",
+    "description": "Sección de contenido que puede expandirse o contraerse con un toggle, para mostrar u ocultar información secundaria.",
+    "useCases": [
+      "Sección de detalles avanzados de configuración que la mayoría no necesita",
+      "Mostrar/ocultar información adicional de un registro sin cambiar de página",
+      "Bloque de contenido secundario bajo una vista principal"
+    ],
+    "notFor": [
+      "Múltiples secciones donde solo una puede estar abierta a la vez (usar Accordion)",
+      "Panel lateral que se abre desde el borde (usar Sheet o Sidebar)",
+      "Contenido que siempre debe ser visible (no usar)"
+    ],
+    "keywords": [
+      "colapsar",
+      "expandir",
+      "toggle",
+      "ocultar",
+      "mostrar",
+      "sección"
+    ],
+    "url": "/docs/components/collapsible"
+  },
+  {
+    "name": "Combobox",
+    "description": "Campo de selección con búsqueda integrada para listas largas o dinámicas.",
+    "useCases": [
+      "Seleccionar de una lista larga donde el usuario necesita filtrar",
+      "Búsqueda de pacientes, medicamentos o procedimientos",
+      "Autocompletado con opciones cargadas desde el servidor",
+      "Cuando la lista tiene más de 10 ítems"
+    ],
+    "notFor": [
+      "Listas cortas de opciones fijas (usar Select)",
+      "Selección de pocas opciones siempre visibles (usar RadioGroup)",
+      "Cuando no se requiere búsqueda (usar Select o NativeSelect)"
+    ],
+    "keywords": [
+      "autocomplete",
+      "búsqueda",
+      "filtrar",
+      "lista larga",
+      "dinámico"
+    ],
+    "url": "/docs/components/combobox"
+  },
+  {
+    "name": "Command",
+    "description": "Paleta de comandos con búsqueda instantánea para navegar a páginas, ejecutar acciones o buscar registros rápidamente con el teclado.",
+    "useCases": [
+      "Búsqueda global de pacientes, médicos o registros en la aplicación",
+      "Navegación rápida a cualquier sección del sistema con atajos de teclado",
+      "Selección de acciones frecuentes en una interfaz de power user"
+    ],
+    "notFor": [
+      "Lista de opciones en un formulario (usar Select o Combobox)",
+      "Acciones sobre un elemento específico (usar DropdownMenu o ContextMenu)",
+      "Búsqueda simple dentro de una tabla (usar el filtro de DataTable)"
+    ],
+    "keywords": [
+      "comando",
+      "búsqueda global",
+      "paleta",
+      "teclado",
+      "navegación rápida",
+      "shortcut"
+    ],
+    "url": "/docs/components/command"
+  },
+  {
+    "name": "ContextMenu",
+    "description": "Menú contextual que aparece al hacer clic derecho sobre un elemento, ofreciendo acciones relevantes para ese contexto.",
+    "useCases": [
+      "Acciones sobre una fila de tabla al hacer clic derecho (editar, copiar, eliminar)",
+      "Opciones contextuales en un elemento de lista de pacientes o registros",
+      "Menú de acciones en componentes tipo canvas o árbol de archivos"
+    ],
+    "notFor": [
+      "Acciones que se activan con clic izquierdo en un botón (usar DropdownMenu)",
+      "Menú principal de la aplicación con categorías (usar Menubar)",
+      "Una sola acción principal sobre un elemento (usar Button directo)"
+    ],
+    "keywords": [
+      "clic derecho",
+      "contextual",
+      "acciones",
+      "tabla",
+      "lista",
+      "menú"
+    ],
+    "url": "/docs/components/contextmenu"
+  },
+  {
+    "name": "DataTable",
+    "description": "Tabla interactiva con ordenamiento por columna, filtros, paginación y selección múltiple para datasets medianos y grandes.",
+    "useCases": [
+      "Lista de pacientes con búsqueda, filtros por estado y paginación",
+      "Registro de historial clínico con ordenamiento por fecha",
+      "Inventario o listados administrativos con selección múltiple para acciones en lote"
+    ],
+    "notFor": [
+      "Datos estáticos simples sin interacción (usar Table)",
+      "Pocas filas sin necesidad de filtros (usar Table o lista simple)",
+      "Visualización gráfica de datos (usar Chart)"
+    ],
+    "keywords": [
+      "tabla interactiva",
+      "filtros",
+      "ordenamiento",
+      "paginación",
+      "dataset",
+      "selección"
+    ],
+    "url": "/docs/components/datatable"
+  },
+  {
+    "name": "DatePicker",
+    "description": "Campo de formulario compacto para seleccionar una fecha mediante un popover.",
+    "useCases": [
+      "Fecha de nacimiento, ingreso o egreso en formularios médicos",
+      "Seleccionar fecha de inicio de un tratamiento o medicación",
+      "Campos de fecha donde el espacio es limitado"
+    ],
+    "notFor": [
+      "Mostrar el calendario de forma permanente visible (usar Calendar)",
+      "Seleccionar solo el mes o el año (usar Select)"
+    ],
+    "keywords": [
+      "fecha",
+      "formulario",
+      "picker",
+      "popover",
+      "día",
+      "nacimiento",
+      "ingreso"
+    ],
+    "url": "/docs/components/datepicker"
+  },
+  {
+    "name": "Dialog",
+    "description": "Ventana modal centrada que interrumpe el flujo para confirmar acciones críticas o mostrar formularios cortos.",
+    "useCases": [
+      "Confirmar acciones destructivas como eliminar un registro",
+      "Formulario corto que requiere atención inmediata del usuario",
+      "Mostrar detalles de un elemento sin navegar a otra página"
+    ],
+    "notFor": [
+      "Paneles que el usuario necesita tener abiertos largo tiempo (usar Sheet)",
+      "Contenido que desliza desde un borde de la pantalla en móvil (usar Drawer)",
+      "Información adicional al pasar el cursor, no interactiva (usar HoverCard o Tooltip)",
+      "Acciones contextuales de un elemento (usar DropdownMenu)"
+    ],
+    "keywords": [
+      "modal",
+      "ventana",
+      "confirmar",
+      "formulario",
+      "overlay",
+      "eliminar"
+    ],
+    "url": "/docs/components/dialog"
+  },
+  {
+    "name": "Drawer",
+    "description": "Panel modal que desliza desde la parte inferior optimizado para móvil, con soporte para gesto de arrastre para cerrar.",
+    "useCases": [
+      "Acciones y opciones en dispositivos móviles con interacción táctil",
+      "Formulario corto en móvil que se activa desde un botón flotante",
+      "Lista de opciones o acciones como alternativa móvil al DropdownMenu"
+    ],
+    "notFor": [
+      "Interfaces principalmente de escritorio (usar Sheet o Dialog)",
+      "Paneles laterales persistentes de navegación (usar Sidebar)",
+      "Contenido no interactivo que solo necesita cerrarse con clic exterior (usar Popover)"
+    ],
+    "keywords": [
+      "drawer",
+      "móvil",
+      "bottom sheet",
+      "deslizar",
+      "táctil",
+      "arrastrar"
+    ],
+    "url": "/docs/components/drawer"
+  },
+  {
+    "name": "DropdownMenu",
+    "description": "Menú desplegable anclado a un botón o elemento que muestra una lista de acciones al hacer clic.",
+    "useCases": [
+      "Menú de opciones de un usuario (perfil, configuración, cerrar sesión)",
+      "Acciones secundarias sobre un elemento de lista (editar, archivar, exportar)",
+      "Agrupar pocas acciones relacionadas bajo un botón para no saturar la UI"
+    ],
+    "notFor": [
+      "Acciones en clic derecho sin botón visible (usar ContextMenu)",
+      "Seleccionar un valor de un conjunto de opciones (usar Select)",
+      "Menú estilo escritorio con múltiples categorías tipo Archivo/Editar (usar Menubar)"
+    ],
+    "keywords": [
+      "dropdown",
+      "acciones",
+      "opciones",
+      "botón",
+      "menú",
+      "perfil"
+    ],
+    "url": "/docs/components/dropdownmenu"
+  },
+  {
+    "name": "Empty",
+    "description": "Estado vacío con ícono, título y descripción para informar al usuario cuando una lista, tabla o sección no tiene contenido.",
+    "useCases": [
+      "Mostrar \"No hay pacientes registrados\" con ícono cuando la lista está vacía",
+      "Estado vacío de resultados de búsqueda sin coincidencias",
+      "Placeholder de una sección aún sin datos con call-to-action para agregar el primero"
+    ],
+    "notFor": [
+      "Errores de sistema o de red (usar Alert)",
+      "Carga en progreso (usar Skeleton o Spinner)",
+      "Confirmación de que una acción fue exitosa (usar Sonner)"
+    ],
+    "keywords": [
+      "vacío",
+      "sin datos",
+      "empty state",
+      "no results",
+      "placeholder",
+      "ilustración"
+    ],
+    "url": "/docs/components/empty"
+  },
+  {
+    "name": "Field",
+    "description": "Envoltorio de campo de formulario que agrupa etiqueta, control de entrada, descripción de ayuda y mensaje de error en una unidad accesible.",
+    "useCases": [
+      "Envolver cualquier input, select o textarea con su etiqueta y mensaje de error asociado",
+      "Campos de formulario con texto de ayuda descriptivo debajo del control",
+      "Validación accesible donde el error se asocia al control con aria-describedby"
+    ],
+    "notFor": [
+      "El control de entrada en sí mismo (usar Input, Select, Textarea, etc.)",
+      "Mensaje de estado global del formulario (usar Alert o Sonner)",
+      "Agrupación de múltiples campos en secciones (usar Separator o Card)"
+    ],
+    "keywords": [
+      "campo",
+      "formulario",
+      "etiqueta",
+      "error",
+      "validación",
+      "accesibilidad"
+    ],
+    "url": "/docs/components/field"
+  },
+  {
+    "name": "HoverCard",
+    "description": "Tarjeta rica de información que aparece al pasar el cursor sobre un enlace o elemento, mostrando una vista previa enriquecida.",
+    "useCases": [
+      "Vista previa del perfil de un médico o paciente al pasar el cursor sobre su nombre",
+      "Mostrar detalles de un medicamento al pasar el cursor sobre su código",
+      "Preview de un recurso o documento sin necesidad de navegar"
+    ],
+    "notFor": [
+      "Texto de ayuda breve de una sola línea (usar Tooltip)",
+      "Contenido interactivo que requiere clic para activarse (usar Popover)",
+      "Acciones sobre un elemento (usar DropdownMenu o ContextMenu)"
+    ],
+    "keywords": [
+      "hover",
+      "cursor",
+      "preview",
+      "tarjeta",
+      "perfil",
+      "enlace"
+    ],
+    "url": "/docs/components/hovercard"
+  },
+  {
+    "name": "Input",
+    "description": "Campo de texto de una línea para capturar datos del usuario.",
+    "useCases": [
+      "Nombre, email, teléfono u otros datos de texto corto",
+      "Búsqueda rápida con una sola línea",
+      "Campos alfanuméricos como código de paciente o ID"
+    ],
+    "notFor": [
+      "Texto largo o multilínea como notas u observaciones (usar Textarea)",
+      "Valores numéricos con controles de incremento (usar NumberField)",
+      "Selección de fecha (usar DatePicker o Calendar)"
+    ],
+    "keywords": [
+      "texto",
+      "campo",
+      "formulario",
+      "escribir",
+      "dato"
+    ],
+    "url": "/docs/components/input"
+  },
+  {
+    "name": "Item",
+    "description": "Elemento de lista con estructura consistente para icon, título, descripción y acción, usado como building block de listas.",
+    "useCases": [
+      "Ítem de una lista de resultados de búsqueda con ícono y descripción",
+      "Entrada de un log de actividad o historial de eventos",
+      "Elemento de menú o navegación con estructura estándar"
+    ],
+    "notFor": [
+      "Datos tabulares con múltiples columnas alineadas (usar Table)",
+      "Tarjeta con diseño rico y acciones complejas (usar Card)",
+      "Opciones de un select o combobox (usar Select/Combobox internamente)"
+    ],
+    "keywords": [
+      "ítem",
+      "lista",
+      "elemento",
+      "fila",
+      "entrada",
+      "resultado"
+    ],
+    "url": "/docs/components/item"
+  },
+  {
+    "name": "Kbd",
+    "description": "Elemento visual que representa una tecla o combinación de teclado con estilo de tecla física para documentación o hints de atajos.",
+    "useCases": [
+      "Mostrar atajos de teclado en tooltips o menús (Ctrl+K, ⌘+Enter)",
+      "Documentación interna de atajos disponibles en la aplicación",
+      "Hints de navegación rápida en la paleta de comandos"
+    ],
+    "notFor": [
+      "Etiquetas de estado o categoría (usar Badge)",
+      "Botones de acción que el usuario presiona (usar Button)",
+      "Código o snippets de texto (usar code tag o bloque de código)"
+    ],
+    "keywords": [
+      "teclado",
+      "atajo",
+      "shortcut",
+      "keybinding",
+      "kbd",
+      "tecla"
+    ],
+    "url": "/docs/components/kbd"
+  },
+  {
+    "name": "Label",
+    "description": "Etiqueta de texto accesible asociada a un control de formulario mediante htmlFor/for para mejorar la usabilidad y accesibilidad.",
+    "useCases": [
+      "Etiquetar un campo de input en un formulario con asociación accesible",
+      "Texto descriptivo de un checkbox o radio button",
+      "Cualquier control que necesite un nombre visible y accesible"
+    ],
+    "notFor": [
+      "Texto de ayuda adicional bajo el campo (usar Field con description)",
+      "Etiquetas de estado o categoría (usar Badge)",
+      "Headings o títulos de sección (usar h2/h3 nativos)"
+    ],
+    "keywords": [
+      "etiqueta",
+      "label",
+      "formulario",
+      "accesibilidad",
+      "campo",
+      "asociar"
+    ],
+    "url": "/docs/components/label"
+  },
+  {
+    "name": "Menubar",
+    "description": "Barra de menú estilo escritorio con menús desplegables de Archivo, Editar, Ver, etc.",
+    "useCases": [
+      "Aplicaciones estilo escritorio con múltiples categorías de acciones",
+      "Editores de texto o código con operaciones agrupadas",
+      "Interfaces que migran de desktop a web y mantienen la convención de barra de menú"
+    ],
+    "notFor": [
+      "Navegación principal del sitio web (usar NavigationMenu)",
+      "Pocas acciones agrupadas (usar DropdownMenu)",
+      "Menús contextuales de clic derecho (usar ContextMenu)"
+    ],
+    "keywords": [
+      "menubar",
+      "archivo",
+      "editar",
+      "escritorio",
+      "acciones"
+    ],
+    "url": "/docs/components/menubar"
+  },
+  {
+    "name": "NativeSelect",
+    "description": "Elemento select nativo del navegador con estilos mínimos y máxima accesibilidad.",
+    "useCases": [
+      "Formularios donde se prioriza la accesibilidad nativa del navegador",
+      "Dispositivos móviles donde el select nativo ofrece mejor experiencia táctil",
+      "Cuando la compatibilidad con navegadores antiguos es un requisito"
+    ],
+    "notFor": [
+      "Diseños con estilos personalizados del desplegable (usar Select)",
+      "Listas con búsqueda o filtrado (usar Combobox)",
+      "Múltiples selecciones (usar Checkbox o TagsInput)"
+    ],
+    "keywords": [
+      "select",
+      "nativo",
+      "accesibilidad",
+      "móvil",
+      "formulario",
+      "navegador"
+    ],
+    "url": "/docs/components/nativeselect"
+  },
+  {
+    "name": "NavigationMenu",
+    "description": "Menú de navegación principal con soporte para submenús y paneles de contenido.",
+    "useCases": [
+      "Navegación principal de la aplicación con categorías y subítems",
+      "Menú de header con dropdowns de contenido rico",
+      "Navegación con múltiples niveles de jerarquía visibles al mismo tiempo"
+    ],
+    "notFor": [
+      "Navegación secundaria dentro de una página (usar Tabs o Sidebar)",
+      "Menús de acciones contextuales sobre un elemento (usar DropdownMenu)",
+      "Indicar la posición actual en una jerarquía (usar Breadcrumb)"
+    ],
+    "keywords": [
+      "navegación",
+      "menú",
+      "header",
+      "dropdown",
+      "principal"
+    ],
+    "url": "/docs/components/navigationmenu"
+  },
+  {
+    "name": "NumberField",
+    "description": "Campo numérico con controles de incremento y decremento integrados.",
+    "useCases": [
+      "Cantidad de dosis, días de tratamiento o edad del paciente",
+      "Valores numéricos con rango definido donde el usuario puede ajustar con botones",
+      "Campos donde se quiere prevenir el ingreso de texto no numérico"
+    ],
+    "notFor": [
+      "Rangos continuos donde se arrastra (usar Slider)",
+      "Texto alfanumérico o código (usar Input)",
+      "Cantidades muy grandes donde es más práctico escribirlas (usar Input)"
+    ],
+    "keywords": [
+      "número",
+      "cantidad",
+      "incremento",
+      "dosis",
+      "valor numérico"
+    ],
+    "url": "/docs/components/numberfield"
+  },
+  {
+    "name": "Pagination",
+    "description": "Control para navegar entre páginas de un conjunto grande de resultados.",
+    "useCases": [
+      "Navegar entre páginas de una tabla o lista de resultados",
+      "Paginación de búsquedas, historiales o registros clínicos",
+      "Cualquier conjunto de datos dividido en páginas fijas"
+    ],
+    "notFor": [
+      "Desplazamiento infinito sin páginas (scroll infinito custom)",
+      "Navegación entre pasos de un flujo (usar Stepper)",
+      "Solo acciones anterior/siguiente sin numeración (usar ButtonGroup)"
+    ],
+    "keywords": [
+      "páginas",
+      "resultados",
+      "anterior",
+      "siguiente",
+      "lista"
+    ],
+    "url": "/docs/components/pagination"
+  },
+  {
+    "name": "Popover",
+    "description": "Panel flotante anclado a un elemento que muestra contenido interactivo como formularios de filtro o pickers al hacer clic.",
+    "useCases": [
+      "Selector de fecha anclado a un campo de entrada",
+      "Formulario de filtros rápidos anclado a un botón",
+      "Contenido interactivo que aparece al clic y se cierra al hacer clic fuera"
+    ],
+    "notFor": [
+      "Información de solo lectura al pasar el cursor (usar Tooltip o HoverCard)",
+      "Lista de acciones sobre un elemento (usar DropdownMenu)",
+      "Contenido que requiere la atención completa del usuario (usar Dialog)"
+    ],
+    "keywords": [
+      "flotante",
+      "anclado",
+      "clic",
+      "picker",
+      "filtro",
+      "popup"
+    ],
+    "url": "/docs/components/popover"
+  },
+  {
+    "name": "Progress",
+    "description": "Barra visual de progreso que muestra el porcentaje de avance de una operación o flujo con valor numérico conocido.",
+    "useCases": [
+      "Mostrar el porcentaje de completitud de un formulario multi-paso",
+      "Indicar el avance de una carga o importación de archivos",
+      "Visualizar el progreso de un plan de tratamiento o protocolo"
+    ],
+    "notFor": [
+      "Carga de duración desconocida sin porcentaje (usar Spinner)",
+      "Pasos discretos numerados con nombre (usar Stepper)",
+      "Estado de un campo o elemento individual (usar Badge)"
+    ],
+    "keywords": [
+      "progreso",
+      "barra",
+      "porcentaje",
+      "avance",
+      "carga",
+      "completitud"
+    ],
+    "url": "/docs/components/progress"
+  },
+  {
+    "name": "RadioGroup",
+    "description": "Grupo de opciones mutuamente excluyentes mostradas todas a la vez.",
+    "useCases": [
+      "Elegir entre pocas opciones (2–5) siempre visibles",
+      "Selección de tipo de pago, prioridad o género en formularios",
+      "Cuando el usuario necesita comparar todas las opciones antes de elegir"
+    ],
+    "notFor": [
+      "Más de 5 opciones (usar Select para ahorrar espacio)",
+      "Múltiples selecciones simultáneas (usar Checkbox)",
+      "Activar o desactivar una única opción (usar Switch o Checkbox)"
+    ],
+    "keywords": [
+      "radio",
+      "opción",
+      "exclusivo",
+      "formulario",
+      "elegir"
+    ],
+    "url": "/docs/components/radiogroup"
+  },
+  {
+    "name": "Resizable",
+    "description": "Paneles con divisores arrastrables que permiten al usuario redimensionar secciones del layout a su preferencia.",
+    "useCases": [
+      "Editor con panel de código y preview que el usuario puede redimensionar",
+      "Layout de dos columnas donde el usuario ajusta el tamaño de la barra lateral",
+      "Interfaz tipo IDE con paneles configurables por el usuario"
+    ],
+    "notFor": [
+      "Layouts de tamaño fijo que no necesitan ajuste del usuario (usar CSS grid)",
+      "Panel lateral que solo se abre/cierra (usar Sidebar o Sheet)",
+      "División visual sin interacción (usar Separator)"
+    ],
+    "keywords": [
+      "redimensionar",
+      "paneles",
+      "draggable",
+      "split",
+      "layout",
+      "ajustable"
+    ],
+    "url": "/docs/components/resizable"
+  },
+  {
+    "name": "ScrollArea",
+    "description": "Contenedor con scroll personalizado que mantiene barras de desplazamiento estilizadas y consistentes con el diseño.",
+    "useCases": [
+      "Lista larga de resultados dentro de un panel o card de altura fija",
+      "Chat o historial de mensajes con scroll interno",
+      "Sidebar con navegación extensa que supera la altura de la pantalla"
+    ],
+    "notFor": [
+      "Scroll natural del documento completo (usar overflow CSS nativo)",
+      "Paginación de grandes datasets (usar Pagination + DataTable)",
+      "Carrusel de elementos con navegación por botones (usar Carousel)"
+    ],
+    "keywords": [
+      "scroll",
+      "desplazamiento",
+      "lista larga",
+      "panel",
+      "overflow"
+    ],
+    "url": "/docs/components/scrollarea"
+  },
+  {
+    "name": "Select",
+    "description": "Menú desplegable para seleccionar una opción de una lista compacta.",
+    "useCases": [
+      "Seleccionar un país, categoría o tipo en un formulario",
+      "Lista de opciones fijas y cortas (menos de 10 ítems)",
+      "Cuando el espacio es limitado y no se necesita búsqueda"
+    ],
+    "notFor": [
+      "Listas largas donde el usuario necesita filtrar (usar Combobox)",
+      "Múltiples selecciones simultáneas (usar Checkbox o TagsInput)",
+      "Pocas opciones que deben estar siempre visibles (usar RadioGroup)",
+      "Máxima compatibilidad con navegadores antiguos (usar NativeSelect)"
+    ],
+    "keywords": [
+      "dropdown",
+      "opción",
+      "elegir",
+      "formulario",
+      "lista"
+    ],
+    "url": "/docs/components/select"
+  },
+  {
+    "name": "Separator",
+    "description": "Línea divisoria horizontal o vertical para separar visualmente secciones de contenido relacionado.",
+    "useCases": [
+      "Separar secciones de un formulario largo (datos personales / datos clínicos)",
+      "Dividir elementos en un menú o lista de acciones",
+      "Separación visual entre bloques de contenido en una página"
+    ],
+    "notFor": [
+      "Espaciado entre elementos (usar margin/padding CSS)",
+      "Agrupar elementos en secciones con título (usar Card)",
+      "Separar páginas de contenido multi-paso (usar Stepper)"
+    ],
+    "keywords": [
+      "línea",
+      "divisor",
+      "separador",
+      "sección",
+      "hr"
+    ],
+    "url": "/docs/components/separator"
+  },
+  {
+    "name": "Sheet",
+    "description": "Panel deslizante desde un borde de la pantalla para contenido secundario o formularios extensos sin perder el contexto de la página.",
+    "useCases": [
+      "Formulario de edición de un registro sin salir de la lista principal",
+      "Panel de filtros o configuraciones que el usuario puede ajustar mientras ve el contenido",
+      "Detalles ampliados de una fila de tabla manteniendo visible la tabla"
+    ],
+    "notFor": [
+      "Confirmación de acciones críticas que requieren atención total (usar Dialog o AlertDialog)",
+      "Contenido que ocupa toda la pantalla en móvil con gesto de arrastrar (usar Drawer)",
+      "Navegación lateral persistente de la aplicación (usar Sidebar)"
+    ],
+    "keywords": [
+      "panel",
+      "deslizante",
+      "lateral",
+      "formulario",
+      "edición",
+      "filtros"
+    ],
+    "url": "/docs/components/sheet"
+  },
+  {
+    "name": "Sidebar",
+    "description": "Panel lateral colapsable para la navegación primaria de la aplicación.",
+    "useCases": [
+      "Navegación principal en paneles de administración o dashboards",
+      "Menú persistente con secciones y subsecciones de la app",
+      "Barra lateral que el usuario puede colapsar para ganar espacio"
+    ],
+    "notFor": [
+      "Navegación secundaria dentro de una vista (usar Tabs)",
+      "Panel de contenido complementario sin quitar el foco (usar Sheet)",
+      "Menú contextual de acciones (usar DropdownMenu)"
+    ],
+    "keywords": [
+      "sidebar",
+      "panel lateral",
+      "navegación",
+      "dashboard",
+      "menú app"
+    ],
+    "url": "/docs/components/sidebar"
+  },
+  {
+    "name": "Skeleton",
+    "description": "Marcador de posición animado que simula la forma del contenido mientras los datos se están cargando.",
+    "useCases": [
+      "Mostrar la silueta de una lista de pacientes mientras se cargan desde la API",
+      "Placeholder de una tarjeta de resultados clínicos durante la carga",
+      "Indicar carga sin usar un spinner para reducir el efecto de parpadeo"
+    ],
+    "notFor": [
+      "Indicar progreso de una operación con porcentaje conocido (usar Progress)",
+      "Carga inicial de toda la página (usar Spinner centralizado)",
+      "Contenido que ya está disponible pero necesita validación (no usar placeholder)"
+    ],
+    "keywords": [
+      "skeleton",
+      "carga",
+      "loading",
+      "placeholder",
+      "shimmer"
+    ],
+    "url": "/docs/components/skeleton"
+  },
+  {
+    "name": "Slider",
+    "description": "Control deslizante para seleccionar un valor en un rango continuo.",
+    "useCases": [
+      "Volumen, brillo o nivel de zoom",
+      "Filtrar resultados por rango de edad, peso o algún indicador clínico",
+      "Ajustar un valor numérico donde la precisión exacta no es crítica"
+    ],
+    "notFor": [
+      "Valores numéricos exactos que el usuario debe escribir (usar Input o NumberField)",
+      "Selección entre opciones discretas (usar Select o RadioGroup)",
+      "Valores fuera de un rango conocido (usar NumberField)"
+    ],
+    "keywords": [
+      "rango",
+      "continuo",
+      "deslizar",
+      "volumen",
+      "filtro",
+      "ajuste"
+    ],
+    "url": "/docs/components/slider"
+  },
+  {
+    "name": "Sonner",
+    "description": "Sistema de notificaciones toast que muestra mensajes temporales en la esquina de la pantalla para confirmar acciones o informar errores.",
+    "useCases": [
+      "Confirmar que un registro fue guardado exitosamente",
+      "Notificar un error de conexión o fallo en una operación en segundo plano",
+      "Informar que una sesión fue cerrada o un cambio aplicado"
+    ],
+    "notFor": [
+      "Mensajes de error persistentes que el usuario debe leer y actuar (usar Alert)",
+      "Confirmación de acciones destructivas antes de ejecutarlas (usar AlertDialog)",
+      "Estado inline de un formulario (usar Field)"
+    ],
+    "keywords": [
+      "toast",
+      "notificación",
+      "temporal",
+      "éxito",
+      "error",
+      "mensaje"
+    ],
+    "url": "/docs/components/sonner"
+  },
+  {
+    "name": "Spinner",
+    "description": "Indicador giratorio de carga para operaciones cuya duración no es conocida de antemano.",
+    "useCases": [
+      "Indicar que una petición a la API está en curso (guardar, buscar)",
+      "Bloquear un botón con spinner mientras se procesa una acción",
+      "Carga inicial de datos en un componente o sección"
+    ],
+    "notFor": [
+      "Carga de listas donde se puede mostrar la forma del contenido (usar Skeleton)",
+      "Operaciones con porcentaje de avance conocido (usar Progress)",
+      "Indicar estado completado o fallido (usar Badge o Alert)"
+    ],
+    "keywords": [
+      "spinner",
+      "carga",
+      "loading",
+      "giratorio",
+      "espera"
+    ],
+    "url": "/docs/components/spinner"
+  },
+  {
+    "name": "Stepper",
+    "description": "Indicador de progreso por pasos numerados para flujos secuenciales donde cada paso tiene nombre y validación antes de avanzar.",
+    "useCases": [
+      "Formulario de admisión de paciente dividido en pasos (Datos personales, Seguro, Historia clínica)",
+      "Proceso de configuración inicial con múltiples fases",
+      "Flujo de creación de receta o protocolo de tratamiento paso a paso"
+    ],
+    "notFor": [
+      "Progreso continuo sin pasos discretos (usar Progress)",
+      "Navegación entre secciones sin secuencia obligatoria (usar Tabs)",
+      "Carrusel visual de elementos sin validación (usar Carousel)"
+    ],
+    "keywords": [
+      "pasos",
+      "flujo",
+      "secuencial",
+      "formulario multi-paso",
+      "wizard",
+      "admisión"
+    ],
+    "url": "/docs/components/stepper"
+  },
+  {
+    "name": "Switch",
+    "description": "Control para activar o desactivar una configuración de forma inmediata.",
+    "useCases": [
+      "Activar notificaciones, permisos u otras preferencias del sistema",
+      "Habilitar o deshabilitar una funcionalidad en tiempo real",
+      "Configuraciones que toman efecto inmediatamente sin requerir guardar"
+    ],
+    "notFor": [
+      "Opciones en formularios que se guardan junto con otros campos (usar Checkbox)",
+      "Selección entre más de dos estados (usar Select o RadioGroup)",
+      "Acciones irreversibles que requieren confirmación (usar Button con Dialog)"
+    ],
+    "keywords": [
+      "activar",
+      "desactivar",
+      "on",
+      "off",
+      "configuración",
+      "toggle"
+    ],
+    "url": "/docs/components/switch"
+  },
+  {
+    "name": "Table",
+    "description": "Tabla HTML semántica para datos tabulares simples sin necesidad de ordenamiento, filtros o paginación interactivos.",
+    "useCases": [
+      "Mostrar datos comparativos estáticos con pocas filas (horarios, tarifas)",
+      "Tabla de resumen en un reporte o panel de resultados fijo",
+      "Lista de ítems con columnas simples sin interacción de usuario"
+    ],
+    "notFor": [
+      "Grandes datasets con ordenamiento, filtros y paginación (usar DataTable)",
+      "Lista simple de elementos sin columnas (usar ul o Item)",
+      "Datos con jerarquía o agrupación compleja (usar DataTable con agrupación)"
+    ],
+    "keywords": [
+      "tabla",
+      "datos",
+      "columnas",
+      "filas",
+      "tabulares",
+      "estático"
+    ],
+    "url": "/docs/components/table"
+  },
+  {
+    "name": "Tabs",
+    "description": "Alterna entre secciones de contenido relacionado dentro de la misma página.",
+    "useCases": [
+      "Organizar configuraciones por categorías (General, Seguridad, Notificaciones)",
+      "Separar vistas de un perfil (Datos, Historial, Documentos)",
+      "Dividir formularios extensos en pasos nombrados"
+    ],
+    "notFor": [
+      "Navegación principal del sitio (usar NavigationMenu o Sidebar)",
+      "Flujos de pasos secuenciales con validación entre pasos (usar Stepper)",
+      "Pocas opciones de formato cortas (usar ToggleGroup)"
+    ],
+    "keywords": [
+      "pestañas",
+      "secciones",
+      "vistas",
+      "categorías",
+      "alternar"
+    ],
+    "url": "/docs/components/tabs"
+  },
+  {
+    "name": "TagsInput",
+    "description": "Campo para ingresar y gestionar múltiples etiquetas o valores.",
+    "useCases": [
+      "Seleccionar múltiples diagnósticos, alergias o especialidades",
+      "Agregar etiquetas o categorías a un registro",
+      "Campos con múltiples valores de texto libre"
+    ],
+    "notFor": [
+      "Selección de un único valor (usar Select o Input)",
+      "Opciones predefinidas fijas sin texto libre (usar Checkbox)",
+      "Un solo valor numérico o de texto corto (usar Input)"
+    ],
+    "keywords": [
+      "tags",
+      "etiquetas",
+      "múltiple",
+      "chips",
+      "valores",
+      "alergias"
+    ],
+    "url": "/docs/components/tagsinput"
+  },
+  {
+    "name": "Textarea",
+    "description": "Campo de texto multilínea para contenido extenso.",
+    "useCases": [
+      "Observaciones clínicas, notas o descripciones largas",
+      "Mensajes, comentarios o justificaciones",
+      "Cualquier campo que requiera más de una línea de texto"
+    ],
+    "notFor": [
+      "Datos cortos de una línea como nombre o email (usar Input)",
+      "Texto con formato enriquecido (usar editor externo)",
+      "Código fuente con resaltado de sintaxis (usar componente externo)"
+    ],
+    "keywords": [
+      "texto",
+      "multilínea",
+      "nota",
+      "descripción",
+      "comentario",
+      "observación"
+    ],
+    "url": "/docs/components/textarea"
+  },
+  {
+    "name": "Toggle",
+    "description": "Botón que mantiene estado activo/inactivo para aplicar opciones de formato o vista.",
+    "useCases": [
+      "Negritas, cursivas u otras opciones de formato en un editor de texto",
+      "Cambiar entre vista de lista y vista de cuadrícula",
+      "Activar filtros o modos de visualización que persisten visualmente"
+    ],
+    "notFor": [
+      "Configuraciones del sistema o preferencias persistentes (usar Switch)",
+      "Selección de una opción de un grupo exclusivo (usar ToggleGroup)",
+      "Confirmar o iniciar una acción (usar Button)"
+    ],
+    "keywords": [
+      "toggle",
+      "activo",
+      "formato",
+      "vista",
+      "persistente",
+      "editor"
+    ],
+    "url": "/docs/components/toggle"
+  },
+  {
+    "name": "ToggleGroup",
+    "description": "Grupo de botones toggle para selección exclusiva o múltiple de opciones visibles.",
+    "useCases": [
+      "Alineación de texto: izquierda, centro, derecha",
+      "Selección de tipo de vista o filtro entre opciones siempre visibles",
+      "Opciones de formato que pueden combinarse (negrita + cursiva)"
+    ],
+    "notFor": [
+      "Más de 5 opciones donde el espacio es limitado (usar Select o Tabs)",
+      "Opciones con descripciones largas (usar RadioGroup)",
+      "Navegación entre secciones de contenido (usar Tabs)"
+    ],
+    "keywords": [
+      "grupo",
+      "selección",
+      "formato",
+      "alineación",
+      "vista",
+      "opciones"
+    ],
+    "url": "/docs/components/togglegroup"
+  },
+  {
+    "name": "Tooltip",
+    "description": "Etiqueta de texto breve que aparece al pasar el cursor para explicar la función de un icono o elemento sin texto visible.",
+    "useCases": [
+      "Describir la función de un botón de icono sin etiqueta de texto",
+      "Mostrar el nombre completo de un campo abreviado al pasar el cursor",
+      "Aclaración contextual breve para elementos de la interfaz"
+    ],
+    "notFor": [
+      "Información enriquecida con múltiples líneas o imágenes (usar HoverCard)",
+      "Contenido interactivo que requiere clic (usar Popover)",
+      "Mensajes de error o validación de formulario (usar Field o texto inline)"
+    ],
+    "keywords": [
+      "tooltip",
+      "ayuda",
+      "icono",
+      "hover",
+      "descripción",
+      "etiqueta"
+    ],
+    "url": "/docs/components/tooltip"
+  }
+]

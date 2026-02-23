@@ -1,31 +1,33 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import type { ComponentMeta } from '../src/types/component-meta.ts'
+import { readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
 
 // ---------------------------------------------------------------------------
-// Types
+// Load component registry from pre-generated JSON (build artifact)
 // ---------------------------------------------------------------------------
-interface NavComponent {
-  title: string
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+interface ComponentEntry {
+  name: string
+  description: string
+  useCases: string[]
+  notFor: string[]
+  keywords: string[]
   url: string
 }
 
-// ---------------------------------------------------------------------------
-// URL lookup
-// ---------------------------------------------------------------------------
-function getUrl(meta: ComponentMeta, components: NavComponent[]): string {
-  const urlMap = new Map(components.map((c) => [c.title.toLowerCase(), c.url]))
-  return (
-    urlMap.get(meta.name.toLowerCase()) ??
-    `/docs/components/${meta.name.toLowerCase().replace(/ /g, '-')}`
-  )
-}
+const componentRegistry: ComponentEntry[] = JSON.parse(
+  readFileSync(join(__dirname, 'component-registry.json'), 'utf-8'),
+)
 
 // ---------------------------------------------------------------------------
-// Scoring
+// Scoring: keyword match against description + useCases + keywords
 // ---------------------------------------------------------------------------
-function score(meta: ComponentMeta, context: string): number {
+function score(entry: ComponentEntry, context: string): number {
   const terms = context.toLowerCase().split(/\W+/).filter(Boolean)
-  const fields = [meta.description, ...meta.useCases, ...(meta.keywords ?? [])]
+  const fields = [entry.description, ...entry.useCases, ...entry.keywords]
     .join(' ')
     .toLowerCase()
   return terms.reduce((acc, term) => (fields.includes(term) ? acc + 1 : acc), 0)
@@ -42,11 +44,7 @@ interface FindComponentMatch {
   url: string
 }
 
-function findComponent(
-  context: string,
-  componentRegistry: ComponentMeta[],
-  components: NavComponent[],
-): { matches: FindComponentMatch[]; message?: string } {
+function findComponent(context: string): { matches: FindComponentMatch[]; message?: string } {
   if (!context.trim()) {
     return {
       matches: [],
@@ -55,15 +53,15 @@ function findComponent(
   }
 
   const results = componentRegistry
-    .map((meta) => ({ meta, _score: score(meta, context) }))
+    .map((entry) => ({ entry, _score: score(entry, context) }))
     .filter((r) => r._score > 0)
     .sort((a, b) => b._score - a._score)
     .map((r) => ({
-      name: r.meta.name,
-      description: r.meta.description,
-      useCases: r.meta.useCases,
-      notFor: r.meta.notFor,
-      url: getUrl(r.meta, components),
+      name: r.entry.name,
+      description: r.entry.description,
+      useCases: r.entry.useCases,
+      notFor: r.entry.notFor,
+      url: r.entry.url,
     }))
 
   if (results.length === 0) {
@@ -108,11 +106,7 @@ interface JsonRpcRequest {
   params?: Record<string, unknown>
 }
 
-function handleRpc(
-  request: JsonRpcRequest,
-  componentRegistry: ComponentMeta[],
-  components: NavComponent[],
-): unknown {
+function handleRpc(request: JsonRpcRequest): unknown {
   const { method, params, id } = request
 
   const ok = (result: unknown) => ({ jsonrpc: '2.0', id, result })
@@ -144,7 +138,7 @@ function handleRpc(
       return err(-32601, `Herramienta desconocida: ${toolParams?.name}`)
     }
     const context = (toolParams?.arguments?.context as string) ?? ''
-    const result = findComponent(context, componentRegistry, components)
+    const result = findComponent(context)
     return ok({
       content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
     })
@@ -154,9 +148,9 @@ function handleRpc(
 }
 
 // ---------------------------------------------------------------------------
-// Vercel Function entry point — dynamic imports to surface load errors
+// Vercel Function entry point
 // ---------------------------------------------------------------------------
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
@@ -169,32 +163,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method Not Allowed' })
   }
 
-  // Dynamic imports so any load error surfaces as JSON instead of 500
-  let componentRegistry: ComponentMeta[]
-  let components: NavComponent[]
-  try {
-    const reg = await import('../src/data/component-registry.ts')
-    componentRegistry = reg.componentRegistry
-    const nav = await import('../src/utils/components.ts')
-    components = nav.components
-  } catch (e: unknown) {
-    return res.status(500).json({
-      error: 'module_load_failed',
-      message: e instanceof Error ? e.message : String(e),
-      stack: e instanceof Error ? e.stack?.split('\n').slice(0, 8) : undefined,
-    })
-  }
-
   const body = req.body as JsonRpcRequest | JsonRpcRequest[]
 
   if (Array.isArray(body)) {
-    const responses = body
-      .map((r) => handleRpc(r, componentRegistry, components))
-      .filter(Boolean)
+    const responses = body.map(handleRpc).filter(Boolean)
     return res.status(200).json(responses)
   }
 
-  const response = handleRpc(body, componentRegistry, components)
+  const response = handleRpc(body)
   if (response === null) {
     return res.status(204).end()
   }
