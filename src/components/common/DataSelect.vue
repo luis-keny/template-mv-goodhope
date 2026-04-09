@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { ComputedRef } from 'vue'
 import {
   Select,
   SelectContent,
@@ -9,13 +10,25 @@ import {
 import { computed } from 'vue'
 import { Loader2 } from 'lucide-vue-next'
 
+type PrimitiveItem = string | number | boolean
+type SelectItemRecord = Record<string, unknown>
+type SelectItem = PrimitiveItem | SelectItemRecord
+type ItemResolver<T> = (keyof T & string) | ((item: T) => string)
+type ItemDisabledResolver<T> = (keyof T & string) | ((item: T) => boolean)
+
+interface NormalizedItem {
+  value: string
+  text: string
+  disabled: boolean
+}
+
 interface Props {
   modelValue?: string
-  items: any[]
+  items: SelectItem[]
   placeholder?: string
-  itemText?: string | ((item: any) => string)
-  itemValue?: string | ((item: any) => string)
-  itemDisabled?: string | ((item: any) => boolean)
+  itemText?: ItemResolver<SelectItemRecord>
+  itemValue?: ItemResolver<SelectItemRecord>
+  itemDisabled?: ItemDisabledResolver<SelectItemRecord>
   disabled?: boolean
   loading?: boolean
 }
@@ -34,48 +47,43 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>()
 
-const resolveValue = (item: any) => {
-  if (typeof item === 'object' && item !== null) {
-    if (typeof props.itemValue === 'function') {
-      return String(props.itemValue(item))
-    }
-    return String(item[props.itemValue])
-  }
-  return String(item)
+function isItemRecord(item: SelectItem): item is SelectItemRecord {
+  return typeof item === 'object' && item !== null
 }
 
-const resolveText = (item: any) => {
-  if (typeof item === 'object' && item !== null) {
-    if (typeof props.itemText === 'function') {
-      return props.itemText(item)
-    }
-    return item[props.itemText]
+function resolveField<TValue>(
+  item: SelectItem,
+  resolver: string | ((item: SelectItemRecord) => TValue),
+  fallback: (value: SelectItem) => TValue,
+): TValue {
+  if (!isItemRecord(item)) {
+    return fallback(item)
   }
-  return String(item)
+
+  if (typeof resolver === 'function') {
+    return resolver(item)
+  }
+
+  return item[resolver] as TValue
 }
 
-const resolveDisabled = (item: any) => {
-  if (typeof item === 'object' && item !== null) {
-    if (typeof props.itemDisabled === 'function') {
-      return props.itemDisabled(item)
-    }
-    return Boolean(item[props.itemDisabled])
-  }
-  return false
-}
+const resolveValue = (item: SelectItem) => String(resolveField(item, props.itemValue, (value) => value))
 
-const normalizedItems = computed(() => {
-  return props.items.map(item => ({
-    original: item,
+const resolveText = (item: SelectItem) => String(resolveField(item, props.itemText, (value) => value))
+
+const resolveDisabled = (item: SelectItem) => Boolean(resolveField(item, props.itemDisabled, () => false))
+
+const normalizedItems: ComputedRef<NormalizedItem[]> = computed(() => {
+  return props.items.map((item) => ({
     value: resolveValue(item),
     text: resolveText(item),
-    disabled: resolveDisabled(item)
+    disabled: resolveDisabled(item),
   }))
 })
 
 const internalValue = computed({
   get: () => props.modelValue,
-  set: (val) => emit('update:modelValue', val)
+  set: (value: string) => emit('update:modelValue', value),
 })
 </script>
 

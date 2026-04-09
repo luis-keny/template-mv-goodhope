@@ -1,6 +1,18 @@
-import { sections } from "./components";
+import type { NavSection } from '@/utils/components'
+import { sections } from '@/utils/components'
 
-export const siteConfig = {
+interface SiteConfig {
+  name: string
+  url: string
+  ogImage: string
+  description: string
+  navItems: Array<{
+    label: NavSection['title']
+    href: NavSection['url']
+  }>
+}
+
+export const siteConfig: SiteConfig = {
   name: 'shadcn/vue',
   url: 'https://shadcn-vue.com',
   ogImage: 'https://shadcn-vue.com/og.jpg',

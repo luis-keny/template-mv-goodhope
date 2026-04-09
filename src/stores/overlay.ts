@@ -1,17 +1,24 @@
 import { reactive } from 'vue'
 
-interface OverlayState {
+interface OverlayState<T = unknown> {
   isOpen: boolean
-  data: any
+  data: T | null
 }
 
 const overlays = reactive<Record<string, OverlayState>>({})
 
+function createOverlayState<T>(data: T | null = null): OverlayState<T> {
+  return {
+    isOpen: false,
+    data,
+  }
+}
+
 export const useOverlayStore = () => {
-  const open = (id: string, data: any = null) => {
+  const open = <T = unknown>(id: string, data: T | null = null) => {
     overlays[id] = {
+      ...createOverlayState(data),
       isOpen: true,
-      data
     }
   }
 
@@ -21,7 +28,7 @@ export const useOverlayStore = () => {
     }
   }
 
-  const toggle = (id: string, data: any = null) => {
+  const toggle = <T = unknown>(id: string, data: T | null = null) => {
     if (overlays[id]?.isOpen) {
       close(id)
     } else {
@@ -29,17 +36,18 @@ export const useOverlayStore = () => {
     }
   }
 
-  const getOverlay = (id: string) => {
+  const getOverlay = <T = unknown>(id: string): OverlayState<T> => {
     if (!overlays[id]) {
-      overlays[id] = { isOpen: false, data: null }
+      overlays[id] = createOverlayState()
     }
-    return overlays[id]
+
+    return overlays[id] as OverlayState<T>
   }
 
   return {
     open,
     close,
     toggle,
-    getOverlay
+    getOverlay,
   }
 }

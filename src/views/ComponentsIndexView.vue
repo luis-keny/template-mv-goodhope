@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { components } from '@/utils/components'
+import { documentedComponents } from '@/docs/registry'
 </script>
 
 <template>
@@ -11,7 +11,7 @@ import { components } from '@/utils/components'
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       <RouterLink
-        v-for="item in components"
+        v-for="item in documentedComponents"
         :key="item.title"
         :to="item.url"
         class="rounded-md border border-muted p-4 hover:bg-muted/40 transition-colors"

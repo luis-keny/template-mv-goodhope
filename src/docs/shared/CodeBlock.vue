@@ -1,10 +1,23 @@
 <script setup lang="ts">
-import { ref, computed, watchEffect } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import hljs from 'highlight.js/lib/common'
 import 'highlight.js/styles/atom-one-dark.css'
-import { CheckCheck, Copy } from 'lucide-vue-next';
-import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipTrigger, TooltipProvider, TooltipContent } from '@/components/ui/tooltip';
+import { CheckCheck, Copy } from 'lucide-vue-next'
+import { Button } from '@/components/ui/button'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+
+function normalizeCodeBlock(code: string): string {
+  const trimmed = code.replace(/^\s*\n/, '').replace(/\n\s*$/, '')
+  const lines = trimmed.split('\n')
+  const indents = lines
+    .filter((line) => line.trim().length > 0)
+    .map((line) => line.match(/^(\s+)/)?.[0].length ?? 0)
+  const minIndent = indents.length ? Math.min(...indents) : 0
+
+  return minIndent > 0
+    ? lines.map((line) => line.slice(minIndent)).join('\n')
+    : trimmed
+}
 
 const props = withDefaults(defineProps<{
   code: string
@@ -16,19 +29,9 @@ const props = withDefaults(defineProps<{
 })
 
 const html = ref('')
-const normalizedCode = computed(() =>
-  (() => {
-    const trimmed = props.code.replace(/^\s*\n/, '').replace(/\n\s*$/, '')
-    const lines = trimmed.split('\n')
-    const indents = lines
-      .filter(l => l.trim().length > 0)
-      .map(l => (l.match(/^(\s+)/)?.[0].length) ?? 0)
-    const minIndent = indents.length ? Math.min(...indents) : 0
-    const dedented = minIndent > 0 ? lines.map(l => l.slice(minIndent)).join('\n') : trimmed
-    return dedented
-  })()
-)
+const normalizedCode = computed(() => normalizeCodeBlock(props.code))
 const lineCount = computed(() => normalizedCode.value.split('\n').length)
+
 watchEffect(() => {
   try {
     html.value = hljs.highlight(normalizedCode.value, { language: props.language }).value
@@ -38,10 +41,22 @@ watchEffect(() => {
 })
 
 const copied = ref(false)
+const copyFailed = ref(false)
+
 const copy = async () => {
-  await navigator.clipboard.writeText(props.code)
-  copied.value = true
-  setTimeout(() => (copied.value = false), 1200)
+  try {
+    await navigator.clipboard.writeText(props.code)
+    copied.value = true
+    copyFailed.value = false
+  } catch {
+    copied.value = false
+    copyFailed.value = true
+  }
+
+  setTimeout(() => {
+    copied.value = false
+    copyFailed.value = false
+  }, 1200)
 }
 </script>
 
@@ -61,12 +76,13 @@ const copy = async () => {
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          <p v-if="!copied">Copiar código</p>
-          <p v-else>Copiado</p>
+          <p v-if="copyFailed">No se pudo copiar</p>
+          <p v-else-if="copied">Copiado</p>
+          <p v-else>Copiar código</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
-    
+
     <div class="flex max-h-[400px] overflow-y-auto no-scrollbar">
       <div v-if="showLineNumbers" aria-hidden="true" class="mr-4 select-none text-right text-neutral-400">
         <span class="block" v-for="n in lineCount" :key="n">{{ n }}</span>
