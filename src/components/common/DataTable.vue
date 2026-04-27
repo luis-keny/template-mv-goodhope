@@ -156,7 +156,7 @@ const table = useVueTable({
   },
   initialState: {
     pagination: {
-      pageSize: paginationConfig.value?.pageSize || 10
+      pageSize: paginationConfig.value?.pageSize || props.data.length
     }
   }
 })
@@ -178,14 +178,14 @@ const currentPage = computed({
       <template v-if="searchConfig">
         <Input
           v-if="'column' in searchConfig"
-          class="flex-1"
+          class="flex-1 bg-white"
           :placeholder="searchConfig.placeholder"
           :model-value="table.getColumn(searchConfig.column || '')?.getFilterValue() as string"
           @update:model-value="table.getColumn(searchConfig.column || '')?.setFilterValue($event)"
         />
         <Input
           v-else
-          class="flex-1"
+          class="flex-1 bg-white"
           :placeholder="searchConfig.placeholder"
           v-model="globalFilter"
         />
@@ -211,6 +211,7 @@ const currentPage = computed({
           </DropdownMenuCheckboxItem>
         </DropdownMenuContent>
       </DropdownMenu>
+      <slot name="actions"></slot>
     </div>
 
     <div class="rounded-lg overflow-hidden border" :style="`max-height: ${props.maxHeight};`">
