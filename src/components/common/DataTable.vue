@@ -17,8 +17,8 @@ import {
   getSortedRowModel,
   useVueTable,
 } from '@tanstack/vue-table'
-import { ChevronDown } from 'lucide-vue-next'
-import { ref, computed, watch } from 'vue'
+import { ChevronDown, GripVertical } from 'lucide-vue-next'
+import { ref, computed, watch, h } from 'vue'
 
 import { valueUpdater } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -40,19 +40,24 @@ import {
 import { Skeleton } from '@/components/ui/skeleton'
 import Paginator from './Paginator.vue'
 
+type RowDndConfig = {
+  rowIdKey?: string
+  handle?: boolean
+}
+
 const props = withDefaults(
   defineProps<{
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
-    search?: boolean | string | string[] | { 
-      column?: string; 
+    search?: boolean | string | string[] | {
+      column?: string;
       columns?: string[];
-      placeholder?: string 
+      placeholder?: string
     }
-    pagination?: boolean | 'simple' | 'advanced' | { 
-      type: 'simple' | 'advanced'; 
-      itemsPerPage?: number; 
-      siblingCount?: number; 
+    pagination?: boolean | 'simple' | 'advanced' | {
+      type: 'simple' | 'advanced';
+      itemsPerPage?: number;
+      siblingCount?: number;
       showEdges?: boolean;
       defaultPage?: number;
     }
@@ -60,7 +65,8 @@ const props = withDefaults(
     loading?: boolean
     funcFilter?: (row: Row<TData>, filterValue: string) => boolean
     maxHeight?: string
-     tableMeta?: TableMeta<TData>
+    tableMeta?: TableMeta<TData>
+    rowDnd?: boolean | RowDndConfig
   }>(),
   {
     search: false,
@@ -69,13 +75,91 @@ const props = withDefaults(
     loading: false,
     funcFilter: undefined,
     maxHeight: 'none',
+    rowDnd: false,
   }
 )
 
 const emit = defineEmits<{
   (e: 'selection-change', rows: TData[]): void
+  (e: 'row-reorder', rows: TData[]): void
 }>()
 
+// --- Drag & Drop state ---
+const dndConfig = computed<RowDndConfig | false>(() => {
+  if (!props.rowDnd) return false
+  if (props.rowDnd === true) return { handle: true }
+  return { handle: true, ...props.rowDnd }
+})
+
+const showHandle = computed(() => {
+  const cfg = dndConfig.value
+  return cfg !== false && cfg.handle !== false
+})
+
+const draggingIndex = ref<number | null>(null)
+const dragOverIndex = ref<number | null>(null)
+
+// Internal mutable copy of data for reordering; syncs with props.data
+const localData = ref<TData[]>([...props.data] as TData[])
+
+watch(() => props.data, (newData) => {
+  localData.value = [...newData]
+}, { deep: true })
+
+const DND_HANDLE_COLUMN_ID = '__dnd_handle__'
+
+const handleColumn = computed<ColumnDef<TData, TValue>>(() => ({
+  id: DND_HANDLE_COLUMN_ID,
+  header: () => null,
+  cell: () => h(GripVertical, { class: 'h-4 w-4 text-muted-foreground cursor-grab active:cursor-grabbing' }),
+  enableHiding: false,
+  enableSorting: false,
+  size: 32,
+  meta: {
+    thClass: 'w-8 px-2',
+    tdClass: 'w-8 px-2',
+  },
+}))
+
+const effectiveColumns = computed<ColumnDef<TData, TValue>[]>(() => {
+  if (!dndConfig.value) return props.columns
+  if (!showHandle.value) return props.columns
+  // Avoid duplicating handle column if consumer added it themselves
+  const alreadyHasHandle = props.columns.some((c) => (c as any).id === DND_HANDLE_COLUMN_ID)
+  if (alreadyHasHandle) return props.columns
+  return [handleColumn.value, ...props.columns]
+})
+
+function onDragStart(index: number) {
+  draggingIndex.value = index
+}
+
+function onDragOver(event: DragEvent, index: number) {
+  event.preventDefault()
+  dragOverIndex.value = index
+}
+
+function onDrop(index: number) {
+  if (draggingIndex.value === null || draggingIndex.value === index) {
+    draggingIndex.value = null
+    dragOverIndex.value = null
+    return
+  }
+  const reordered = [...localData.value] as TData[]
+  const [moved] = reordered.splice(draggingIndex.value, 1)
+  reordered.splice(index, 0, moved as TData)
+  localData.value = reordered
+  draggingIndex.value = null
+  dragOverIndex.value = null
+  emit('row-reorder', reordered)
+}
+
+function onDragEnd() {
+  draggingIndex.value = null
+  dragOverIndex.value = null
+}
+
+// --- Regular state ---
 const sorting = ref<SortingState>([])
 const columnFilters = ref<ColumnFiltersState>([])
 const columnVisibility = ref<VisibilityState>({})
@@ -116,8 +200,8 @@ const paginationConfig = computed(() => {
 })
 
 const table = useVueTable({
-  get data() { return props.data },
-  get columns() { return props.columns },
+  get data() { return (dndConfig.value ? localData.value : props.data) as TData[] },
+  get columns() { return effectiveColumns.value },
   get meta() { return props.tableMeta },
   getCoreRowModel: getCoreRowModel(),
   getPaginationRowModel: getPaginationRowModel(),
@@ -239,14 +323,25 @@ const currentPage = computed({
             </TableRow>
           </template>
           <template v-else-if="table.getRowModel().rows?.length">
-            <TableRow 
-              v-for="row in table.getRowModel().rows" 
-              :key="row.id" 
+            <TableRow
+              v-for="(row, rowIndex) in table.getRowModel().rows"
+              :key="row.id"
               :data-state="row.getIsSelected() && 'selected'"
-              :class="(row.original as any)?.trClass"
+              :class="cn(
+                (row.original as any)?.trClass,
+                dndConfig && !showHandle ? 'cursor-move' : '',
+                dndConfig && draggingIndex === rowIndex ? 'opacity-50' : '',
+                dndConfig && dragOverIndex === rowIndex && draggingIndex !== rowIndex
+                  ? 'border-t-2 border-primary' : '',
+              )"
+              :draggable="dndConfig ? true : undefined"
+              @dragstart="dndConfig ? onDragStart(rowIndex) : undefined"
+              @dragover="dndConfig ? onDragOver($event, rowIndex) : undefined"
+              @drop="dndConfig ? onDrop(rowIndex) : undefined"
+              @dragend="dndConfig ? onDragEnd() : undefined"
             >
-              <TableCell 
-                v-for="cell in row.getVisibleCells()" 
+              <TableCell
+                v-for="cell in row.getVisibleCells()"
                 :key="cell.id"
                 :class="(cell.column.columnDef.meta as any)?.tdClass"
               >
