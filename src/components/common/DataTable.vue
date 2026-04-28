@@ -18,11 +18,12 @@ import {
   useVueTable,
 } from '@tanstack/vue-table'
 import { ChevronDown, GripVertical } from 'lucide-vue-next'
-import { ref, computed, watch, h } from 'vue'
+import { ref, computed, watch, h, onUnmounted } from 'vue'
 
 import { valueUpdater } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Spinner } from '@/components/ui/spinner'
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -41,8 +42,16 @@ import { Skeleton } from '@/components/ui/skeleton'
 import Paginator from './Paginator.vue'
 
 type RowDndConfig = {
-  rowIdKey?: string
   handle?: boolean
+  rowIdKey?: string
+
+  // Save strategy (optional — if omitted, just emits 'row-reorder' as before)
+  saveMode?: 'immediate' | 'debounced' | 'button'
+  debounceMs?: number        // only for saveMode='debounced', default 500ms
+  lockWhileSaving?: boolean  // disable DnD while onSave is in-flight
+  rollbackOnError?: boolean  // revert localData to pre-drop state if onSave throws
+
+  onSave?: (rows: TData[]) => Promise<void>  // required when saveMode is set
 }
 
 const props = withDefaults(
@@ -102,8 +111,16 @@ const dragOverIndex = ref<number | null>(null)
 // Internal mutable copy of data for reordering; syncs with props.data
 const localData = ref<TData[]>([...props.data] as TData[])
 
+// --- Extended DnD save strategy state ---
+const isSaving = ref(false)
+const isDirty = ref(false)
+const debounceTimer = ref<ReturnType<typeof setTimeout> | null>(null)
+const snapshotBeforeDrop = ref<TData[] | null>(null)
+
 watch(() => props.data, (newData) => {
   localData.value = [...newData]
+  // Reset dirty flag when external data changes
+  isDirty.value = false
 }, { deep: true })
 
 const DND_HANDLE_COLUMN_ID = '__dnd_handle__'
@@ -130,7 +147,33 @@ const effectiveColumns = computed<ColumnDef<TData, TValue>[]>(() => {
   return [handleColumn.value, ...props.columns]
 })
 
+async function executeSave(rows: TData[]) {
+  const cfg = dndConfig.value
+  if (!cfg || !cfg.onSave) return
+
+  if (cfg.lockWhileSaving) {
+    isSaving.value = true
+  }
+
+  try {
+    await cfg.onSave(rows)
+    isDirty.value = false
+  } catch (err) {
+    console.error('[DataTable] onSave failed:', err)
+    if (cfg.rollbackOnError && snapshotBeforeDrop.value !== null) {
+      localData.value = [...snapshotBeforeDrop.value]
+      isDirty.value = false
+    }
+  } finally {
+    if (cfg.lockWhileSaving) {
+      isSaving.value = false
+    }
+  }
+}
+
 function onDragStart(index: number) {
+  // Block DnD while saving if lockWhileSaving is enabled
+  if (isSaving.value) return
   draggingIndex.value = index
 }
 
@@ -145,19 +188,62 @@ function onDrop(index: number) {
     dragOverIndex.value = null
     return
   }
+
+  // Save snapshot before reorder for potential rollback
+  snapshotBeforeDrop.value = [...localData.value]
+
   const reordered = [...localData.value] as TData[]
   const [moved] = reordered.splice(draggingIndex.value, 1)
   reordered.splice(index, 0, moved as TData)
   localData.value = reordered
   draggingIndex.value = null
   dragOverIndex.value = null
+
+  const cfg = dndConfig.value
+
+  if (!cfg || !cfg.saveMode || !cfg.onSave) {
+    // Backward-compatible path: just emit the event
+    emit('row-reorder', reordered)
+    return
+  }
+
+  // Always emit for consumers that still listen to row-reorder
   emit('row-reorder', reordered)
+
+  if (cfg.saveMode === 'immediate') {
+    executeSave(reordered)
+  } else if (cfg.saveMode === 'debounced') {
+    // Cancel any pending debounce timer
+    if (debounceTimer.value !== null) {
+      clearTimeout(debounceTimer.value)
+      debounceTimer.value = null
+    }
+    const ms = cfg.debounceMs ?? 500
+    debounceTimer.value = setTimeout(() => {
+      debounceTimer.value = null
+      executeSave(localData.value as TData[])
+    }, ms)
+  } else if (cfg.saveMode === 'button') {
+    isDirty.value = true
+  }
 }
 
 function onDragEnd() {
   draggingIndex.value = null
   dragOverIndex.value = null
 }
+
+async function saveOrderManually() {
+  await executeSave(localData.value as TData[])
+}
+
+// Cleanup debounce timer on unmount to avoid memory leaks
+onUnmounted(() => {
+  if (debounceTimer.value !== null) {
+    clearTimeout(debounceTimer.value)
+    debounceTimer.value = null
+  }
+})
 
 // --- Regular state ---
 const sorting = ref<SortingState>([])
@@ -216,7 +302,7 @@ const table = useVueTable({
     if (props.funcFilter) return props.funcFilter(row, filterValue)
 
     const normalizeText = (text: any) => {
-      return String(text || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+      return String(text || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
     }
     const searchTerm = normalizeText(filterValue)
     const config = searchConfig.value as any
@@ -227,7 +313,7 @@ const table = useVueTable({
       })
     }
 
-    return Object.values(row.original as any).some((val) => 
+    return Object.values(row.original as any).some((val) =>
       normalizeText(val).includes(searchTerm)
     )
   },
@@ -240,7 +326,7 @@ const table = useVueTable({
   },
   initialState: {
     pagination: {
-      pageSize: paginationConfig.value?.pageSize || props.data.length
+      pageSize: paginationConfig.value?.pageSize ?? Number.MAX_SAFE_INTEGER
     }
   }
 })
@@ -250,15 +336,45 @@ watch(rowSelection, () => {
   emit('selection-change', selectedRows)
 })
 
+// Reactively sync pageSize when pagination config or data length changes.
+// Needed because initialState is evaluated only once at mount.
+watch(
+  [paginationConfig, () => props.data.length],
+  ([cfg]) => {
+    table.setPageSize(cfg?.pageSize ?? Number.MAX_SAFE_INTEGER)
+  },
+  { immediate: true }
+)
+
 const currentPage = computed({
   get: () => table.getState().pagination.pageIndex + 1,
   set: (val) => table.setPageIndex(val - 1)
+})
+
+// Computed helpers for template readability
+const showDndToolbar = computed(() => {
+  const cfg = dndConfig.value
+  if (!cfg || !cfg.saveMode) return false
+  return cfg.saveMode === 'button' || (cfg.lockWhileSaving && isSaving.value)
+})
+
+const showSaveButton = computed(() => {
+  const cfg = dndConfig.value
+  return cfg && cfg.saveMode === 'button'
+})
+
+const showSavingIndicator = computed(() => {
+  const cfg = dndConfig.value
+  return cfg && cfg.lockWhileSaving && isSaving.value
 })
 </script>
 
 <template>
   <div class="w-full">
-    <div class="flex items-center py-4 gap-2" v-if="searchConfig || showColumnVisibility">
+    <div
+      class="flex items-center py-4 gap-2"
+      v-if="searchConfig || showColumnVisibility || showDndToolbar"
+    >
       <template v-if="searchConfig">
         <Input
           v-if="'column' in searchConfig"
@@ -295,6 +411,37 @@ const currentPage = computed({
           </DropdownMenuCheckboxItem>
         </DropdownMenuContent>
       </DropdownMenu>
+
+      <!-- DnD save button toolbar (saveMode='button') -->
+      <template v-if="showSaveButton">
+        <div class="flex items-center gap-2 ml-auto">
+          <span
+            v-if="isDirty"
+            class="flex items-center gap-1 text-xs text-amber-600 font-medium"
+          >
+            <span class="inline-block w-2 h-2 rounded-full bg-amber-500"></span>
+            Cambios sin guardar
+          </span>
+          <Button
+            variant="outline"
+            size="sm"
+            :disabled="!isDirty || isSaving"
+            @click="saveOrderManually"
+          >
+            <Spinner v-if="isSaving" class="mr-2 h-3 w-3" />
+            Guardar orden
+          </Button>
+        </div>
+      </template>
+
+      <!-- Saving indicator for immediate/debounced modes with lockWhileSaving -->
+      <template v-else-if="showSavingIndicator">
+        <div class="flex items-center gap-1.5 ml-auto text-xs text-muted-foreground">
+          <Spinner class="h-3 w-3" />
+          <span>Guardando...</span>
+        </div>
+      </template>
+
       <slot name="actions"></slot>
     </div>
 
@@ -302,9 +449,9 @@ const currentPage = computed({
       <Table class="relative">
         <TableHeader>
           <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
-            <TableHead 
-              v-for="header in headerGroup.headers" 
-              :key="header.id" 
+            <TableHead
+              v-for="header in headerGroup.headers"
+              :key="header.id"
               :class="cn(
                 'border-none sticky top-0 bg-background',
                 (header.column.columnDef.meta as any)?.thClass
@@ -314,7 +461,7 @@ const currentPage = computed({
             </TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
+        <TableBody :class="showSavingIndicator ? 'pointer-events-none opacity-75' : ''">
           <template v-if="loading">
             <TableRow v-for="i in 5" :key="i">
               <TableCell v-for="cell in table.getAllColumns().filter((column) => column.getCanHide())" :key="cell.id">
